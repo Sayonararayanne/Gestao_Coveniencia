@@ -3,11 +3,13 @@
 void menuop (void);
 void menuprincipal (void);
 void menusobre (void);
+void menuequipe (void);
 
 int main (void){
 menuop();
 menuprincipal();
 menusobre();
+menuequipe();
 return 0; 
 }
 
@@ -58,6 +60,18 @@ void menusobre (void){
 
 }
 
+void menuequipe (void){ 
+    printf("------------------------------------------------\n");
+    printf("-------- GESTÃO PARA LOJA DE COVENIÊNCIA -------\n");
+    printf("----------------- MENU EQUIPE -------------------\n");
+    printf("------------------------------------------------\n");
+    printf("\n");
+    printf ( "Universidade Federal do Rio Grande do Norte - CERES\n" );
+    printf ( "Departamento de Computação e Tecnologia\n" );
+    printf ( "Desenvolvido por @sayonararayanne -- desde Ago, 2023\n" );
+    printf("\n");
+    printf("Projeto desenvolvido pela aluna Sayonara Rayanne Soares de Araújo,\n");
+    printf("graduanda do curso de Bacharelado em Sistemas de Informação da UFRN - CERES\n");
+    printf("------------------------------------------------\n");
 
-
-
+}
