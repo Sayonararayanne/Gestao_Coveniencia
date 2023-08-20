@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <locale.h>
 
 void menuop (void);
 void menuprincipal (void);
@@ -6,6 +7,8 @@ void menusobre (void);
 void menuequipe (void);
 
 int main (void){
+setlocale(LC_ALL,"Portuguese_Brazil");
+
 menuop();
 menuprincipal();
 menusobre();
@@ -15,7 +18,7 @@ return 0;
 
 void menuop (void){ 
     printf("------------------------------------------------\n");
-    printf("-------- GEST√ÉO PARA LOJA DE COVENI√äNCIA -------\n");
+    printf("-------- GEST√O PARA LOJA DE COVENI NCIA -------\n");
     printf("-------------- SEJA BEM - VINDO ----------------\n");
     printf("------------------------------------------------\n");
     printf("\n");
@@ -29,14 +32,14 @@ void menuop (void){
 
 void menuprincipal (void){
     printf("------------------------------------------------\n");
-    printf("-------- GEST√ÉO PARA LOJA DE COVENI√äNCIA -------\n");
+    printf("-------- GEST√O PARA LOJA DE COVENI NCIA -------\n");
     printf("--------------- MENU PRINCIPAL -----------------\n");
     printf("------------------------------------------------\n");
     printf("\n");
-    printf("(1) - M√ìDULO DE PRODUTOS\n");
-    printf("(2) - M√ìDULO DE VENDAS\n");
-    printf("(3) - M√ìDULO DE CLIENTES\n");
-    printf("(4) - M√ìDULO DE FUNCION√ÅRIOS\n");
+    printf("(1) - M”DULO DE PRODUTOS\n");
+    printf("(2) - M”DULO DE VENDAS\n");
+    printf("(3) - M”DULO DE CLIENTES\n");
+    printf("(4) - M”DULO DE FUNCION¡RIOS\n");
     printf("(0) - SAIR\n");
     printf("------------------------------------------------\n");
 
@@ -44,34 +47,34 @@ void menuprincipal (void){
 
 void menusobre (void){ 
     printf("------------------------------------------------\n");
-    printf("-------- GEST√ÉO PARA LOJA DE COVENI√äNCIA -------\n");
+    printf("-------- GEST√O PARA LOJA DE COVENI NCIA -------\n");
     printf("----------------- MENU SOBRE -------------------\n");
     printf("------------------------------------------------\n");
     printf("\n");
     printf ( "Universidade Federal do Rio Grande do Norte - CERES\n" );
-    printf ( "Departamento de Computa√ß√£o e Tecnologia\n" );
+    printf ( "Departamento de ComputaÁ„o e Tecnologia\n" );
     printf ( "Desenvolvido por @sayonararayanne -- desde Ago, 2023\n" );
     printf("\n");
-    printf("Projeto desenvolvido para obten√ß√£o da nota da disciplina Programa√ß√£o.\n");
-    printf("O foco principal do sistema √© fazer um modelo que consiga gerenciar uma loja de coveni√™ncia, diante\n");
-    printf("disso, os m√≥dulos e funcionalidades do projeto foram criados voltados para facilitar e otimizar os\n");
-    printf("processos realizados em uma coveni√™ncia.\n");
+    printf("Projeto desenvolvido para obtenÁ„o da nota da disciplina ProgramaÁ„o.\n");
+    printf("O foco principal do sistema È fazer um modelo que consiga gerenciar uma loja de coveniÍncia, diante\n");
+    printf("disso, os mÛdulos e funcionalidades do projeto foram criados voltados para facilitar e otimizar os\n");
+    printf("processos realizados em uma coveniÍncia.\n");
     printf("------------------------------------------------\n");
 
 }
 
 void menuequipe (void){ 
     printf("------------------------------------------------\n");
-    printf("-------- GEST√ÉO PARA LOJA DE COVENI√äNCIA -------\n");
+    printf("-------- GEST√O PARA LOJA DE COVENI NCIA -------\n");
     printf("----------------- MENU EQUIPE -------------------\n");
     printf("------------------------------------------------\n");
     printf("\n");
     printf ( "Universidade Federal do Rio Grande do Norte - CERES\n" );
-    printf ( "Departamento de Computa√ß√£o e Tecnologia\n" );
+    printf ( "Departamento de ComputaÁ„o e Tecnologia\n" );
     printf ( "Desenvolvido por @sayonararayanne -- desde Ago, 2023\n" );
     printf("\n");
-    printf("Projeto desenvolvido pela aluna Sayonara Rayanne Soares de Ara√∫jo,\n");
-    printf("graduanda do curso de Bacharelado em Sistemas de Informa√ß√£o da UFRN - CERES\n");
+    printf("Projeto desenvolvido pela aluna Sayonara Rayanne Soares de Ara˙jo,\n");
+    printf("graduanda do curso de Bacharelado em Sistemas de InformaÁ„o da UFRN - CERES\n");
     printf("------------------------------------------------\n");
 
 }
