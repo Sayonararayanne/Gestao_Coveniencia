@@ -6,6 +6,11 @@ void menuprincipal (void);
 void menusobre (void);
 void menuequipe (void);
 void menuprodutos(void);
+void cadastrarprodutos (void);
+void editarprodutos (void);
+void excluirprodutos (void);
+void pesquisarprodutos (void);
+void listarprodutos (void);
 
 int main (void){
 setlocale(LC_ALL,"Portuguese_Brazil");
@@ -15,6 +20,11 @@ menuprincipal();
 menusobre();
 menuequipe();
 menuprodutos();
+cadastrarprodutos();
+editarprodutos();
+excluirprodutos();
+pesquisarprodutos();
+listarprodutos();
 return 0; 
 }
 
@@ -92,7 +102,78 @@ void menuprodutos (void){
     printf("(2) - EDITAR PRODUTO\n");
     printf("(3) - EXCLUIR PRODUTO\n");
     printf("(4) - LISTAR PRODUTOS\n");
+    printf("(5) - PESQUISAR PRODUTO\n");
     printf("(0) - SAIR\n");
     printf("------------------------------------------------\n");
 
+}
+
+void cadastrarprodutos (void){ 
+    printf("------------------------------------------------\n");
+    printf("-------- GESTÃO PARA LOJA DE COVENIÊNCIA -------\n");
+    printf("-------------- CADASTRAR PRODUTO ---------------\n");
+    printf("------------------------------------------------\n");
+    printf("\n");
+    printf("CÓDIGO: \n");
+    printf("NOME: \n");
+    printf("MARCA: \n");
+    printf("DESCRIÇÃO: \n");
+    printf("QUANTIDADE: \n");
+    printf("TIPO: \n");
+    printf("VALOR: \n");
+    printf("VALIDADE: \n");
+    printf("------------------------------------------------\n");
+
+}
+
+void editarprodutos (void){ 
+    printf("------------------------------------------------\n");
+    printf("-------- GESTÃO PARA LOJA DE COVENIÊNCIA -------\n");
+    printf("--------------- EDITAR PRODUTO -----------------\n");
+    printf("------------------------------------------------\n");
+    printf("\n");
+    printf("INFORME O CÓDIGO DO PRODUTO: \n");
+    printf("------------------------------------------------\n");
+    printf("NOME: \n");
+    printf("MARCA: \n");
+    printf("DESCRIÇÃO: \n");
+    printf("QUANTIDADE: \n");
+    printf("TIPO: \n");
+    printf("VALOR: \n");
+    printf("VALIDADE: \n");
+    printf("------------------------------------------------\n");
+
+}
+
+void excluirprodutos (void){ 
+    printf("------------------------------------------------\n");
+    printf("-------- GESTÃO PARA LOJA DE COVENIÊNCIA -------\n");
+    printf("--------------- EXCLUIR PRODUTO ----------------\n");
+    printf("------------------------------------------------\n");
+    printf("\n");
+    printf("INFORME O CÓDIGO DO PRODUTO: \n");
+    printf("------------------------------------------------\n");
+
+}
+
+void pesquisarprodutos (void){ 
+    printf("------------------------------------------------\n");
+    printf("-------- GESTÃO PARA LOJA DE COVENIÊNCIA -------\n");
+    printf("-------------- PESQUISAR PRODUTO ---------------\n");
+    printf("------------------------------------------------\n");
+    printf("\n");
+    printf("INFORME O CÓDIGO DO PRODUTO: \n");
+    printf("------------------------------------------------\n");
+    
+}
+
+void listarprodutos (void){ 
+    printf("------------------------------------------------\n");
+    printf("-------- GESTÃO PARA LOJA DE COVENIÊNCIA -------\n");
+    printf("--------------- LISTAR PRODUTOS ----------------\n");
+    printf("------------------------------------------------\n");
+    printf("\n");
+    printf("PRODUTOS CADASTRADOS: \n");
+    printf("------------------------------------------------\n");
+    
 }
