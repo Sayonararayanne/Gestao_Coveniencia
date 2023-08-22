@@ -5,6 +5,7 @@ void menuop (void);
 void menuprincipal (void);
 void menusobre (void);
 void menuequipe (void);
+void menuprodutos(void);
 
 int main (void){
 setlocale(LC_ALL,"Portuguese_Brazil");
@@ -13,6 +14,7 @@ menuop();
 menuprincipal();
 menusobre();
 menuequipe();
+menuprodutos();
 return 0; 
 }
 
@@ -40,6 +42,7 @@ void menuprincipal (void){
     printf("(2) - MÓDULO DE VENDAS\n");
     printf("(3) - MÓDULO DE CLIENTES\n");
     printf("(4) - MÓDULO DE FUNCIONÁRIOS\n");
+    printf("(5) - RELATÓRIO\n");
     printf("(0) - SAIR\n");
     printf("------------------------------------------------\n");
 
@@ -66,7 +69,7 @@ void menusobre (void){
 void menuequipe (void){ 
     printf("------------------------------------------------\n");
     printf("-------- GESTÃO PARA LOJA DE COVENIÊNCIA -------\n");
-    printf("----------------- MENU EQUIPE -------------------\n");
+    printf("----------------- MENU EQUIPE ------------------\n");
     printf("------------------------------------------------\n");
     printf("\n");
     printf ( "Universidade Federal do Rio Grande do Norte - CERES\n" );
@@ -75,6 +78,21 @@ void menuequipe (void){
     printf("\n");
     printf("Projeto desenvolvido pela aluna Sayonara Rayanne Soares de Araújo,\n");
     printf("graduanda do curso de Bacharelado em Sistemas de Informação da UFRN - CERES\n");
+    printf("------------------------------------------------\n");
+
+}
+
+void menuprodutos (void){ 
+    printf("------------------------------------------------\n");
+    printf("-------- GESTÃO PARA LOJA DE COVENIÊNCIA -------\n");
+    printf("---------------- MENU PRODUTOS -----------------\n");
+    printf("------------------------------------------------\n");
+    printf("\n");
+    printf("(1) - CADASTRAR PRODUTO\n");
+    printf("(2) - EDITAR PRODUTO\n");
+    printf("(3) - EXCLUIR PRODUTO\n");
+    printf("(4) - LISTAR PRODUTOS\n");
+    printf("(0) - SAIR\n");
     printf("------------------------------------------------\n");
 
 }
