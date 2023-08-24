@@ -40,7 +40,7 @@ return 0;
 }
 
 void menuop (void){ 
-    printf("------------------------------------------------\n");
+    printf("------------------------------------------------\n"); //menu inicial
     printf("-------- GESTÃO PARA LOJA DE COVENIÊNCIA -------\n");
     printf("-------------- SEJA BEM - VINDO ----------------\n");
     printf("------------------------------------------------\n");
@@ -54,7 +54,7 @@ void menuop (void){
 }
 
 void menuprincipal (void){
-    printf("------------------------------------------------\n");
+    printf("------------------------------------------------\n"); //menu principal com os módulos disponíveis 
     printf("-------- GESTÃO PARA LOJA DE COVENIÊNCIA -------\n");
     printf("--------------- MENU PRINCIPAL -----------------\n");
     printf("------------------------------------------------\n");
@@ -62,7 +62,7 @@ void menuprincipal (void){
     printf("(1) - MÓDULO DE PRODUTOS\n");
     printf("(2) - MÓDULO DE VENDAS\n");
     printf("(3) - MÓDULO DE CLIENTES\n");
-    printf("(4) - MÓDULO DE FUNCIONÁRIOS\n");
+    printf("(4) - MÓDULO DE FUNCIONÁRIOS\n"); //ideia: funcionário do mês ??
     printf("(5) - RELATÓRIO\n");
     printf("(0) - SAIR\n");
     printf("------------------------------------------------\n");
@@ -70,14 +70,14 @@ void menuprincipal (void){
 }
 
 void menusobre (void){ 
-    printf("------------------------------------------------\n");
+    printf("------------------------------------------------\n"); //descrição do projeto
     printf("-------- GESTÃO PARA LOJA DE COVENIÊNCIA -------\n");
     printf("----------------- MENU SOBRE -------------------\n");
     printf("------------------------------------------------\n");
     printf("\n");
-    printf ( "Universidade Federal do Rio Grande do Norte - CERES\n" );
-    printf ( "Departamento de Computação e Tecnologia\n" );
-    printf ( "Desenvolvido por @sayonararayanne -- desde Ago, 2023\n" );
+    printf("Universidade Federal do Rio Grande do Norte - CERES\n" );
+    printf("Departamento de Computação e Tecnologia\n" );
+    printf("Desenvolvido por @sayonararayanne -- desde Ago, 2023\n" );
     printf("\n");
     printf("Projeto desenvolvido para obtenção da nota da disciplina Programação.\n");
     printf("O foco principal do sistema é fazer um modelo que consiga gerenciar uma loja de coveniência, diante\n");
@@ -88,14 +88,14 @@ void menusobre (void){
 }
 
 void menuequipe (void){ 
-    printf("------------------------------------------------\n");
+    printf("------------------------------------------------\n"); //descrição da equipe
     printf("-------- GESTÃO PARA LOJA DE COVENIÊNCIA -------\n");
     printf("----------------- MENU EQUIPE ------------------\n");
     printf("------------------------------------------------\n");
     printf("\n");
-    printf ( "Universidade Federal do Rio Grande do Norte - CERES\n" );
-    printf ( "Departamento de Computação e Tecnologia\n" );
-    printf ( "Desenvolvido por @sayonararayanne -- desde Ago, 2023\n" );
+    printf("Universidade Federal do Rio Grande do Norte - CERES\n" );
+    printf("Departamento de Computação e Tecnologia\n" );
+    printf("Desenvolvido por @sayonararayanne -- desde Ago, 2023\n" );
     printf("\n");
     printf("Projeto desenvolvido pela aluna Sayonara Rayanne Soares de Araújo,\n");
     printf("graduanda do curso de Bacharelado em Sistemas de Informação da UFRN - CERES\n");
@@ -195,7 +195,7 @@ void cadastrarvendas (void){
     printf("-------------- CADASTRAR VENDAS ----------------\n");
     printf("------------------------------------------------\n");
     printf("\n");
-    printf("CÓDIGO: \n");
+    printf("CÓDIGO: \n"); //chave ser gerada automaticamente ou ser data+hora
     printf("CÓDIGO DO VENDEDOR: \n");
     printf("CÓDIGO DO PRODUTO: \n");
     printf("QUANTIDADE: \n");
