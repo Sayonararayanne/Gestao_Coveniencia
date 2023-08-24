@@ -13,6 +13,9 @@ void pesquisarprodutos (void);
 void listarprodutos (void);
 void cadastrarvendas (void);
 void editarvendas (void);
+void excluirvendas (void);
+void pesquisarvendas (void);
+void listarvendas (void);
 
 int main (void){
 setlocale(LC_ALL,"Portuguese_Brazil");
@@ -29,6 +32,10 @@ pesquisarprodutos();
 listarprodutos();
 cadastrarvendas();
 editarvendas();
+excluirvendas();
+pesquisarvendas();
+listarvendas();
+
 return 0; 
 }
 
@@ -213,3 +220,35 @@ void editarvendas (void){
 
 }
 
+void excluirvendas (void){ 
+    printf("------------------------------------------------\n");
+    printf("-------- GESTÃO PARA LOJA DE COVENIÊNCIA -------\n");
+    printf("---------------- EXCLUIR VENDA -----------------\n");
+    printf("------------------------------------------------\n");
+    printf("\n");
+    printf("INFORME O CÓDIGO DA VENDA: \n");
+    printf("------------------------------------------------\n");
+
+}
+
+void pesquisarvendas (void){ 
+    printf("------------------------------------------------\n");
+    printf("-------- GESTÃO PARA LOJA DE COVENIÊNCIA -------\n");
+    printf("-------------- PESQUISAR VENDAS ----------------\n");
+    printf("------------------------------------------------\n");
+    printf("\n");
+    printf("INFORME O CÓDIGO DA VENDA: \n");
+    printf("------------------------------------------------\n");
+    
+}
+
+void listarvendas (void){ 
+    printf("------------------------------------------------\n");
+    printf("-------- GESTÃO PARA LOJA DE COVENIÊNCIA -------\n");
+    printf("--------------- LISTAR VENDAS ----------------\n");
+    printf("------------------------------------------------\n");
+    printf("\n");
+    printf("VENDAS CADASTRADAS: \n");
+    printf("------------------------------------------------\n");
+    
+}
