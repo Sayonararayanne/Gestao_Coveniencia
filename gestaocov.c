@@ -10,12 +10,14 @@ void cadastrarprodutos (void);
 void editarprodutos (void);
 void excluirprodutos (void);
 void pesquisarprodutos (void);
+void menuvendas (void);
 void listarprodutos (void);
 void cadastrarvendas (void);
 void editarvendas (void);
 void excluirvendas (void);
 void pesquisarvendas (void);
 void listarvendas (void);
+void menufuncionarios (void);
 void cadastrarfuncionarios (void);
 void editarfuncionarios (void);
 void excluirfuncionario (void);
@@ -35,11 +37,13 @@ editarprodutos();
 excluirprodutos();
 pesquisarprodutos();
 listarprodutos();
+menuvendas();
 cadastrarvendas();
 editarvendas();
 excluirvendas();
 pesquisarvendas();
 listarvendas();
+menufuncionarios();
 cadastrarfuncionarios();
 editarfuncionarios();
 excluirfuncionario();
@@ -112,7 +116,7 @@ void menuequipe (void){
     printf("------------------------------------------------\n");
 
 }
-
+//MÓDULO PRODUTOS
 void menuprodutos (void){ 
     printf("------------------------------------------------\n");
     printf("-------- GESTÃO PARA LOJA DE COVENIÊNCIA -------\n");
@@ -199,6 +203,23 @@ void listarprodutos (void){
     
 }
 
+//MÓDULO VENDAS
+void menuvendas (void){ 
+    printf("------------------------------------------------\n");
+    printf("-------- GESTÃO PARA LOJA DE COVENIÊNCIA -------\n");
+    printf("----------------- MENU VENDAS ------------------\n");
+    printf("------------------------------------------------\n");
+    printf("\n");
+    printf("(1) - CADASTRAR VENDA\n");
+    printf("(2) - EDITAR VENDA\n");
+    printf("(3) - EXCLUIR VENDA\n");
+    printf("(4) - LISTAR VENDAS\n");
+    printf("(5) - PESQUISAR VENDA\n");
+    printf("(0) - SAIR\n");
+    printf("------------------------------------------------\n");
+
+}
+
 void cadastrarvendas (void){ 
     printf("------------------------------------------------\n");
     printf("-------- GESTÃO PARA LOJA DE COVENIÊNCIA -------\n");
@@ -261,6 +282,22 @@ void listarvendas (void){
     printf("VENDAS CADASTRADAS: \n");
     printf("------------------------------------------------\n");
     
+}
+
+void menufuncionarios (void){ 
+    printf("------------------------------------------------\n");
+    printf("-------- GESTÃO PARA LOJA DE COVENIÊNCIA -------\n");
+    printf("-------------- MENU FUNCIONÁRIOS ---------------\n");
+    printf("------------------------------------------------\n");
+    printf("\n");
+    printf("(1) - CADASTRAR FUNCIONÁRIO\n");
+    printf("(2) - EDITAR FUNCIONÁRIO\n");
+    printf("(3) - EXCLUIR FUNCIONÁRIO\n");
+    printf("(4) - LISTAR FUNCIONÁRIOS\n");
+    printf("(5) - PESQUISAR FUNCIONÁRIO\n");
+    printf("(0) - SAIR\n");
+    printf("------------------------------------------------\n");
+
 }
 
 void cadastrarfuncionarios (void){ 
