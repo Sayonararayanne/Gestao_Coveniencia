@@ -17,6 +17,7 @@ void excluirvendas (void);
 void pesquisarvendas (void);
 void listarvendas (void);
 void cadastrarfuncionarios (void);
+void editarfuncionarios (void);
 
 int main (void){
 setlocale(LC_ALL,"Portuguese_Brazil");
@@ -37,6 +38,7 @@ excluirvendas();
 pesquisarvendas();
 listarvendas();
 cadastrarfuncionarios();
+editarfuncionarios();
 
 return 0; 
 }
@@ -262,6 +264,21 @@ void cadastrarfuncionarios (void){
     printf("------------------------------------------------\n");
     printf("\n");
     printf("CPF: \n");
+    printf("NOME: \n");
+    printf("TELEFONE: \n");
+    printf("CARGO: \n");
+    printf("SALÁRIO: \n");
+    printf("------------------------------------------------\n");
+
+}
+void editarfuncionarios (void){ 
+    printf("------------------------------------------------\n");
+    printf("-------- GESTÃO PARA LOJA DE COVENIÊNCIA -------\n");
+    printf("------------ CADASTRAR FUNCIONARIOS ------------\n");
+    printf("------------------------------------------------\n");
+    printf("\n");
+    printf("CPF DO FUNCIONÁRIO QUE IRÁ EDITAR: \n");
+    printf("------------------------------------------------\n");
     printf("NOME: \n");
     printf("TELEFONE: \n");
     printf("CARGO: \n");
