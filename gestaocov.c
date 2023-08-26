@@ -27,6 +27,8 @@ void menuclientes (void);
 void cadastrarclientes (void);
 void editarclientes (void);
 void excluircliente (void);
+void pesquisarcliente (void);
+void listarclientes (void);
 
 int main (void){
 setlocale(LC_ALL,"Portuguese_Brazil");
@@ -57,6 +59,8 @@ menuclientes();
 cadastrarclientes();
 editarclientes();
 excluircliente();
+pesquisarcliente();
+listarclientes();
 
 return 0; 
 }
@@ -425,5 +429,25 @@ void excluircliente (void){
     printf("------------------------------------------------\n");
     printf("\n");
     printf("CPF DO CLIENTE QUE DESEJA EXCLUIR: \n");
+    printf("------------------------------------------------\n");
+}
+
+void pesquisarcliente (void){ 
+    printf("------------------------------------------------\n");
+    printf("-------- GESTÃO PARA LOJA DE COVENIÊNCIA -------\n");
+    printf("-------------- PESQUISAR CLIENTES --------------\n");
+    printf("------------------------------------------------\n");
+    printf("\n");
+    printf("CPF DO CLIENTE QUE DESEJA PESQUISAR: \n");
+    printf("------------------------------------------------\n");
+}
+
+void listarclientes (void){ 
+    printf("------------------------------------------------\n");
+    printf("-------- GESTÃO PARA LOJA DE COVENIÊNCIA -------\n");
+    printf("------------- LISTAR CLIENTES --------------\n");
+    printf("------------------------------------------------\n");
+    printf("\n");
+    printf("CLIENTES CADASTRADOS: \n");
     printf("------------------------------------------------\n");
 }
