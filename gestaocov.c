@@ -23,6 +23,8 @@ void editarfuncionarios (void);
 void excluirfuncionario (void);
 void pesquisarfuncionario (void);
 void listarfuncionarios (void);
+void menuclientes (void);
+void cadastrarclientes (void);
 
 int main (void){
 setlocale(LC_ALL,"Portuguese_Brazil");
@@ -49,6 +51,8 @@ editarfuncionarios();
 excluirfuncionario();
 pesquisarfuncionario();
 listarfuncionarios();
+menuclientes();
+cadastrarclientes();
 
 return 0; 
 }
@@ -284,6 +288,7 @@ void listarvendas (void){
     
 }
 
+//MÓDULO FUNCIONÁRIOS
 void menufuncionarios (void){ 
     printf("------------------------------------------------\n");
     printf("-------- GESTÃO PARA LOJA DE COVENIÊNCIA -------\n");
@@ -303,7 +308,7 @@ void menufuncionarios (void){
 void cadastrarfuncionarios (void){ 
     printf("------------------------------------------------\n");
     printf("-------- GESTÃO PARA LOJA DE COVENIÊNCIA -------\n");
-    printf("------------ CADASTRAR FUNCIONARIOS ------------\n");
+    printf("------------ CADASTRAR FUNCIONÁRIOS ------------\n");
     printf("------------------------------------------------\n");
     printf("\n");
     printf("CPF: \n");
@@ -311,13 +316,15 @@ void cadastrarfuncionarios (void){
     printf("TELEFONE: \n");
     printf("CARGO: \n");
     printf("SALÁRIO: \n");
+    printf("DATA DE NASCIMENTO: \n");
     printf("------------------------------------------------\n");
 
 }
+
 void editarfuncionarios (void){ 
     printf("------------------------------------------------\n");
     printf("-------- GESTÃO PARA LOJA DE COVENIÊNCIA -------\n");
-    printf("------------- EDITAR FUNCIONARIOS --------------\n");
+    printf("------------- EDITAR FUNCIONÁRIOS --------------\n");
     printf("------------------------------------------------\n");
     printf("\n");
     printf("CPF DO FUNCIONÁRIO QUE IRÁ EDITAR: \n");
@@ -326,6 +333,7 @@ void editarfuncionarios (void){
     printf("TELEFONE: \n");
     printf("CARGO: \n");
     printf("SALÁRIO: \n");
+    printf("DATA DE NASCIMENTO: \n");
     printf("------------------------------------------------\n");
 
 }
@@ -333,7 +341,7 @@ void editarfuncionarios (void){
 void excluirfuncionario (void){ 
     printf("------------------------------------------------\n");
     printf("-------- GESTÃO PARA LOJA DE COVENIÊNCIA -------\n");
-    printf("------------- EXCLUIR FUNCIONARIOS -------------\n");
+    printf("------------- EXCLUIR FUNCIONÁRIOS -------------\n");
     printf("------------------------------------------------\n");
     printf("\n");
     printf("CPF DO FUNCIONÁRIO QUE DESEJA EXCLUIR: \n");
@@ -343,7 +351,7 @@ void excluirfuncionario (void){
 void pesquisarfuncionario (void){ 
     printf("------------------------------------------------\n");
     printf("-------- GESTÃO PARA LOJA DE COVENIÊNCIA -------\n");
-    printf("------------ PESQUISAR FUNCIONARIOS ------------\n");
+    printf("------------ PESQUISAR FUNCIONÁRIOS ------------\n");
     printf("------------------------------------------------\n");
     printf("\n");
     printf("CPF DO FUNCIONÁRIO QUE DESEJA PESQUISAR: \n");
@@ -358,4 +366,35 @@ void listarfuncionarios (void){
     printf("\n");
     printf("FUNCIONÁRIOS CADASTRADOS: \n");
     printf("------------------------------------------------\n");
+}
+
+//MÓDULO CLIENTES
+void menuclientes (void){ 
+    printf("------------------------------------------------\n");
+    printf("-------- GESTÃO PARA LOJA DE COVENIÊNCIA -------\n");
+    printf("---------------- MENU CLIENTES -----------------\n");
+    printf("------------------------------------------------\n");
+    printf("\n");
+    printf("(1) - CADASTRAR CLIENTE\n");
+    printf("(2) - EDITAR CLIENTE\n");
+    printf("(3) - EXCLUIR CLIENTE\n");
+    printf("(4) - LISTAR CLIENTES\n");
+    printf("(5) - PESQUISAR CLIENTE\n");
+    printf("(0) - SAIR\n");
+    printf("------------------------------------------------\n");
+
+}
+
+void cadastrarclientes (void){ 
+    printf("------------------------------------------------\n");
+    printf("-------- GESTÃO PARA LOJA DE COVENIÊNCIA -------\n");
+    printf("-------------- CADASTRAR CLIENTES --------------\n");
+    printf("------------------------------------------------\n");
+    printf("\n");
+    printf("CPF: \n");
+    printf("NOME: \n");
+    printf("TELEFONE: \n");
+    printf("DATA DE NASCIMENTO: \n");
+    printf("------------------------------------------------\n");
+
 }
