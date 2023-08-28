@@ -76,6 +76,8 @@ void menuop (void){
     printf("(3) - EQUIPE\n");
     printf("(0) - SAIR\n");
     printf("------------------------------------------------\n");
+    printf("Digite a opção desejada: ");
+    getchar();
 
 }
 
@@ -92,7 +94,8 @@ void menuprincipal (void){
     printf("(5) - RELATÓRIO\n");
     printf("(0) - SAIR\n");
     printf("------------------------------------------------\n");
-
+    printf("Digite a opção desejada: ");
+    getchar();
 }
 
 void menusobre (void){ 
@@ -142,7 +145,8 @@ void menuprodutos (void){
     printf("(5) - PESQUISAR PRODUTO\n");
     printf("(0) - SAIR\n");
     printf("------------------------------------------------\n");
-
+    printf("Digite a opção desejada: ");
+    getchar();
 }
 
 void cadastrarprodutos (void){ 
@@ -160,7 +164,7 @@ void cadastrarprodutos (void){
     printf("VALOR: \n");
     printf("VALIDADE: \n");
     printf("------------------------------------------------\n");
-
+    getchar();
 }
 
 void editarprodutos (void){ 
@@ -179,7 +183,7 @@ void editarprodutos (void){
     printf("VALOR: \n");
     printf("VALIDADE: \n");
     printf("------------------------------------------------\n");
-
+    getchar();
 }
 
 void excluirprodutos (void){ 
@@ -190,7 +194,7 @@ void excluirprodutos (void){
     printf("\n");
     printf("INFORME O CÓDIGO DO PRODUTO: \n");
     printf("------------------------------------------------\n");
-
+    getchar();
 }
 
 void pesquisarprodutos (void){ 
@@ -201,7 +205,7 @@ void pesquisarprodutos (void){
     printf("\n");
     printf("INFORME O CÓDIGO DO PRODUTO: \n");
     printf("------------------------------------------------\n");
-    
+    getchar();
 }
 
 void listarprodutos (void){ 
@@ -212,7 +216,7 @@ void listarprodutos (void){
     printf("\n");
     printf("PRODUTOS CADASTRADOS: \n");
     printf("------------------------------------------------\n");
-    
+    getchar();
 }
 
 //MÓDULO VENDAS
@@ -229,7 +233,8 @@ void menuvendas (void){
     printf("(5) - PESQUISAR VENDA\n");
     printf("(0) - SAIR\n");
     printf("------------------------------------------------\n");
-
+    printf("Digite a opção desejada: ");
+    getchar();
 }
 
 void cadastrarvendas (void){ 
@@ -244,7 +249,7 @@ void cadastrarvendas (void){
     printf("QUANTIDADE: \n");
     printf("VALOR: \n");
     printf("------------------------------------------------\n");
-
+    getchar();
 }
 
 void editarvendas (void){ 
@@ -260,7 +265,7 @@ void editarvendas (void){
     printf("QUANTIDADE: \n");
     printf("VALOR: \n");
     printf("------------------------------------------------\n");
-
+    getchar();
 }
 
 void excluirvendas (void){ 
@@ -271,7 +276,7 @@ void excluirvendas (void){
     printf("\n");
     printf("INFORME O CÓDIGO DA VENDA: \n");
     printf("------------------------------------------------\n");
-
+    getchar();
 }
 
 void pesquisarvendas (void){ 
@@ -282,7 +287,7 @@ void pesquisarvendas (void){
     printf("\n");
     printf("INFORME O CÓDIGO DA VENDA: \n");
     printf("------------------------------------------------\n");
-    
+    getchar(); 
 }
 
 void listarvendas (void){ 
@@ -293,7 +298,7 @@ void listarvendas (void){
     printf("\n");
     printf("VENDAS CADASTRADAS: \n");
     printf("------------------------------------------------\n");
-    
+    getchar();
 }
 
 //MÓDULO FUNCIONÁRIOS
@@ -310,7 +315,8 @@ void menufuncionarios (void){
     printf("(5) - PESQUISAR FUNCIONÁRIO\n");
     printf("(0) - SAIR\n");
     printf("------------------------------------------------\n");
-
+    printf("Digite a opção desejada: ");
+    getchar();
 }
 
 void cadastrarfuncionarios (void){ 
@@ -326,7 +332,7 @@ void cadastrarfuncionarios (void){
     printf("SALÁRIO: \n");
     printf("DATA DE NASCIMENTO: \n");
     printf("------------------------------------------------\n");
-
+    getchar();
 }
 
 void editarfuncionarios (void){ 
@@ -343,7 +349,7 @@ void editarfuncionarios (void){
     printf("SALÁRIO: \n");
     printf("DATA DE NASCIMENTO: \n");
     printf("------------------------------------------------\n");
-
+    getchar();
 }
 
 void excluirfuncionario (void){ 
@@ -354,6 +360,7 @@ void excluirfuncionario (void){
     printf("\n");
     printf("CPF DO FUNCIONÁRIO QUE DESEJA EXCLUIR: \n");
     printf("------------------------------------------------\n");
+    getchar();
 }
 
 void pesquisarfuncionario (void){ 
@@ -364,6 +371,7 @@ void pesquisarfuncionario (void){
     printf("\n");
     printf("CPF DO FUNCIONÁRIO QUE DESEJA PESQUISAR: \n");
     printf("------------------------------------------------\n");
+    getchar();
 }
 
 void listarfuncionarios (void){ 
@@ -374,6 +382,7 @@ void listarfuncionarios (void){
     printf("\n");
     printf("FUNCIONÁRIOS CADASTRADOS: \n");
     printf("------------------------------------------------\n");
+    getchar();
 }
 
 //MÓDULO CLIENTES
@@ -390,7 +399,8 @@ void menuclientes (void){
     printf("(5) - PESQUISAR CLIENTE\n");
     printf("(0) - SAIR\n");
     printf("------------------------------------------------\n");
-
+    printf("Digite a opção desejada: ");
+    getchar();
 }
 
 void cadastrarclientes (void){ 
@@ -404,7 +414,7 @@ void cadastrarclientes (void){
     printf("TELEFONE: \n");
     printf("DATA DE NASCIMENTO: \n");
     printf("------------------------------------------------\n");
-
+    getchar();
 }
 
 void editarclientes (void){ 
@@ -419,7 +429,7 @@ void editarclientes (void){
     printf("TELEFONE: \n");
     printf("DATA DE NASCIMENTO: \n");
     printf("------------------------------------------------\n");
-
+    getchar();
 }
 
 void excluircliente (void){ 
@@ -430,6 +440,7 @@ void excluircliente (void){
     printf("\n");
     printf("CPF DO CLIENTE QUE DESEJA EXCLUIR: \n");
     printf("------------------------------------------------\n");
+    getchar();
 }
 
 void pesquisarcliente (void){ 
@@ -440,14 +451,16 @@ void pesquisarcliente (void){
     printf("\n");
     printf("CPF DO CLIENTE QUE DESEJA PESQUISAR: \n");
     printf("------------------------------------------------\n");
+    getchar();
 }
 
 void listarclientes (void){ 
     printf("------------------------------------------------\n");
     printf("-------- GESTÃO PARA LOJA DE COVENIÊNCIA -------\n");
-    printf("------------- LISTAR CLIENTES --------------\n");
+    printf("--------------- LISTAR CLIENTES ----------------\n");
     printf("------------------------------------------------\n");
     printf("\n");
     printf("CLIENTES CADASTRADOS: \n");
     printf("------------------------------------------------\n");
+    getchar();
 }
