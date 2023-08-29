@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <locale.h>
 
 void menuop (void);
@@ -31,7 +32,6 @@ void pesquisarcliente (void);
 void listarclientes (void);
 
 int main (void){
-setlocale(LC_ALL,"Portuguese_Brazil");
 
 menuop();
 menuprincipal();
@@ -62,10 +62,13 @@ excluircliente();
 pesquisarcliente();
 listarclientes();
 
+setlocale(LC_ALL,"Portuguese_Brazil"); //correção de caractere
 return 0; 
 }
 
 void menuop (void){ 
+    char op;
+    system("clear||cls");
     printf("------------------------------------------------\n"); //menu inicial
     printf("-------- GESTÃO PARA LOJA DE COVENIÊNCIA -------\n");
     printf("-------------- SEJA BEM - VINDO ----------------\n");
@@ -77,11 +80,13 @@ void menuop (void){
     printf("(0) - SAIR\n");
     printf("------------------------------------------------\n");
     printf("Digite a opção desejada: ");
+    scanf("%c", &op);
     getchar();
 
 }
 
 void menuprincipal (void){
+    system("clear||cls");
     printf("------------------------------------------------\n"); //menu principal com os módulos disponíveis 
     printf("-------- GESTÃO PARA LOJA DE COVENIÊNCIA -------\n");
     printf("--------------- MENU PRINCIPAL -----------------\n");
@@ -99,6 +104,7 @@ void menuprincipal (void){
 }
 
 void menusobre (void){ 
+    system("clear||cls");
     printf("------------------------------------------------\n"); //descrição do projeto
     printf("-------- GESTÃO PARA LOJA DE COVENIÊNCIA -------\n");
     printf("----------------- MENU SOBRE -------------------\n");
@@ -117,6 +123,7 @@ void menusobre (void){
 }
 
 void menuequipe (void){ 
+    system("clear||cls");
     printf("------------------------------------------------\n"); //descrição da equipe
     printf("-------- GESTÃO PARA LOJA DE COVENIÊNCIA -------\n");
     printf("----------------- MENU EQUIPE ------------------\n");
@@ -132,7 +139,8 @@ void menuequipe (void){
 
 }
 //MÓDULO PRODUTOS
-void menuprodutos (void){ 
+void menuprodutos (void){
+    system("clear||cls"); 
     printf("------------------------------------------------\n");
     printf("-------- GESTÃO PARA LOJA DE COVENIÊNCIA -------\n");
     printf("---------------- MENU PRODUTOS -----------------\n");
@@ -149,7 +157,8 @@ void menuprodutos (void){
     getchar();
 }
 
-void cadastrarprodutos (void){ 
+void cadastrarprodutos (void){
+    system("clear||cls"); 
     printf("------------------------------------------------\n");
     printf("-------- GESTÃO PARA LOJA DE COVENIÊNCIA -------\n");
     printf("-------------- CADASTRAR PRODUTO ---------------\n");
@@ -167,7 +176,8 @@ void cadastrarprodutos (void){
     getchar();
 }
 
-void editarprodutos (void){ 
+void editarprodutos (void){
+    system("clear||cls"); 
     printf("------------------------------------------------\n");
     printf("-------- GESTÃO PARA LOJA DE COVENIÊNCIA -------\n");
     printf("--------------- EDITAR PRODUTO -----------------\n");
@@ -186,7 +196,8 @@ void editarprodutos (void){
     getchar();
 }
 
-void excluirprodutos (void){ 
+void excluirprodutos (void){
+    system("clear||cls"); 
     printf("------------------------------------------------\n");
     printf("-------- GESTÃO PARA LOJA DE COVENIÊNCIA -------\n");
     printf("--------------- EXCLUIR PRODUTO ----------------\n");
@@ -197,7 +208,8 @@ void excluirprodutos (void){
     getchar();
 }
 
-void pesquisarprodutos (void){ 
+void pesquisarprodutos (void){
+    system("clear||cls"); 
     printf("------------------------------------------------\n");
     printf("-------- GESTÃO PARA LOJA DE COVENIÊNCIA -------\n");
     printf("-------------- PESQUISAR PRODUTO ---------------\n");
@@ -208,7 +220,8 @@ void pesquisarprodutos (void){
     getchar();
 }
 
-void listarprodutos (void){ 
+void listarprodutos (void){
+    system("clear||cls"); 
     printf("------------------------------------------------\n");
     printf("-------- GESTÃO PARA LOJA DE COVENIÊNCIA -------\n");
     printf("--------------- LISTAR PRODUTOS ----------------\n");
@@ -221,6 +234,7 @@ void listarprodutos (void){
 
 //MÓDULO VENDAS
 void menuvendas (void){ 
+    system("clear||cls");
     printf("------------------------------------------------\n");
     printf("-------- GESTÃO PARA LOJA DE COVENIÊNCIA -------\n");
     printf("----------------- MENU VENDAS ------------------\n");
@@ -237,7 +251,8 @@ void menuvendas (void){
     getchar();
 }
 
-void cadastrarvendas (void){ 
+void cadastrarvendas (void){
+    system("clear||cls"); 
     printf("------------------------------------------------\n");
     printf("-------- GESTÃO PARA LOJA DE COVENIÊNCIA -------\n");
     printf("-------------- CADASTRAR VENDAS ----------------\n");
@@ -252,7 +267,8 @@ void cadastrarvendas (void){
     getchar();
 }
 
-void editarvendas (void){ 
+void editarvendas (void){
+    system("clear||cls"); 
     printf("------------------------------------------------\n");
     printf("-------- GESTÃO PARA LOJA DE COVENIÊNCIA -------\n");
     printf("---------------- EDITAR VENDA ------------------\n");
@@ -268,7 +284,8 @@ void editarvendas (void){
     getchar();
 }
 
-void excluirvendas (void){ 
+void excluirvendas (void){
+    system("clear||cls"); 
     printf("------------------------------------------------\n");
     printf("-------- GESTÃO PARA LOJA DE COVENIÊNCIA -------\n");
     printf("---------------- EXCLUIR VENDA -----------------\n");
@@ -279,7 +296,8 @@ void excluirvendas (void){
     getchar();
 }
 
-void pesquisarvendas (void){ 
+void pesquisarvendas (void){
+    system("clear||cls"); 
     printf("------------------------------------------------\n");
     printf("-------- GESTÃO PARA LOJA DE COVENIÊNCIA -------\n");
     printf("-------------- PESQUISAR VENDAS ----------------\n");
@@ -290,7 +308,8 @@ void pesquisarvendas (void){
     getchar(); 
 }
 
-void listarvendas (void){ 
+void listarvendas (void){
+    system("clear||cls"); 
     printf("------------------------------------------------\n");
     printf("-------- GESTÃO PARA LOJA DE COVENIÊNCIA -------\n");
     printf("--------------- LISTAR VENDAS ----------------\n");
@@ -302,7 +321,8 @@ void listarvendas (void){
 }
 
 //MÓDULO FUNCIONÁRIOS
-void menufuncionarios (void){ 
+void menufuncionarios (void){
+    system("clear||cls"); 
     printf("------------------------------------------------\n");
     printf("-------- GESTÃO PARA LOJA DE COVENIÊNCIA -------\n");
     printf("-------------- MENU FUNCIONÁRIOS ---------------\n");
@@ -319,7 +339,8 @@ void menufuncionarios (void){
     getchar();
 }
 
-void cadastrarfuncionarios (void){ 
+void cadastrarfuncionarios (void){
+    system("clear||cls"); 
     printf("------------------------------------------------\n");
     printf("-------- GESTÃO PARA LOJA DE COVENIÊNCIA -------\n");
     printf("------------ CADASTRAR FUNCIONÁRIOS ------------\n");
@@ -335,7 +356,8 @@ void cadastrarfuncionarios (void){
     getchar();
 }
 
-void editarfuncionarios (void){ 
+void editarfuncionarios (void){
+    system("clear||cls"); 
     printf("------------------------------------------------\n");
     printf("-------- GESTÃO PARA LOJA DE COVENIÊNCIA -------\n");
     printf("------------- EDITAR FUNCIONÁRIOS --------------\n");
@@ -352,7 +374,8 @@ void editarfuncionarios (void){
     getchar();
 }
 
-void excluirfuncionario (void){ 
+void excluirfuncionario (void){
+    system("clear||cls"); 
     printf("------------------------------------------------\n");
     printf("-------- GESTÃO PARA LOJA DE COVENIÊNCIA -------\n");
     printf("------------- EXCLUIR FUNCIONÁRIOS -------------\n");
@@ -363,7 +386,8 @@ void excluirfuncionario (void){
     getchar();
 }
 
-void pesquisarfuncionario (void){ 
+void pesquisarfuncionario (void){
+    system("clear||cls"); 
     printf("------------------------------------------------\n");
     printf("-------- GESTÃO PARA LOJA DE COVENIÊNCIA -------\n");
     printf("------------ PESQUISAR FUNCIONÁRIOS ------------\n");
@@ -374,7 +398,8 @@ void pesquisarfuncionario (void){
     getchar();
 }
 
-void listarfuncionarios (void){ 
+void listarfuncionarios (void){
+    system("clear||cls"); 
     printf("------------------------------------------------\n");
     printf("-------- GESTÃO PARA LOJA DE COVENIÊNCIA -------\n");
     printf("------------- LISTAR FUNCIONARIOS --------------\n");
@@ -386,7 +411,8 @@ void listarfuncionarios (void){
 }
 
 //MÓDULO CLIENTES
-void menuclientes (void){ 
+void menuclientes (void){
+    system("clear||cls"); 
     printf("------------------------------------------------\n");
     printf("-------- GESTÃO PARA LOJA DE COVENIÊNCIA -------\n");
     printf("---------------- MENU CLIENTES -----------------\n");
@@ -403,7 +429,8 @@ void menuclientes (void){
     getchar();
 }
 
-void cadastrarclientes (void){ 
+void cadastrarclientes (void){
+    system("clear||cls"); 
     printf("------------------------------------------------\n");
     printf("-------- GESTÃO PARA LOJA DE COVENIÊNCIA -------\n");
     printf("-------------- CADASTRAR CLIENTES --------------\n");
@@ -417,7 +444,8 @@ void cadastrarclientes (void){
     getchar();
 }
 
-void editarclientes (void){ 
+void editarclientes (void){
+    system("clear||cls"); 
     printf("------------------------------------------------\n");
     printf("-------- GESTÃO PARA LOJA DE COVENIÊNCIA -------\n");
     printf("---------------- EDITAR CLIENTES ---------------\n");
@@ -432,7 +460,8 @@ void editarclientes (void){
     getchar();
 }
 
-void excluircliente (void){ 
+void excluircliente (void){
+    system("clear||cls"); 
     printf("------------------------------------------------\n");
     printf("-------- GESTÃO PARA LOJA DE COVENIÊNCIA -------\n");
     printf("--------------- EXCLUIR CLIENTES ---------------\n");
@@ -443,7 +472,8 @@ void excluircliente (void){
     getchar();
 }
 
-void pesquisarcliente (void){ 
+void pesquisarcliente (void){
+    system("clear||cls"); 
     printf("------------------------------------------------\n");
     printf("-------- GESTÃO PARA LOJA DE COVENIÊNCIA -------\n");
     printf("-------------- PESQUISAR CLIENTES --------------\n");
@@ -454,7 +484,8 @@ void pesquisarcliente (void){
     getchar();
 }
 
-void listarclientes (void){ 
+void listarclientes (void){
+    system("clear||cls"); 
     printf("------------------------------------------------\n");
     printf("-------- GESTÃO PARA LOJA DE COVENIÊNCIA -------\n");
     printf("--------------- LISTAR CLIENTES ----------------\n");
