@@ -86,6 +86,7 @@ void menuop (void){
 }
 
 void menuprincipal (void){
+    char op;
     system("clear||cls");
     printf("------------------------------------------------\n"); //menu principal com os módulos disponíveis 
     printf("-------- GESTÃO PARA LOJA DE COVENIÊNCIA -------\n");
@@ -100,6 +101,7 @@ void menuprincipal (void){
     printf("(0) - SAIR\n");
     printf("------------------------------------------------\n");
     printf("Digite a opção desejada: ");
+    scanf("%c", &op);
     getchar();
 }
 
@@ -140,6 +142,7 @@ void menuequipe (void){
 }
 //MÓDULO PRODUTOS
 void menuprodutos (void){
+    char op;
     system("clear||cls"); 
     printf("------------------------------------------------\n");
     printf("-------- GESTÃO PARA LOJA DE COVENIÊNCIA -------\n");
@@ -154,6 +157,7 @@ void menuprodutos (void){
     printf("(0) - SAIR\n");
     printf("------------------------------------------------\n");
     printf("Digite a opção desejada: ");
+    scanf("%c", &op);
     getchar();
 }
 
@@ -234,6 +238,7 @@ void listarprodutos (void){
 
 //MÓDULO VENDAS
 void menuvendas (void){ 
+    char op;
     system("clear||cls");
     printf("------------------------------------------------\n");
     printf("-------- GESTÃO PARA LOJA DE COVENIÊNCIA -------\n");
@@ -248,6 +253,7 @@ void menuvendas (void){
     printf("(0) - SAIR\n");
     printf("------------------------------------------------\n");
     printf("Digite a opção desejada: ");
+    scanf("%c", &op);
     getchar();
 }
 
@@ -322,6 +328,7 @@ void listarvendas (void){
 
 //MÓDULO FUNCIONÁRIOS
 void menufuncionarios (void){
+    char op;
     system("clear||cls"); 
     printf("------------------------------------------------\n");
     printf("-------- GESTÃO PARA LOJA DE COVENIÊNCIA -------\n");
@@ -336,6 +343,7 @@ void menufuncionarios (void){
     printf("(0) - SAIR\n");
     printf("------------------------------------------------\n");
     printf("Digite a opção desejada: ");
+    scanf("%c", &op);
     getchar();
 }
 
@@ -412,6 +420,7 @@ void listarfuncionarios (void){
 
 //MÓDULO CLIENTES
 void menuclientes (void){
+    char op;
     system("clear||cls"); 
     printf("------------------------------------------------\n");
     printf("-------- GESTÃO PARA LOJA DE COVENIÊNCIA -------\n");
@@ -426,6 +435,7 @@ void menuclientes (void){
     printf("(0) - SAIR\n");
     printf("------------------------------------------------\n");
     printf("Digite a opção desejada: ");
+    scanf("%c", &op);
     getchar();
 }
 
