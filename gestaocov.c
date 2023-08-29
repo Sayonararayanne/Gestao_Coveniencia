@@ -2,6 +2,8 @@
 #include <stdlib.h>
 #include <locale.h>
 
+//SEMANA 2 
+
 void menuop (void);
 void menuprincipal (void);
 void menusobre (void);
