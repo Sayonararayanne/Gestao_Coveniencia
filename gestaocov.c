@@ -118,9 +118,12 @@ void menusobre (void){
     printf("Departamento de Computação e Tecnologia\n" );
     printf("Desenvolvido por @sayonararayanne -- desde Ago, 2023\n" );
     printf("\n");
-    printf("Projeto desenvolvido para obtenção da nota da disciplina Programação.\n");
-    printf("O foco principal do sistema é fazer um modelo que consiga gerenciar uma loja de coveniência, diante\n");
-    printf("disso, os módulos e funcionalidades do projeto foram criados voltados para facilitar e otimizar os\n");
+    printf("Projeto desenvolvido para obtenção da nota da disciplina\n");
+    printf("Programação.\n");
+    printf("O foco principal do sistema é fazer um modelo que consiga\n");
+    printf("gerenciar uma loja de coveniência, diante\n");
+    printf("disso, os módulos e funcionalidades do projeto foram criados\n");
+    printf("voltados para facilitar e otimizar os\n");
     printf("processos realizados em uma coveniência.\n");
     printf("------------------------------------------------\n");
 
