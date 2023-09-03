@@ -119,13 +119,13 @@ void menusobre (void){
     printf("||                                                           ||\n");
     printf("|| Universidade Federal do Rio Grande do Norte - CERES       ||\n");
     printf("|| Departamento de Computaçao e Tecnologia                   ||\n");
-    printf("|| Desenvolvido por @sayonararayanne -- desde Ago, 2023      ||\n");
+    printf("|| Desenvolvido por sayonararayanne -- desde Ago, 2023       ||\n");
     printf("||                                                           ||\n");
-    printf("|| Projeto desenvolvido para obtenção da nota da disciplina  ||\n");
+    printf("|| Projeto desenvolvido para obtencao da nota da disciplina  ||\n");
     printf("|| Programaçao.                                              ||\n");
     printf("|| O foco principal do sistema e fazer um modelo que consiga ||\n");
     printf("|| gerenciar uma loja de coveniencia, diante disso, os       ||\n");
-    printf("|| módulos e funcionalidades do projeto foram criados        ||\n");
+    printf("|| modulos e funcionalidades do projeto foram criados        ||\n");
     printf("|| voltados para facilitar e otimizar os processos           ||\n");
     printf("|| realizados em uma coveniencia.                            ||\n");
     printf("||                                                           ||\n");
@@ -167,7 +167,7 @@ void menuprodutos (void){
     printf("|| (0) - SAIR                                       ||\n");
     printf("||                                                  ||\n");
     printf("|| ------------------------------------------------ ||\n");
-    printf("|| Digite a opção desejada:                         ||\n");
+    printf("|| Digite a opcao desejada:                         ||\n");
     printf("|| ------------------------------------------------ ||\n");
     scanf("%c", &op);
     getchar();
@@ -256,89 +256,94 @@ void listarprodutos (void){
 void menuvendas (void){ 
     char op;
     system("clear||cls");
-    printf("------------------------------------------------\n");
-    printf("-------- GESTÃO PARA LOJA DE COVENIÊNCIA -------\n");
-    printf("----------------- MENU VENDAS ------------------\n");
-    printf("------------------------------------------------\n");
-    printf("\n");
-    printf("(1) - CADASTRAR VENDA\n");
-    printf("(2) - EDITAR VENDA\n");
-    printf("(3) - EXCLUIR VENDA\n");
-    printf("(4) - LISTAR VENDAS\n");
-    printf("(5) - PESQUISAR VENDA\n");
-    printf("(0) - SAIR\n");
-    printf("------------------------------------------------\n");
-    printf("Digite a opção desejada: ");
+    printf("|| ------------------------------------------------ ||\n");
+    printf("|| -------- GESTAO PARA LOJA DE COVENIENCIA ------- ||\n");
+    printf("|| ----------------- MENU VENDAS ------------------ ||\n");
+    printf("|| ------------------------------------------------ ||\n");
+    printf("||                                                  ||\n");
+    printf("|| (1) - CADASTRAR VENDA                            ||\n");
+    printf("|| (2) - EDITAR VENDA                               ||\n");
+    printf("|| (3) - EXCLUIR VENDA                              ||\n");
+    printf("|| (4) - LISTAR VENDAS                              ||\n");
+    printf("|| (5) - PESQUISAR VENDA                            ||\n");
+    printf("|| (0) - SAIR                                       ||\n");
+    printf("||                                                  ||\n");
+    printf("|| ------------------------------------------------ ||\n");
+    printf("|| Digite a opcao desejada:                         ||\n");
+    printf("|| ------------------------------------------------ ||\n");
     scanf("%c", &op);
     getchar();
 }
 
 void cadastrarvendas (void){
     system("clear||cls"); 
-    printf("------------------------------------------------\n");
-    printf("-------- GESTÃO PARA LOJA DE COVENIÊNCIA -------\n");
-    printf("-------------- CADASTRAR VENDAS ----------------\n");
-    printf("------------------------------------------------\n");
-    printf("\n");
-    printf("CÓDIGO: \n"); //chave ser gerada automaticamente ou ser data+hora
-    printf("CÓDIGO DO VENDEDOR: \n");
-    printf("CÓDIGO DO PRODUTO: \n");
-    printf("QUANTIDADE: \n");
-    printf("VALOR: \n");
-    printf("------------------------------------------------\n");
+    printf("|| ------------------------------------------------ ||\n");
+    printf("|| -------- GESTAO PARA LOJA DE COVENIENCIA ------- ||\n");
+    printf("|| -------------- CADASTRAR VENDAS ---------------- ||\n");
+    printf("|| ------------------------------------------------ ||\n");
+    printf("||                                                  ||\n");
+    printf("|| CODIGO:                                          ||\n"); //chave ser gerada automaticamente ou ser data+hora
+    printf("|| CODIGO DO VENDEDOR:                              ||\n");
+    printf("|| CODIGO DO PRODUTO:                               ||\n");
+    printf("|| QUANTIDADE:                                      ||\n");
+    printf("|| VALOR:                                           ||\n");
+    printf("||                                                  ||\n");
+    printf("|| ------------------------------------------------ ||\n");
     getchar();
 }
 
 void editarvendas (void){
     system("clear||cls"); 
-    printf("------------------------------------------------\n");
-    printf("-------- GESTÃO PARA LOJA DE COVENIÊNCIA -------\n");
-    printf("---------------- EDITAR VENDA ------------------\n");
-    printf("------------------------------------------------\n");
-    printf("\n");
-    printf("INFORME O CÓDIGO DA VENDA: \n");
-    printf("------------------------------------------------\n");
-    printf("CÓDIGO DO VENDEDOR: \n");
-    printf("CÓDIGO DO PRODUTO: \n");
-    printf("QUANTIDADE: \n");
-    printf("VALOR: \n");
-    printf("------------------------------------------------\n");
+    printf("|| ------------------------------------------------ ||\n");
+    printf("|| -------- GESTAO PARA LOJA DE COVENIENCIA ------- ||\n");
+    printf("|| ---------------- EDITAR VENDA ------------------ ||\n");
+    printf("|| ------------------------------------------------ ||\n");
+    printf("||                                                  ||\n");
+    printf("|| INFORME O CODIGO DA VENDA:                       ||\n");
+    printf("|| ------------------------------------------------ ||\n");
+    printf("||                                                  ||\n");
+    printf("|| CODIGO DO VENDEDOR:                              ||\n");
+    printf("|| CODIGO DO PRODUTO:                               ||\n");
+    printf("|| QUANTIDADE:                                      ||\n");
+    printf("|| VALOR:                                           ||\n");
+    printf("||                                                  ||\n");
+    printf("|| ------------------------------------------------ ||\n");
     getchar();
 }
 
 void excluirvendas (void){
     system("clear||cls"); 
-    printf("------------------------------------------------\n");
-    printf("-------- GESTÃO PARA LOJA DE COVENIÊNCIA -------\n");
-    printf("---------------- EXCLUIR VENDA -----------------\n");
-    printf("------------------------------------------------\n");
-    printf("\n");
-    printf("INFORME O CÓDIGO DA VENDA: \n");
-    printf("------------------------------------------------\n");
+    printf("|| ------------------------------------------------ ||\n");
+    printf("|| -------- GESTAO PARA LOJA DE COVENIENCIA ------- ||\n");
+    printf("|| ---------------- EXCLUIR VENDA ----------------- ||\n");
+    printf("|| ------------------------------------------------ ||\n");
+    printf("||                                                  ||\n");
+    printf("|| INFORME O CODIGO DA VENDA:                       || \n");
+    printf("|| ------------------------------------------------ ||\n");
     getchar();
 }
 
 void pesquisarvendas (void){
     system("clear||cls"); 
-    printf("------------------------------------------------\n");
-    printf("-------- GESTÃO PARA LOJA DE COVENIÊNCIA -------\n");
-    printf("-------------- PESQUISAR VENDAS ----------------\n");
-    printf("------------------------------------------------\n");
-    printf("\n");
-    printf("INFORME O CÓDIGO DA VENDA: \n");
-    printf("------------------------------------------------\n");
+    printf("|| ------------------------------------------------ ||\n");
+    printf("|| -------- GESTAO PARA LOJA DE COVENIENCIA ------- ||\n");
+    printf("|| -------------- PESQUISAR VENDAS ---------------- ||\n");
+    printf("|| ------------------------------------------------ ||\n");
+    printf("||                                                  ||\n");
+    printf("|| INFORME O CODIGO DA VENDA:                       ||\n");
+    printf("|| ------------------------------------------------ ||\n");
     getchar(); 
 }
 
 void listarvendas (void){
     system("clear||cls"); 
-    printf("------------------------------------------------\n");
-    printf("-------- GESTÃO PARA LOJA DE COVENIÊNCIA -------\n");
-    printf("--------------- LISTAR VENDAS ----------------\n");
-    printf("------------------------------------------------\n");
-    printf("\n");
-    printf("VENDAS CADASTRADAS: \n");
-    printf("------------------------------------------------\n");
+    printf("|| ------------------------------------------------ ||\n");
+    printf("|| -------- GESTAO PARA LOJA DE COVENIENCIA ------- ||\n");
+    printf("|| ---------------- LISTAR VENDAS ----------------- ||\n");
+    printf("|| ------------------------------------------------ ||\n");
+    printf("||                                                  ||\n");
+    printf("|| VENDAS CADASTRADAS:                              ||\n");
+    printf("|| ------------------------------------------------ ||\n");
     getchar();
 }
 
