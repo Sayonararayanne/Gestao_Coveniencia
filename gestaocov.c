@@ -351,91 +351,95 @@ void listarvendas (void){
 void menufuncionarios (void){
     char op;
     system("clear||cls"); 
-    printf("------------------------------------------------\n");
-    printf("-------- GESTÃO PARA LOJA DE COVENIÊNCIA -------\n");
-    printf("-------------- MENU FUNCIONÁRIOS ---------------\n");
-    printf("------------------------------------------------\n");
-    printf("\n");
-    printf("(1) - CADASTRAR FUNCIONÁRIO\n");
-    printf("(2) - EDITAR FUNCIONÁRIO\n");
-    printf("(3) - EXCLUIR FUNCIONÁRIO\n");
-    printf("(4) - LISTAR FUNCIONÁRIOS\n");
-    printf("(5) - PESQUISAR FUNCIONÁRIO\n");
-    printf("(0) - SAIR\n");
-    printf("------------------------------------------------\n");
-    printf("Digite a opção desejada: ");
+    printf("|| ------------------------------------------------ ||\n");
+    printf("|| -------- GESTAO PARA LOJA DE COVENIENCIA ------- ||\n");
+    printf("|| -------------- MENU FUNCIONARIOS --------------- ||\n");
+    printf("|| ------------------------------------------------ ||\n");
+    printf("||                                                  ||\n");
+    printf("|| (1) - CADASTRAR FUNCIONARIO                      ||\n");
+    printf("|| (2) - EDITAR FUNCIONARIO                         ||\n");
+    printf("|| (3) - EXCLUIR FUNCIONARIO                        ||\n");
+    printf("|| (4) - LISTAR FUNCIONARIOS                        ||\n");
+    printf("|| (5) - PESQUISAR FUNCIONARIO                      ||\n");
+    printf("|| (0) - SAIR                                       ||\n");
+    printf("||                                                  ||\n");
+    printf("|| ------------------------------------------------ ||\n");
+    printf("|| Digite a opcao desejada:                         ||\n");
+    printf("|| ------------------------------------------------ ||\n");
     scanf("%c", &op);
     getchar();
 }
 
 void cadastrarfuncionarios (void){
     system("clear||cls"); 
-    printf("------------------------------------------------\n");
-    printf("-------- GESTÃO PARA LOJA DE COVENIÊNCIA -------\n");
-    printf("------------ CADASTRAR FUNCIONÁRIOS ------------\n");
-    printf("------------------------------------------------\n");
-    printf("\n");
-    printf("CPF: \n");
-    printf("NOME: \n");
-    printf("TELEFONE: \n");
-    printf("CARGO: \n");
-    printf("SALÁRIO: \n");
-    printf("DATA DE NASCIMENTO: \n");
-    printf("------------------------------------------------\n");
+    printf("|| ------------------------------------------------ ||\n");
+    printf("|| -------- GESTAO PARA LOJA DE COVENIENCIA ------- ||\n");
+    printf("|| ------------ CADASTRAR FUNCIONARIOS ------------ ||\n");
+    printf("|| ------------------------------------------------ ||\n");
+    printf("||                                                  ||\n");
+    printf("|| CPF:                                             ||\n");
+    printf("|| NOME:                                            ||\n");
+    printf("|| TELEFONE:                                        ||\n");
+    printf("|| CARGO:                                           ||\n");
+    printf("|| SALARIO:                                         ||\n");
+    printf("|| DATA DE NASCIMENTO:                              ||\n");
+    printf("||                                                  ||\n");
+    printf("|| ------------------------------------------------ ||\n");
     getchar();
 }
 
 void editarfuncionarios (void){
     system("clear||cls"); 
-    printf("------------------------------------------------\n");
-    printf("-------- GESTÃO PARA LOJA DE COVENIÊNCIA -------\n");
-    printf("------------- EDITAR FUNCIONÁRIOS --------------\n");
-    printf("------------------------------------------------\n");
-    printf("\n");
-    printf("CPF DO FUNCIONÁRIO QUE IRÁ EDITAR: \n");
-    printf("------------------------------------------------\n");
-    printf("NOME: \n");
-    printf("TELEFONE: \n");
-    printf("CARGO: \n");
-    printf("SALÁRIO: \n");
-    printf("DATA DE NASCIMENTO: \n");
-    printf("------------------------------------------------\n");
+    printf("|| ------------------------------------------------ ||\n");
+    printf("|| -------- GESTAO PARA LOJA DE COVENIENCIA ------- ||\n");
+    printf("|| ------------- EDITAR FUNCIONARIOS -------------- ||\n");
+    printf("|| ------------------------------------------------ ||\n");
+    printf("||                                                  ||\n");
+    printf("|| CPF DO FUNCIONARIO QUE IRA EDITAR:               ||\n");
+    printf("|| ------------------------------------------------ ||\n");
+    printf("|| NOME:                                            ||\n");
+    printf("|| TELEFONE:                                        ||\n");
+    printf("|| CARGO:                                           ||\n");
+    printf("|| SALARIO:                                         ||\n");
+    printf("|| DATA DE NASCIMENTO:                              ||\n");
+    printf("||                                                  ||\n");
+    printf("|| ------------------------------------------------ ||\n");
     getchar();
 }
 
 void excluirfuncionario (void){
     system("clear||cls"); 
-    printf("------------------------------------------------\n");
-    printf("-------- GESTÃO PARA LOJA DE COVENIÊNCIA -------\n");
-    printf("------------- EXCLUIR FUNCIONÁRIOS -------------\n");
-    printf("------------------------------------------------\n");
-    printf("\n");
-    printf("CPF DO FUNCIONÁRIO QUE DESEJA EXCLUIR: \n");
-    printf("------------------------------------------------\n");
+    printf("|| ------------------------------------------------ ||\n");
+    printf("|| -------- GESTAO PARA LOJA DE COVENIENCIA ------- ||\n");
+    printf("|| ------------- EXCLUIR FUNCIONARIOS ------------- ||\n");
+    printf("|| ------------------------------------------------ ||\n");
+    printf("||                                                  ||\n");
+    printf("|| CPF DO FUNCIONARIO QUE DESEJA EXCLUIR:           || \n");
+    printf("|| ------------------------------------------------ ||\n");
     getchar();
 }
 
 void pesquisarfuncionario (void){
     system("clear||cls"); 
-    printf("------------------------------------------------\n");
-    printf("-------- GESTÃO PARA LOJA DE COVENIÊNCIA -------\n");
-    printf("------------ PESQUISAR FUNCIONÁRIOS ------------\n");
-    printf("------------------------------------------------\n");
-    printf("\n");
-    printf("CPF DO FUNCIONÁRIO QUE DESEJA PESQUISAR: \n");
-    printf("------------------------------------------------\n");
+    printf("|| ------------------------------------------------ ||\n");
+    printf("|| -------- GESTAO PARA LOJA DE COVENIENCIA ------- ||\n");
+    printf("|| ------------ PESQUISAR FUNCIONARIOS ------------ ||\n");
+    printf("|| ------------------------------------------------ ||\n");
+    printf("||                                                  ||\n");
+    printf("|| CPF DO FUNCIONARIO QUE DESEJA PESQUISAR:         ||\n");
+    printf("|| ------------------------------------------------ ||\n");
     getchar();
 }
 
 void listarfuncionarios (void){
     system("clear||cls"); 
-    printf("------------------------------------------------\n");
-    printf("-------- GESTÃO PARA LOJA DE COVENIÊNCIA -------\n");
-    printf("------------- LISTAR FUNCIONARIOS --------------\n");
-    printf("------------------------------------------------\n");
-    printf("\n");
-    printf("FUNCIONÁRIOS CADASTRADOS: \n");
-    printf("------------------------------------------------\n");
+    printf("|| ------------------------------------------------ ||\n");
+    printf("|| -------- GESTAO PARA LOJA DE COVENIENCIA ------- ||\n");
+    printf("|| ------------- LISTAR FUNCIONARIOS -------------- ||\n");
+    printf("|| ------------------------------------------------ ||\n");
+    printf("||                                                  ||\n");
+    printf("|| FUNCIONARIOS CADASTRADOS:                        ||\n");
+    printf("|| ------------------------------------------------ ||\n");
     getchar();
 }
 
