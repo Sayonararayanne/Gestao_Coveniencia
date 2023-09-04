@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <locale.h>
 
-//SEMANA 2 
+//SEMANA 3
 
 void menuop (void);
 void menuprincipal (void);
