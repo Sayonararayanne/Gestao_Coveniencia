@@ -4,7 +4,7 @@
 
 //SEMANA 3
 
-void menuop (void);
+char menuop (void);
 void menuprincipal (void);
 void menusobre (void);
 void menuequipe (void);
@@ -34,40 +34,52 @@ void pesquisarcliente (void);
 void listarclientes (void);
 
 int main (void){
+char opcao;
 
-menuop();
-menuprincipal();
-menusobre();
-menuequipe();
-menuprodutos();
-cadastrarprodutos();
-editarprodutos();
-excluirprodutos();
-pesquisarprodutos();
-listarprodutos();
-menuvendas();
-cadastrarvendas();
-editarvendas();
-excluirvendas();
-pesquisarvendas();
-listarvendas();
-menufuncionarios();
-cadastrarfuncionarios();
-editarfuncionarios();
-excluirfuncionario();
-pesquisarfuncionario();
-listarfuncionarios();
-menuclientes();
-cadastrarclientes();
-editarclientes();
-excluircliente();
-pesquisarcliente();
-listarclientes();
+do {
+    opcao = menuop();
+    switch(opcao) {
+        case '1': menuprincipal();
+                  break;
+        case '2': menusobre();
+                  break;
+        case '3': menuequipe();
+                  break;
+    }
+} while (opcao != '0');
+
+//menuprodutos();
+//cadastrarprodutos();
+//editarprodutos();
+//excluirprodutos();
+//pesquisarprodutos();
+//listarprodutos();
+
+//menuvendas();
+//cadastrarvendas();
+//editarvendas();
+//excluirvendas();
+//pesquisarvendas();
+//listarvendas();
+
+//menufuncionarios();
+//cadastrarfuncionarios();
+//editarfuncionarios();
+//excluirfuncionario();
+//pesquisarfuncionario();
+//listarfuncionarios();
+
+//menuclientes();
+//cadastrarclientes();
+//editarclientes();
+//excluircliente();
+//pesquisarcliente();
+//listarclientes();
 
 return 0; 
 }
 
-void menuop (void){ 
+char menuop (void){ 
     char op;
     system("clear||cls");
     printf("|| ------------------------------------------------ ||\n"); //menu inicial
@@ -85,6 +97,7 @@ void menuop (void){
     printf("|| ------------------------------------------------ ||\n");
     scanf("%c", &op);
     getchar();
+    return op;
 
 }
 
@@ -130,7 +143,7 @@ void menusobre (void){
     printf("|| realizados em uma coveniencia.                            ||\n");
     printf("||                                                           ||\n");
     printf("|| --------------------------------------------------------- ||\n");
-
+    getchar();
 }
 
 void menuequipe (void){ 
@@ -149,7 +162,9 @@ void menuequipe (void){
     printf("|| de Informacao da UFRN - CERES                             ||\n");
     printf("||                                                           ||\n");
     printf("|| --------------------------------------------------------- ||\n");
+    getchar();
 }
+
 //M�DULO PRODUTOS
 void menuprodutos (void){
     char op;
