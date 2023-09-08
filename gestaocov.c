@@ -1,18 +1,20 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <locale.h>
 
 //SEMANA 3
 
-char menuop (void);
-void menuprincipal (void);
+char menuop(void);
+void moduloprin(void);
+char menuprincipal (void);
 void menusobre (void);
 void menuequipe (void);
+
 void menuprodutos(void);
 void cadastrarprodutos (void);
 void editarprodutos (void);
 void excluirprodutos (void);
 void pesquisarprodutos (void);
+
 void menuvendas (void);
 void listarprodutos (void);
 void cadastrarvendas (void);
@@ -20,12 +22,14 @@ void editarvendas (void);
 void excluirvendas (void);
 void pesquisarvendas (void);
 void listarvendas (void);
+
 void menufuncionarios (void);
 void cadastrarfuncionarios (void);
 void editarfuncionarios (void);
 void excluirfuncionario (void);
 void pesquisarfuncionario (void);
 void listarfuncionarios (void);
+
 void menuclientes (void);
 void cadastrarclientes (void);
 void editarclientes (void);
@@ -39,7 +43,7 @@ char opcao;
 do {
     opcao = menuop();
     switch(opcao) {
-        case '1': menuprincipal();
+        case '1': moduloprin();
                   break;
         case '2': menusobre();
                   break;
@@ -101,7 +105,24 @@ char menuop (void){
 
 }
 
-void menuprincipal (void){
+void moduloprin(void) {
+    char opcao;
+    do {
+        opcao = menuprincipal();
+        switch(opcao) {
+            case '1': 	menuprodutos();
+                        break;
+            case '2': 	menuvendas();
+                        break;
+            case '3': 	menuclientes();
+                        break;
+            case '4': 	menufuncionarios();
+                        break;
+        } 		
+    } while (opcao != '0');
+}
+
+char menuprincipal(void){
     char op;
     system("clear||cls");
     printf("|| ------------------------------------------------ ||\n"); //menu principal com os m�dulos dispon�veis 
@@ -113,7 +134,6 @@ void menuprincipal (void){
     printf("|| (2) - MODULO DE VENDAS                           ||\n");
     printf("|| (3) - MODULO DE CLIENTES                         ||\n");
     printf("|| (4) - MODULO DE FUNCIONARIOS                     ||\n"); //ideia: funcion�rio do m�s ??
-    printf("|| (5) - RELATORIO                                  ||\n");
     printf("|| (0) - SAIR                                       ||\n");
     printf("||                                                  ||\n");
     printf("|| ------------------------------------------------ ||\n");
@@ -121,6 +141,7 @@ void menuprincipal (void){
     printf("|| ------------------------------------------------ ||\n");
     scanf("%c", &op);
     getchar();
+    return op;
 }
 
 void menusobre (void){ 
@@ -166,6 +187,7 @@ void menuequipe (void){
 }
 
 //M�DULO PRODUTOS
+
 void menuprodutos (void){
     char op;
     system("clear||cls"); 
