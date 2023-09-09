@@ -9,7 +9,8 @@ char menuprincipal (void);
 void menusobre (void);
 void menuequipe (void);
 
-void menuprodutos(void);
+void moduloprodutos(void);
+char menuprodutos(void);
 void cadastrarprodutos (void);
 void editarprodutos (void);
 void excluirprodutos (void);
@@ -110,7 +111,7 @@ void moduloprin(void) {
     do {
         opcao = menuprincipal();
         switch(opcao) {
-            case '1': 	menuprodutos();
+            case '1': 	moduloprodutos();
                         break;
             case '2': 	menuvendas();
                         break;
@@ -188,7 +189,26 @@ void menuequipe (void){
 
 //M�DULO PRODUTOS
 
-void menuprodutos (void){
+void moduloprodutos(void) {
+    char opcao;
+    do {
+        opcao = menuprodutos();
+        switch(opcao) {
+            case '1': 	cadastrarprodutos();
+                        break;
+            case '2': 	editarprodutos();
+                        break;
+            case '3': 	excluirprodutos();
+                        break;
+            case '4': 	listarprodutos();
+                        break;
+            case '5': 	pesquisarprodutos();
+                        break;
+        } 		
+    } while (opcao != '0');
+}
+
+char menuprodutos (void){
     char op;
     system("clear||cls"); 
     printf("|| ------------------------------------------------ ||\n");
@@ -208,6 +228,7 @@ void menuprodutos (void){
     printf("|| ------------------------------------------------ ||\n");
     scanf("%c", &op);
     getchar();
+    return op;
 }
 
 void cadastrarprodutos (void){
