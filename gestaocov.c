@@ -16,7 +16,8 @@ void editarprodutos (void);
 void excluirprodutos (void);
 void pesquisarprodutos (void);
 
-void menuvendas (void);
+void modulovendas(void);
+char menuvendas (void);
 void listarprodutos (void);
 void cadastrarvendas (void);
 void editarvendas (void);
@@ -24,11 +25,12 @@ void excluirvendas (void);
 void pesquisarvendas (void);
 void listarvendas (void);
 
-void menufuncionarios (void);
+void modulofuncionarios (void);
+char menufuncionarios (void);
 void cadastrarfuncionarios (void);
 void editarfuncionarios (void);
-void excluirfuncionario (void);
-void pesquisarfuncionario (void);
+void excluirfuncionarios (void);
+void pesquisarfuncionarios (void);
 void listarfuncionarios (void);
 
 void menuclientes (void);
@@ -113,11 +115,11 @@ void moduloprin(void) {
         switch(opcao) {
             case '1': 	moduloprodutos();
                         break;
-            case '2': 	menuvendas();
+            case '2': 	modulovendas();
                         break;
             case '3': 	menuclientes();
                         break;
-            case '4': 	menufuncionarios();
+            case '4': 	modulofuncionarios();
                         break;
         } 		
     } while (opcao != '0');
@@ -310,7 +312,26 @@ void listarprodutos (void){
 }
 
 //M�DULO VENDAS
-void menuvendas (void){ 
+void modulovendas(void) {
+    char opcao;
+    do {
+        opcao = menuvendas();
+        switch(opcao) {
+            case '1': 	cadastrarvendas();
+                        break;
+            case '2': 	editarvendas();
+                        break;
+            case '3': 	excluirvendas();
+                        break;
+            case '4': 	listarvendas();
+                        break;
+            case '5': 	pesquisarvendas();
+                        break;
+        } 		
+    } while (opcao != '0');
+}
+
+char menuvendas (void){ 
     char op;
     system("clear||cls");
     printf("|| ------------------------------------------------ ||\n");
@@ -330,6 +351,7 @@ void menuvendas (void){
     printf("|| ------------------------------------------------ ||\n");
     scanf("%c", &op);
     getchar();
+    return op;
 }
 
 void cadastrarvendas (void){
@@ -405,7 +427,26 @@ void listarvendas (void){
 }
 
 //M�DULO FUNCION�RIOS
-void menufuncionarios (void){
+void modulofuncionarios(void) {
+    char opcao;
+    do {
+        opcao = menufuncionarios();
+        switch(opcao) {
+            case '1': 	cadastrarfuncionarios();
+                        break;
+            case '2': 	editarfuncionarios();
+                        break;
+            case '3': 	excluirfuncionarios();
+                        break;
+            case '4': 	listarfuncionarios();
+                        break;
+            case '5': 	pesquisarfuncionarios();
+                        break;
+        } 		
+    } while (opcao != '0');
+}
+
+char menufuncionarios(void){
     char op;
     system("clear||cls"); 
     printf("|| ------------------------------------------------ ||\n");
@@ -425,6 +466,7 @@ void menufuncionarios (void){
     printf("|| ------------------------------------------------ ||\n");
     scanf("%c", &op);
     getchar();
+    return op;
 }
 
 void cadastrarfuncionarios (void){
@@ -465,7 +507,7 @@ void editarfuncionarios (void){
     getchar();
 }
 
-void excluirfuncionario (void){
+void excluirfuncionarios (void){
     system("clear||cls"); 
     printf("|| ------------------------------------------------ ||\n");
     printf("|| -------- GESTAO PARA LOJA DE COVENIENCIA ------- ||\n");
@@ -477,7 +519,7 @@ void excluirfuncionario (void){
     getchar();
 }
 
-void pesquisarfuncionario (void){
+void pesquisarfuncionarios (void){
     system("clear||cls"); 
     printf("|| ------------------------------------------------ ||\n");
     printf("|| -------- GESTAO PARA LOJA DE COVENIENCIA ------- ||\n");
