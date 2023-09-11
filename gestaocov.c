@@ -33,11 +33,12 @@ void excluirfuncionarios (void);
 void pesquisarfuncionarios (void);
 void listarfuncionarios (void);
 
-void menuclientes (void);
+void moduloclientes (void);
+char menuclientes (void);
 void cadastrarclientes (void);
 void editarclientes (void);
-void excluircliente (void);
-void pesquisarcliente (void);
+void excluirclientes (void);
+void pesquisarclientes (void);
 void listarclientes (void);
 
 int main (void){
@@ -117,7 +118,7 @@ void moduloprin(void) {
                         break;
             case '2': 	modulovendas();
                         break;
-            case '3': 	menuclientes();
+            case '3': 	moduloclientes();
                         break;
             case '4': 	modulofuncionarios();
                         break;
@@ -544,7 +545,25 @@ void listarfuncionarios (void){
 }
 
 //M�DULO CLIENTES
-void menuclientes (void){
+void moduloclientes(void) {
+    char opcao;
+    do {
+        opcao = menuclientes();
+        switch(opcao) {
+            case '1': 	cadastrarclientes();
+                        break;
+            case '2': 	editarclientes();
+                        break;
+            case '3': 	excluirclientes();
+                        break;
+            case '4': 	listarclientes();
+                        break;
+            case '5': 	pesquisarclientes();
+                        break;
+        } 		
+    } while (opcao != '0');
+}
+char menuclientes (void){
     char op;
     system("clear||cls"); 
     printf("|| ------------------------------------------------ ||\n");
@@ -564,6 +583,7 @@ void menuclientes (void){
     printf("|| ------------------------------------------------ ||\n");
     scanf("%c", &op);
     getchar();
+    return op;
 }
 
 void cadastrarclientes (void){
@@ -600,7 +620,7 @@ void editarclientes (void){
     getchar();
 }
 
-void excluircliente (void){
+void excluirclientes (void){
     system("clear||cls"); 
     printf("|| ------------------------------------------------ ||\n");
     printf("|| -------- GESTAO PARA LOJA DE COVENIENCIA ------- ||\n");
@@ -612,7 +632,7 @@ void excluircliente (void){
     getchar();
 }
 
-void pesquisarcliente (void){
+void pesquisarclientes (void){
     system("clear||cls"); 
     printf("|| ------------------------------------------------ ||\n");
     printf("|| -------- GESTAO PARA LOJA DE COVENIENCIA ------- ||\n");
