@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include "clientes.h"
 
-/MODULO CLIENTES
+//MODULO CLIENTES
 void moduloclientes(void) {
     char opcao;
     do {
