@@ -1,4 +1,4 @@
-# GESTÃO PARA LOJA DE CONVENIÊNCIA🍹
+#GESTÃO PARA LOJA DE CONVENIÊNCIA🍹
 
 Universidade Federal do Rio Grande do Norte - CERES
 Departamento de Computação e Tecnologia
