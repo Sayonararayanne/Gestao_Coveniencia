@@ -1,6 +1,5 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "produtos.h"
 #include "vendas.h"
 
 //MODULO VENDAS

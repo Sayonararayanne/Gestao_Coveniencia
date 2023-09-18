@@ -1,40 +1,40 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "produtos.h"
+#include "funcionarios.h"
 
-//MODULO PRODUTOS
-void moduloprodutos(void) {
+//MODULO FUNCIONARIOS
+void modulofuncionarios(void) {
     char opcao;
     do {
-        opcao = menuprodutos();
+        opcao = menufuncionarios();
         switch(opcao) {
-            case '1': 	cadastrarprodutos();
+            case '1': 	cadastrarfuncionarios();
                         break;
-            case '2': 	editarprodutos();
+            case '2': 	editarfuncionarios();
                         break;
-            case '3': 	excluirprodutos();
+            case '3': 	excluirfuncionarios();
                         break;
-            case '4': 	listarprodutos();
+            case '4': 	listarfuncionarios();
                         break;
-            case '5': 	pesquisarprodutos();
+            case '5': 	pesquisarfuncionarios();
                         break;
         } 		
     } while (opcao != '0');
 }
 
-char menuprodutos (void){
+char menufuncionarios(void){
     char op;
     system("clear||cls"); 
     printf("|| ------------------------------------------------ ||\n");
     printf("|| -------- GESTAO PARA LOJA DE COVENIENCIA ------- ||\n");
-    printf("|| ---------------- MENU PRODUTOS ----------------- ||\n");
-    printf("|| ------------------------------------------------ ||\n");  
+    printf("|| -------------- MENU FUNCIONARIOS --------------- ||\n");
+    printf("|| ------------------------------------------------ ||\n");
     printf("||                                                  ||\n");
-    printf("|| (1) - CADASTRAR PRODUTO                          ||\n");
-    printf("|| (2) - EDITAR PRODUTO                             ||\n");
-    printf("|| (3) - EXCLUIR PRODUTO                            ||\n");
-    printf("|| (4) - LISTAR PRODUTOS                            ||\n");
-    printf("|| (5) - PESQUISAR PRODUTO                          ||\n");
+    printf("|| (1) - CADASTRAR FUNCIONARIO                      ||\n");
+    printf("|| (2) - EDITAR FUNCIONARIO                         ||\n");
+    printf("|| (3) - EXCLUIR FUNCIONARIO                        ||\n");
+    printf("|| (4) - LISTAR FUNCIONARIOS                        ||\n");
+    printf("|| (5) - PESQUISAR FUNCIONARIO                      ||\n");
     printf("|| (0) - SAIR                                       ||\n");
     printf("||                                                  ||\n");
     printf("|| ------------------------------------------------ ||\n");
@@ -45,84 +45,79 @@ char menuprodutos (void){
     return op;
 }
 
-void cadastrarprodutos (void){
+void cadastrarfuncionarios (void){
     system("clear||cls"); 
     printf("|| ------------------------------------------------ ||\n");
     printf("|| -------- GESTAO PARA LOJA DE COVENIENCIA ------- ||\n");
-    printf("|| -------------- CADASTRAR PRODUTO --------------- ||\n");
-    printf("|| -------------------------------------------------||\n");
+    printf("|| ------------ CADASTRAR FUNCIONARIOS ------------ ||\n");
+    printf("|| ------------------------------------------------ ||\n");
     printf("||                                                  ||\n");
-    printf("|| CODIGO:                                          ||\n");
+    printf("|| CPF:                                             ||\n");
     printf("|| NOME:                                            ||\n");
-    printf("|| MARCA:                                           ||\n");
-    printf("|| DESCRICAO:                                       ||\n");
-    printf("|| QUANTIDADE:                                      ||\n");
-    printf("|| TIPO:                                            ||\n");
-    printf("|| VALOR:                                           ||\n");
-    printf("|| VALIDADE:                                        ||\n");
+    printf("|| TELEFONE:                                        ||\n");
+    printf("|| CARGO:                                           ||\n");
+    printf("|| SALARIO:                                         ||\n");
+    printf("|| DATA DE NASCIMENTO:                              ||\n");
     printf("||                                                  ||\n");
     printf("|| ------------------------------------------------ ||\n");
     printf("\t\t\t>>> Tecle <ENTER> para voltar...\n");
     getchar();
 }
 
-void editarprodutos (void){
+void editarfuncionarios (void){
     system("clear||cls"); 
     printf("|| ------------------------------------------------ ||\n");
     printf("|| -------- GESTAO PARA LOJA DE COVENIENCIA ------- ||\n");
-    printf("|| --------------- EDITAR PRODUTO ----------------- ||\n");
+    printf("|| ------------- EDITAR FUNCIONARIOS -------------- ||\n");
     printf("|| ------------------------------------------------ ||\n");
     printf("||                                                  ||\n");
-    printf("|| INFORME O CODIGO DO PRODUTO:                     ||\n");
+    printf("|| CPF DO FUNCIONARIO QUE IRA EDITAR:               ||\n");
     printf("|| ------------------------------------------------ ||\n");
     printf("||                                                  ||\n");
     printf("|| NOME:                                            ||\n");
-    printf("|| MARCA:                                           ||\n");
-    printf("|| DESCRICAO:                                       ||\n");
-    printf("|| QUANTIDADE:                                      ||\n");
-    printf("|| TIPO:                                            ||\n");
-    printf("|| VALOR:                                           ||\n");
-    printf("|| VALIDADE:                                        ||\n");
+    printf("|| TELEFONE:                                        ||\n");
+    printf("|| CARGO:                                           ||\n");
+    printf("|| SALARIO:                                         ||\n");
+    printf("|| DATA DE NASCIMENTO:                              ||\n");
     printf("||                                                  ||\n");
     printf("|| ------------------------------------------------ ||\n");
     printf("\t\t\t>>> Tecle <ENTER> para voltar...\n");
     getchar();
 }
 
-void excluirprodutos (void){
+void excluirfuncionarios (void){
     system("clear||cls"); 
     printf("|| ------------------------------------------------ ||\n");
     printf("|| -------- GESTAO PARA LOJA DE COVENIENCIA ------- ||\n");
-    printf("|| --------------- EXCLUIR PRODUTO ---------------- ||\n");
+    printf("|| ------------- EXCLUIR FUNCIONARIOS ------------- ||\n");
     printf("|| ------------------------------------------------ ||\n");
     printf("||                                                  ||\n");
-    printf("|| INFORME O CODIGO DO PRODUTO:                     ||\n");
+    printf("|| CPF DO FUNCIONARIO QUE DESEJA EXCLUIR:           || \n");
+    printf("|| ------------------------------------------------ ||\n");
+    getchar();
+}
+
+void pesquisarfuncionarios (void){
+    system("clear||cls"); 
+    printf("|| ------------------------------------------------ ||\n");
+    printf("|| -------- GESTAO PARA LOJA DE COVENIENCIA ------- ||\n");
+    printf("|| ------------ PESQUISAR FUNCIONARIOS ------------ ||\n");
+    printf("|| ------------------------------------------------ ||\n");
+    printf("||                                                  ||\n");
+    printf("|| CPF DO FUNCIONARIO QUE DESEJA PESQUISAR:         ||\n");
     printf("|| ------------------------------------------------ ||\n");
     printf("\t\t\t>>> Tecle <ENTER> para voltar...\n");
     getchar();
 }
 
-void pesquisarprodutos (void){
+void listarfuncionarios (void){
     system("clear||cls"); 
     printf("|| ------------------------------------------------ ||\n");
     printf("|| -------- GESTAO PARA LOJA DE COVENIENCIA ------- ||\n");
-    printf("|| -------------- PESQUISAR PRODUTO --------------- ||\n");
+    printf("|| ------------- LISTAR FUNCIONARIOS -------------- ||\n");
     printf("|| ------------------------------------------------ ||\n");
     printf("||                                                  ||\n");
-    printf("|| INFORME O CODIGO DO PRODUTO:                     ||\n");
-    printf("|| ------------------------------------------------ ||\n");
-    printf("\t\t\t>>> Tecle <ENTER> para voltar...\n");
-    getchar();
-}
-
-void listarprodutos (void){
-    system("clear||cls"); 
-    printf("|| ------------------------------------------------ ||\n");
-    printf("|| -------- GESTAO PARA LOJA DE COVENIENCIA ------- ||\n");
-    printf("|| --------------- LISTAR PRODUTOS ---------------- ||\n");
-    printf("|| ------------------------------------------------ ||\n");
-    printf("||                                                  ||\n");
-    printf("|| PRODUTOS CADASTRADOS:                            ||\n");
+    printf("|| FUNCIONARIOS CADASTRADOS:                        ||\n");
     printf("|| ------------------------------------------------ ||\n");
     printf("\t\t\t>>> Tecle <ENTER> para voltar...\n");
     getchar();
