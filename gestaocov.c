@@ -4,12 +4,10 @@
 #include "modulos/vendas.h"
 #include "modulos/funcionarios.h"
 #include "modulos/clientes.h"
+#include "modulos/principal.h"
 
-//SEMANA 4
-
+//SEMANA 5
 char menuop(void);
-void moduloprin(void);
-char menuprincipal (void);
 void menusobre (void);
 void menuequipe (void);
 
@@ -51,45 +49,6 @@ char menuop (void){
     getchar();
     return op;
 
-}
-
-void moduloprin(void) {
-    char opcao;
-    do {
-        opcao = menuprincipal();
-        switch(opcao) {
-            case '1': 	moduloprodutos();
-                        break;
-            case '2': 	modulovendas();
-                        break;
-            case '3': 	moduloclientes();
-                        break;
-            case '4': 	modulofuncionarios();
-                        break;
-        } 		
-    } while (opcao != '0');
-}
-
-char menuprincipal(void){
-    char op;
-    system("clear||cls");
-    printf("|| ------------------------------------------------ ||\n"); 
-    printf("|| -------- GESTAO PARA LOJA DE COVENIENCIA ------- ||\n");
-    printf("|| --------------- MENU PRINCIPAL ----------------- ||\n");
-    printf("|| ------------------------------------------------ ||\n");
-    printf("||                                                  ||\n");
-    printf("|| (1) - MODULO DE PRODUTOS                         ||\n");
-    printf("|| (2) - MODULO DE VENDAS                           ||\n");
-    printf("|| (3) - MODULO DE CLIENTES                         ||\n");
-    printf("|| (4) - MODULO DE FUNCIONARIOS                     ||\n"); //ideia: funcionorio do mes ??
-    printf("|| (0) - SAIR                                       ||\n");
-    printf("||                                                  ||\n");
-    printf("|| ------------------------------------------------ ||\n");
-    printf("|| Digite a opcao desejada:                         ||\n");
-    printf("|| ------------------------------------------------ ||\n");
-    scanf("%c", &op);
-    getchar();
-    return op;
 }
 
 void menusobre (void){ 
