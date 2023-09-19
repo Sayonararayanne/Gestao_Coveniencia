@@ -7,6 +7,7 @@
 #include "modulos/principal.h"
 
 //SEMANA 5
+
 char menuop(void);
 void menusobre (void);
 void menuequipe (void);
