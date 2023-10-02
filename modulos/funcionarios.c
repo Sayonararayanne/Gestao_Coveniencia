@@ -92,8 +92,9 @@ void excluirfuncionarios (void){
     printf("|| ------------- EXCLUIR FUNCIONARIOS ------------- ||\n");
     printf("|| ------------------------------------------------ ||\n");
     printf("||                                                  ||\n");
-    printf("|| CPF DO FUNCIONARIO QUE DESEJA EXCLUIR:           || \n");
+    printf("|| CPF DO FUNCIONARIO QUE DESEJA EXCLUIR:           ||\n");
     printf("|| ------------------------------------------------ ||\n");
+    printf("\t\t\t>>> Tecle <ENTER> para voltar...\n");
     getchar();
 }
 

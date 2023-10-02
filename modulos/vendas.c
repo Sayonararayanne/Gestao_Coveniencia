@@ -50,9 +50,9 @@ void cadastrarvendas (void){
     printf("|| ------------------------------------------------ ||\n");
     printf("|| -------- GESTAO PARA LOJA DE COVENIENCIA ------- ||\n");
     printf("|| -------------- CADASTRAR VENDAS ---------------- ||\n");
-    printf("|| ------------------------------------------------ ||\n");
-    printf("||                                                  ||\n");
-    printf("|| CODIGO:                                          ||\n"); //chave ser gerada automaticamente ou ser data+hora
+    printf("|| ------------------------------------------------ ||\n"); //Na venda fazer um laço de repetição para 
+    printf("||                                                  ||\n"); //na hora da compra poder comprar mais de um produto
+    printf("|| CODIGO:                                          ||\n"); //diferente por vez. Ex: pedir código e quantidade até se encerrarem os produtos.
     printf("|| CODIGO DO VENDEDOR:                              ||\n");
     printf("|| CODIGO DO PRODUTO:                               ||\n");
     printf("|| QUANTIDADE:                                      ||\n");
