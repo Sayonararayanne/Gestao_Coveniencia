@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "funcionarios.h"
+#include "util.h"
 
 //MODULO FUNCIONARIOS
 void modulofuncionarios(void) {
@@ -46,6 +47,15 @@ char menufuncionarios(void){
 }
 
 void cadastrarfuncionarios (void){
+    char cpf[11];
+    char nome[100];
+    char tel[12];
+    char cargo[51];
+    char sala[8];
+    int dia;
+    int mes;
+    int ano;
+    
     system("clear||cls"); 
     printf("|| ------------------------------------------------ ||\n");
     printf("|| -------- GESTAO PARA LOJA DE COVENIENCIA ------- ||\n");
@@ -53,11 +63,48 @@ void cadastrarfuncionarios (void){
     printf("|| ------------------------------------------------ ||\n");
     printf("||                                                  ||\n");
     printf("|| CPF:                                             ||\n");
+    scanf("%s", cpf);
+    if (validaCPF(cpf)){
+        printf("||                 CPF VÁLIDO                       ||\n");
+    }else{
+        printf("||                 CPF INVÁLIDO                     ||\n");
+    }
+    printf("\n");
     printf("|| NOME:                                            ||\n");
+    scanf("%s", nome);
+    if (validaNome(nome)){
+        printf("||                 NOME VÁLIDO                      ||\n");
+    }else{
+        printf("||                NOME INVÁLIDO                     ||\n");
+    }
+    printf("\n");
     printf("|| TELEFONE:                                        ||\n");
+    scanf("%s", tel);
+    if (validaTelefone(tel)){
+        printf("||              TELEFONE VÁLIDO                     ||\n");
+    }else{
+        printf("||             TELEFONE INVÁLIDO                    ||\n");
+    }
+    printf("\n");
     printf("|| CARGO:                                           ||\n");
+    scanf("%s", cargo);
+    printf("\n");
     printf("|| SALARIO:                                         ||\n");
+    scanf("%s", sala);
+    printf("\n");
     printf("|| DATA DE NASCIMENTO:                              ||\n");
+    printf("|| Dia:                                             ||\n");
+    scanf("%d", &dia);
+    printf("|| Mês (em número):                                 ||\n");
+    scanf("%d", &mes);
+    printf("|| Ano:                                             ||\n");
+    scanf("%d", &ano);
+    if (validaData(dia, mes, ano)){
+        printf("||               DATA VÁLIDA                        ||\n");
+    }else{
+        printf("||              DATA INVÁLIDA                       ||\n");
+    }
+    printf("\n");
     printf("||                                                  ||\n");
     printf("|| ------------------------------------------------ ||\n");
     printf("\t\t\t>>> Tecle <ENTER> para voltar...\n");
