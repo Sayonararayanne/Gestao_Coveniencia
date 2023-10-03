@@ -45,14 +45,14 @@ int validaCPF(char* cpf) {
         dig1 += (cpf[i] - '0') * j;
     }
         dig1 = 11 - (dig1 % 11);
-        if (dig1 > 9) {
+        if (dig1 >= 10) {
             dig1 = 0;
     }
     for (i = 0, j = 11; i < 10; i++, j--) {
         dig2 += (cpf[i] - '0') * j;
     }
     dig2 = 11 - (dig2 % 11);
-    if (dig2 > 9) {
+    if (dig2 >= 10) {
         dig2 = 0;
     }
     if (dig1 == (cpf[9] - '0') && dig2 == (cpf[10] - '0')) {
