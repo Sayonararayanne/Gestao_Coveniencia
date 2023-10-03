@@ -112,6 +112,15 @@ void cadastrarfuncionarios (void){
 }
 
 void editarfuncionarios (void){
+    char cpf[11];
+    char nome[100];
+    char tel[12];
+    char cargo[51];
+    char sala[8];
+    int dia;
+    int mes;
+    int ano;
+
     system("clear||cls"); 
     printf("|| ------------------------------------------------ ||\n");
     printf("|| -------- GESTAO PARA LOJA DE COVENIENCIA ------- ||\n");
@@ -133,6 +142,8 @@ void editarfuncionarios (void){
 }
 
 void excluirfuncionarios (void){
+    char cpf[11];
+    
     system("clear||cls"); 
     printf("|| ------------------------------------------------ ||\n");
     printf("|| -------- GESTAO PARA LOJA DE COVENIENCIA ------- ||\n");
@@ -146,6 +157,8 @@ void excluirfuncionarios (void){
 }
 
 void pesquisarfuncionarios (void){
+    char cpf[11];
+
     system("clear||cls"); 
     printf("|| ------------------------------------------------ ||\n");
     printf("|| -------- GESTAO PARA LOJA DE COVENIENCIA ------- ||\n");

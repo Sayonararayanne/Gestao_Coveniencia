@@ -103,6 +103,13 @@ void cadastrarclientes (void){
 }
 
 void editarclientes (void){
+    char cpf[11];
+    char nome[100];
+    char tel[12];
+    int dia;
+    int mes;
+    int ano;
+    
     system("clear||cls"); 
     printf("|| ------------------------------------------------ ||\n");
     printf("|| -------- GESTAO PARA LOJA DE COVENIENCIA ------- ||\n");
@@ -122,6 +129,8 @@ void editarclientes (void){
 }
 
 void excluirclientes (void){
+    char cpf[11];
+
     system("clear||cls"); 
     printf("|| ------------------------------------------------ ||\n");
     printf("|| -------- GESTAO PARA LOJA DE COVENIENCIA ------- ||\n");
@@ -135,6 +144,8 @@ void excluirclientes (void){
 }
 
 void pesquisarclientes (void){
+    char cpf[11];
+
     system("clear||cls"); 
     printf("|| ------------------------------------------------ ||\n");
     printf("|| -------- GESTAO PARA LOJA DE COVENIENCIA ------- ||\n");
