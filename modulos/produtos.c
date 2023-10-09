@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "produtos.h"
+#include "util.h"
 
 //MODULO PRODUTOS
 void moduloprodutos(void) {
@@ -46,6 +47,17 @@ char menuprodutos (void){
 }
 
 void cadastrarprodutos (void){
+    char cod[11];
+    char nome[100];
+    char marca[50];
+    char desc[100];
+    char quant[10];
+    char tip[50];
+    char valor[10];
+    int dia;
+    int mes;
+    int ano;
+
     system("clear||cls"); 
     printf("|| ------------------------------------------------ ||\n");
     printf("|| -------- GESTAO PARA LOJA DE COVENIENCIA ------- ||\n");
@@ -53,13 +65,58 @@ void cadastrarprodutos (void){
     printf("|| -------------------------------------------------||\n");
     printf("||                                                  ||\n");
     printf("|| CODIGO:                                          ||\n");
+    scanf("%s", cod);
+    if (validaCodBarras(cod)){
+        printf("||                 CÓD VÁLIDO                       ||\n");
+    }else{
+        printf("||                 CÓD INVÁLIDO                     ||\n");
+    }
+    printf("\n");
     printf("|| NOME:                                            ||\n");
+    scanf("%s", nome);
+    if (validaNome(nome)){
+        printf("||                 NOME VÁLIDO                      ||\n");
+    }else{
+        printf("||                 NOME INVÁLIDO                    ||\n");
+    }
+    printf("\n");
     printf("|| MARCA:                                           ||\n");
+    scanf("%s", marca);
+    if (validaNome(marca)){
+        printf("||                 MARCA VÁLIDA                     ||\n");
+    }else{
+        printf("||                 MARCA INVÁLIDA                   ||\n");
+    }
+    printf("\n");
     printf("|| DESCRICAO:                                       ||\n");
+    scanf("%s", desc);
+    printf("\n");
     printf("|| QUANTIDADE:                                      ||\n");
+    scanf("%s", quant);
+    printf("\n");
     printf("|| TIPO:                                            ||\n");
+    scanf("%s", tip);
+    if (validaNome(tip)){
+        printf("||                 TIPO VÁLIDO                      ||\n");
+    }else{
+        printf("||                 TIPO INVÁLIDO                    ||\n");
+    }
     printf("|| VALOR:                                           ||\n");
+    scanf("%s", valor);
+    printf("\n");
     printf("|| VALIDADE:                                        ||\n");
+    printf("|| Dia:                                             ||\n");
+    scanf("%d", &dia);
+    printf("|| Mês (em número):                                 ||\n");
+    scanf("%d", &mes);
+    printf("|| Ano:                                             ||\n");
+    scanf("%d", &ano);
+    if (validaData(dia, mes, ano)){
+        printf("||               DATA VÁLIDA                        ||\n");
+    }else{
+        printf("||              DATA INVÁLIDA                       ||\n");
+    }
+    printf("\n");
     printf("||                                                  ||\n");
     printf("|| ------------------------------------------------ ||\n");
     printf("\t\t\t>>> Tecle <ENTER> para voltar...\n");
@@ -67,6 +124,16 @@ void cadastrarprodutos (void){
 }
 
 void editarprodutos (void){
+    char cod[11];
+    char nome[100];
+    char marca[50];
+    char desc[100];
+    char tip[50];
+    char valor[10];
+    int dia;
+    int mes;
+    int ano;
+
     system("clear||cls"); 
     printf("|| ------------------------------------------------ ||\n");
     printf("|| -------- GESTAO PARA LOJA DE COVENIENCIA ------- ||\n");

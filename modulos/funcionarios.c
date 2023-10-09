@@ -172,6 +172,7 @@ void pesquisarfuncionarios (void){
 }
 
 void listarfuncionarios (void){
+
     system("clear||cls"); 
     printf("|| ------------------------------------------------ ||\n");
     printf("|| -------- GESTAO PARA LOJA DE COVENIENCIA ------- ||\n");
