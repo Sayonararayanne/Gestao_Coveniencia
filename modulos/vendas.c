@@ -46,6 +46,12 @@ char menuvendas (void){
 }
 
 void cadastrarvendas (void){
+    char cod[11];
+    char codven[11]; //cpf
+    char codprod[13];
+    char quant[10];
+    char valor[10];
+
     system("clear||cls"); 
     printf("|| ------------------------------------------------ ||\n");
     printf("|| -------- GESTAO PARA LOJA DE COVENIENCIA ------- ||\n");
@@ -64,6 +70,12 @@ void cadastrarvendas (void){
 }
 
 void editarvendas (void){
+    char cod[11];
+    char codven[11];
+    char codprod[13];
+    char quant[10];
+    char valor[10];
+
     system("clear||cls"); 
     printf("|| ------------------------------------------------ ||\n");
     printf("|| -------- GESTAO PARA LOJA DE COVENIENCIA ------- ||\n");
