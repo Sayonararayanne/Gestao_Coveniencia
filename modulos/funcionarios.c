@@ -46,16 +46,9 @@ char menufuncionarios(void){
     return op;
 }
 
-void cadastrarfuncionarios (void){
-    char cpf[11];
-    char nome[100];
-    char tel[12];
-    char cargo[51];
-    char sala[8];
-    int dia;
-    int mes;
-    int ano;
-    
+Funcionarios cadastrarfuncionarios (void){
+    Funcionarios *funcionarios = malloc(sizeof(Funcionarios));
+
     system("clear||cls"); 
     printf("|| ------------------------------------------------ ||\n");
     printf("|| -------- GESTAO PARA LOJA DE COVENIENCIA ------- ||\n");
@@ -63,43 +56,38 @@ void cadastrarfuncionarios (void){
     printf("|| ------------------------------------------------ ||\n");
     printf("||                                                  ||\n");
     printf("|| CPF:                                             ||\n");
-    scanf("%s", cpf);
-    if (validaCPF(cpf)){
+    fgets(funcionarios->cpf, sizeof(funcionarios->cpf), stdin);
+    if (!(validaCPF(funcionarios->cpf))){
         printf("||                 CPF VÁLIDO                       ||\n");
     }else{
         printf("||                 CPF INVÁLIDO                     ||\n");
     }
     printf("\n");
     printf("|| NOME:                                            ||\n");
-    scanf("%s", nome);
-    if (validaNome(nome)){
+    fgets(funcionarios->nome, sizeof(funcionarios->nome), stdin);
+    if (!(validaNome(funcionarios->nome))){
         printf("||                 NOME VÁLIDO                      ||\n");
     }else{
         printf("||                NOME INVÁLIDO                     ||\n");
     }
     printf("\n");
     printf("|| TELEFONE:                                        ||\n");
-    scanf("%s", tel);
-    if (validaTelefone(tel)){
+    fgets(funcionarios->tel, sizeof(funcionarios->tel), stdin);
+    if (!(validaTelefone(funcionarios->tel))){
         printf("||              TELEFONE VÁLIDO                     ||\n");
     }else{
         printf("||             TELEFONE INVÁLIDO                    ||\n");
     }
     printf("\n");
     printf("|| CARGO:                                           ||\n");
-    scanf("%s", cargo);
+    fgets(funcionarios->cargo, sizeof(funcionarios->cargo), stdin);
     printf("\n");
     printf("|| SALARIO:                                         ||\n");
-    scanf("%s", sala);
+    fgets(funcionarios->sala, sizeof(funcionarios->sala), stdin);
     printf("\n");
     printf("|| DATA DE NASCIMENTO:                              ||\n");
-    printf("|| Dia:                                             ||\n");
-    scanf("%d", &dia);
-    printf("|| Mês (em número):                                 ||\n");
-    scanf("%d", &mes);
-    printf("|| Ano:                                             ||\n");
-    scanf("%d", &ano);
-    if (validaData(dia, mes, ano)){
+     scanf("%d/%d/%d", &funcionarios->dia, &funcionarios->mes, &funcionarios->ano);
+    if (!(validaData(funcionarios->dia, funcionarios->mes, funcionarios->ano))){
         printf("||               DATA VÁLIDA                        ||\n");
     }else{
         printf("||              DATA INVÁLIDA                       ||\n");

@@ -49,6 +49,7 @@ char menuprodutos (void){
 
 Produtos cadastrarprodutos (void){
     Produtos *produtos = malloc(sizeof(Produtos));
+    
     system("clear||cls"); 
     printf("|| ------------------------------------------------ ||\n");
     printf("|| -------- GESTAO PARA LOJA DE COVENIENCIA ------- ||\n");
