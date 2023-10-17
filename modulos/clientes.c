@@ -45,13 +45,8 @@ char menuclientes (void){
     return op;
 }
 
-void cadastrarclientes (void){
-    char cpf[11];
-    char nome[100];
-    char tel[12];
-    int dia;
-    int mes;
-    int ano;
+Clientes cadastrarclientes (void){
+    Clientes *clientes = malloc(sizeof(Clientes));
 
     system("clear||cls"); 
     printf("|| ------------------------------------------------ ||\n");
@@ -60,37 +55,31 @@ void cadastrarclientes (void){
     printf("|| ------------------------------------------------ ||\n");
     printf("||                                                  ||\n");
     printf("|| CPF:                                             ||\n");
-    scanf("%s", cpf);
-    if (validaCPF(cpf)){
+    fgets(clientes->cpf, sizeof(clientes->cpf), stdin);
+    if (!(validaCPF(clientes->cpf))){
         printf("||                 CPF VÁLIDO                       ||\n");
     }else{
         printf("||                 CPF INVÁLIDO                     ||\n");
     }
     printf("\n");
-    printf("|| NOME:                                            ||\n");
-     scanf("%s", nome);
-    if (validaNome(nome)){
+    fgets(clientes->nome, sizeof(clientes->nome), stdin);
+    if (!(validaNome(clientes->nome))){
         printf("||                 NOME VÁLIDO                      ||\n");
     }else{
         printf("||                NOME INVÁLIDO                     ||\n");
     }
     printf("\n");
     printf("|| TELEFONE:                                        ||\n");
-    scanf("%s", tel);
-    if (validaTelefone(tel)){
+    fgets(clientes->tel, sizeof(clientes->tel), stdin);
+    if (!(validaTelefone(clientes->tel))){
         printf("||              TELEFONE VÁLIDO                     ||\n");
     }else{
         printf("||             TELEFONE INVÁLIDO                    ||\n");
     }
     printf("\n");
     printf("|| DATA DE NASCIMENTO:                              ||\n");
-    printf("|| Dia:                                             ||\n");
-    scanf("%d", &dia);
-    printf("|| Mês (em número):                                 ||\n");
-    scanf("%d", &mes);
-    printf("|| Ano:                                             ||\n");
-    scanf("%d", &ano);
-    if (validaData(dia, mes, ano)){
+    scanf("%d/%d/%d", &clientes->dia, &clientes->mes, &clientes->ano);
+    if (!(validaData(clientes->dia, clientes->mes, clientes->ano))){
         printf("||               DATA VÁLIDA                        ||\n");
     }else{
         printf("||              DATA INVÁLIDA                       ||\n");
