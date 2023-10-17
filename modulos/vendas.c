@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "vendas.h"
+#include "util.h"
 
 //MODULO VENDAS
 void modulovendas(void) {
@@ -45,12 +46,8 @@ char menuvendas (void){
     return op;
 }
 
-void cadastrarvendas (void){
-    char cod[11];
-    char codven[11]; //cpf
-    char codprod[13];
-    char quant[10];
-    char valor[10];
+Vendas cadastrarvendas (void){
+    Vendas *vendas = malloc(sizeof(Vendas));
 
     system("clear||cls"); 
     printf("|| ------------------------------------------------ ||\n");
@@ -59,23 +56,34 @@ void cadastrarvendas (void){
     printf("|| ------------------------------------------------ ||\n"); //Na venda fazer um laço de repetição para 
     printf("||                                                  ||\n"); //na hora da compra poder comprar mais de um produto
     printf("|| CODIGO:                                          ||\n"); //diferente por vez. Ex: pedir código e quantidade até se encerrarem os produtos.
+    fgets(vendas->cod, sizeof(vendas->cod), stdin);
+    printf("\n");
     printf("|| CODIGO DO VENDEDOR:                              ||\n");
+    fgets(vendas->codven, sizeof(vendas->codven), stdin);
+    printf("\n");
     printf("|| CODIGO DO PRODUTO:                               ||\n");
+    fgets(vendas->codprod, sizeof(vendas->codprod), stdin);
+    if (!(validaCodBarras(vendas->codprod))){
+        printf("||                 CÓD VÁLIDO                       ||\n");
+    }else{
+        printf("||                 CÓD INVÁLIDO                     ||\n");
+    }
+    printf("\n");
     printf("|| QUANTIDADE:                                      ||\n");
+    fgets(vendas->quant, sizeof(vendas->quant), stdin);
+    printf("\n");
     printf("|| VALOR:                                           ||\n");
+    fgets(vendas->valor, sizeof(vendas->valor), stdin);
+    printf("\n");
     printf("||                                                  ||\n");
     printf("|| ------------------------------------------------ ||\n");
     printf("\t\t\t>>> Tecle <ENTER> para voltar...\n");
     getchar();
+
+    return *vendas;
 }
 
 void editarvendas (void){
-    char cod[11];
-    char codven[11];
-    char codprod[13];
-    char quant[10];
-    char valor[10];
-
     system("clear||cls"); 
     printf("|| ------------------------------------------------ ||\n");
     printf("|| -------- GESTAO PARA LOJA DE COVENIENCIA ------- ||\n");
