@@ -6,7 +6,7 @@
 #include "modulos/clientes.h"
 #include "modulos/principal.h"
 
-//SEMANA 8
+//SEMANA 9
 
 char menuop(void);
 void menusobre (void);
