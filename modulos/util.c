@@ -27,69 +27,59 @@ int validaTelefone(char* tel) {
     return 1;
 }
 
-//função para validar cpf
+int eh_numero(char c){
+   if (c >= '0' && c <= '9') {
+        return 1;
+    } else {
+        return 0;
+    }
+}
+
+//Referências: função para validar cpf do colega @gabrielaraujo
 int validaCPF(char* cpf) {
     int i, j;
-    int dig1 = 0, dig2 = 0;
+    int digito_v1 = 0, digito_v2 = 0;
 
-    for (int i = 0; cpf[i] != '\0'; i++) {
-        if (!isdigit(cpf[i])) {
-            return 0;
+    char numeros_cpf[12]; 
+    int len = strlen(cpf);
+    int pos = 0;
+    for (i = 0; i < len; i++) {
+        if (eh_numero(cpf[i])) {
+            numeros_cpf[pos++] = cpf[i];
         }
     }
-    int tam = strlen(cpf); 
-    if (tam != 11) {
+    numeros_cpf[pos] = '\0';
+
+    if (strlen(numeros_cpf) != 11) {
         return 0;
     }
-    for (i = 0, j = 10; i < 9; i++, j--) { //Referências: função baseada na do aluno Gabriel Araújo. 
-        dig1 += (cpf[i] - '0') * j;
+    for (i = 0, j = 10; i < 9; i++, j--) {
+        digito_v1 += (numeros_cpf[i] - '0') * j;
     }
-        dig1 = 11 - (dig1 % 11);
-        if (dig1 >= 10) {
-            dig1 = 0;
+    digito_v1 = 11 - (digito_v1 % 11);
+    if (digito_v1 >= 10) {
+        digito_v1 = 0;
     }
     for (i = 0, j = 11; i < 10; i++, j--) {
-        dig2 += (cpf[i] - '0') * j;
+        digito_v2 += (numeros_cpf[i] - '0') * j;
     }
-    dig2 = 11 - (dig2 % 11);
-    if (dig2 >= 10) {
-        dig2 = 0;
+    digito_v2 = 11 - (digito_v2 % 11);
+    if (digito_v2 >= 10) {
+        digito_v2 = 0;
     }
-    if (dig1 == (cpf[9] - '0') && dig2 == (cpf[10] - '0')) {
-        return 0;
-    } else {
+    if (digito_v1 == (numeros_cpf[9] - '0') && digito_v2 == (numeros_cpf[10] - '0')) {
         return 1;
+    } else {
+        return 0;
     }
 }
 
-int eh_bissexto(int aa) { //Referências: Função baseada na do Professor Flavius (@flgorgonio)
-    if ((aa % 4 == 0) && (aa % 100 != 0)) {
-      return 1;
-    } else if (aa % 400 == 0) {
-      return 1;
+int validaData(char data){
+   if (data >= '0' && data <= '8') {
+        return 1;
     } else {
-      return 0;
-    } 
-}
-
-int validaData(int dd, int mm, int aa) { //Referências: Função baseada na do Professor Flavius (@flgorgonio)
-    int maiorDia;
-    if (aa < 0 || mm < 1 || mm > 12)
-      return 0;
-    if (mm == 2) {
-      if (eh_bissexto(aa)) 
-        maiorDia = 29;
-      else
-        maiorDia = 28;
-    } else if (mm == 4 || mm == 6 || 
-              mm == 9 || mm == 11) {
-                maiorDia = 30;
-    } else
-      maiorDia = 31;
-
-    if (dd < 1 || dd > maiorDia)
-      return 0;
-    return 1;
+        return 0;
+    }
 }
 
 int validaCodBarras(char* cod) {

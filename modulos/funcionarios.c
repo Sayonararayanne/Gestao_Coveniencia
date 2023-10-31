@@ -87,11 +87,11 @@ Funcionarios cadastrarfuncionarios (void){
     printf("\n");
     printf("|| DATA DE NASCIMENTO:                              ||\n");
      scanf("%d/%d/%d", &funcionarios->dia, &funcionarios->mes, &funcionarios->ano);
-    if (!(validaData(funcionarios->dia, funcionarios->mes, funcionarios->ano))){
-        printf("||               DATA VÁLIDA                        ||\n");
-    }else{
-        printf("||              DATA INVÁLIDA                       ||\n");
-    }
+    // if (!(validaData(funcionarios->dia, funcionarios->mes, funcionarios->ano))){
+    //     printf("||               DATA VÁLIDA                        ||\n");
+    // }else{
+    //     printf("||              DATA INVÁLIDA                       ||\n");
+    // }
     printf("\n");
     printf("||                                                  ||\n");
     printf("|| ------------------------------------------------ ||\n");
@@ -123,7 +123,6 @@ void editarfuncionarios (void){
 }
 
 void excluirfuncionarios (void){
-    char cpf[11];
     
     system("clear||cls"); 
     printf("|| ------------------------------------------------ ||\n");
@@ -138,8 +137,7 @@ void excluirfuncionarios (void){
 }
 
 void pesquisarfuncionarios (void){
-    char cpf[11];
-
+    
     system("clear||cls"); 
     printf("|| ------------------------------------------------ ||\n");
     printf("|| -------- GESTAO PARA LOJA DE COVENIENCIA ------- ||\n");

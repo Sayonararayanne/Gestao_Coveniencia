@@ -97,11 +97,11 @@ Produtos cadastrarprodutos (void){
     printf("\n");
     printf("|| VALIDADE:                                        ||\n");
     scanf("%d/%d/%d", &produtos->dia, &produtos->mes, &produtos->ano);
-    if (!(validaData(produtos->dia, produtos->mes, produtos->ano))){
-        printf("||               DATA VÁLIDA                        ||\n");
-    }else{
-        printf("||              DATA INVÁLIDA                       ||\n");
-    }
+    // if (!(validaData(produtos->dia, produtos->mes, produtos->ano))){
+    //     printf("||               DATA VÁLIDA                        ||\n");
+    // }else{
+    //     printf("||              DATA INVÁLIDA                       ||\n");
+    // }
     printf("\n");
     printf("||                                                  ||\n");
     printf("|| ------------------------------------------------ ||\n");

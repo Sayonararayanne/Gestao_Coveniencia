@@ -1,6 +1,6 @@
 int validaNome(char*);
 int validaTelefone(char*);
 int validaCPF(char*);
-int validaData(int, int, int);
+// int validaData(char*);
 int eh_bissexto(int);
 int validaCodBarras(char*);

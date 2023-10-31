@@ -1,10 +1,10 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "modulos/produtos.h"
-#include "modulos/vendas.h"
-#include "modulos/funcionarios.h"
-#include "modulos/clientes.h"
-#include "modulos/principal.h"
+#include "produtos.h"
+#include "vendas.h"
+#include "funcionarios.h"
+#include "clientes.h"
+#include "principal.h"
 
 //SEMANA 9
 

@@ -2,7 +2,7 @@ struct produtos
 {
     char cod[11];
     char nome[100];
-    char marca[50]
+    char marca[50];
     char desc[100];
     char quant[10];
     char tip[50];
