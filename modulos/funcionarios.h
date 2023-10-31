@@ -1,20 +1,21 @@
     struct funcionarios
 {
-    char cpf[11];
-    char nome[100];
-    char tel[12];
-    char cargo[51];
-    char sala[8];
-    int dia;
-    int mes;
-    int ano;
+    char cpf[12];
+    char nome[101];
+    char tel[13];
+    char cargo[52];
+    char sala[9];
+    char data[9];
+    char status;
     struct funcionarios *next;
 };
 typedef struct funcionarios Funcionarios;
 
-void modulofuncionarios (void);
+int modulofuncionarios (void);
 char menufuncionarios (void);
-Funcionarios cadastrarfuncionarios (void);
+Funcionarios* cadastrarfuncionarios (void);
+void gravafuncionarios (Funcionarios*);
+void exibefuncionarios (Funcionarios*);
 void editarfuncionarios (void);
 void excluirfuncionarios (void);
 void pesquisarfuncionarios (void);
