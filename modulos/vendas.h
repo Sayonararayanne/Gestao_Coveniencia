@@ -1,17 +1,20 @@
 struct vendas
 {
-    char cod[11];
-    char codven[11]; //cpf
-    char codprod[13];
-    char quant[10];
-    char valor[10];
+    char cod[12];
+    char codven[12]; //cpf
+    char codprod[14];
+    char quant[11];
+    char valor[11];
+    char status;
     struct vendas *next;
 };
 typedef struct vendas Vendas;
 
-void modulovendas(void);
+int modulovendas(void);
 char menuvendas (void);
-Vendas cadastrarvendas (void);
+Vendas* cadastrarvendas (void);
+void gravavendas (Vendas*);
+void exibevendas (Vendas*);
 void editarvendas (void);
 void excluirvendas (void);
 void pesquisarvendas (void);

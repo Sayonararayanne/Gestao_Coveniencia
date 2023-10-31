@@ -1,26 +1,31 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include "vendas.h"
 #include "util.h"
 
 //MODULO VENDAS
-void modulovendas(void) {
-    char opcao;
-    do {
-        opcao = menuvendas();
-        switch(opcao) {
-            case '1': 	cadastrarvendas();
-                        break;
-            case '2': 	editarvendas();
-                        break;
-            case '3': 	excluirvendas();
-                        break;
-            case '4': 	listarvendas();
-                        break;
-            case '5': 	pesquisarvendas();
-                        break;
-        } 		
-    } while (opcao != '0');
+int modulovendas(void) {
+    Vendas* ven;
+    int opcao;
+    opcao = menuvendas();
+        while (opcao !=0) {
+            switch(opcao) {
+                case '1': 	ven = cadastrarvendas();
+                            gravavendas(ven);
+                            free(ven);
+                            break;
+                case '2': 	editarvendas();
+                            break;
+                case '3': 	excluirvendas();
+                            break;
+                case '4': 	listarvendas();
+                            break;
+                case '5': 	pesquisarvendas();
+                            break;
+    } opcao = menuvendas(); 		
+} 
+return 0;
 }
 
 char menuvendas (void){ 
@@ -46,8 +51,9 @@ char menuvendas (void){
     return op;
 }
 
-Vendas cadastrarvendas (void){
-    Vendas *vendas = malloc(sizeof(Vendas));
+Vendas* cadastrarvendas (void){
+    Vendas* v;
+    v = (Vendas*) malloc(sizeof(Vendas));
 
     system("clear||cls"); 
     printf("|| ------------------------------------------------ ||\n");
@@ -55,33 +61,44 @@ Vendas cadastrarvendas (void){
     printf("|| -------------- CADASTRAR VENDAS ---------------- ||\n");
     printf("|| ------------------------------------------------ ||\n"); //Na venda fazer um laço de repetição para 
     printf("||                                                  ||\n"); //na hora da compra poder comprar mais de um produto
-    printf("|| CODIGO:                                          ||\n"); //diferente por vez. Ex: pedir código e quantidade até se encerrarem os produtos.
-    fgets(vendas->cod, sizeof(vendas->cod), stdin);
-    printf("\n");
+    printf("|| CODIGO:                                          ||\n"); //diferente por vez. Ex: pedir código e quantidade até se encerrarem os vendas.
+    scanf(" %11[^\n]", v->cod);
+
     printf("|| CODIGO DO VENDEDOR:                              ||\n");
-    fgets(vendas->codven, sizeof(vendas->codven), stdin);
-    printf("\n");
+    scanf(" %11[^\n]", v->codven);
+
     printf("|| CODIGO DO PRODUTO:                               ||\n");
-    fgets(vendas->codprod, sizeof(vendas->codprod), stdin);
-    if (!(validaCodBarras(vendas->codprod))){
-        printf("||                 CÓD VÁLIDO                       ||\n");
-    }else{
-        printf("||                 CÓD INVÁLIDO                     ||\n");
+    scanf(" %13[^\n]", v->codprod);
+    while(!validaCodBarras(v->codprod)) {
+      printf("Código inválido!\n");
+      printf("Informe um novo Código: ");
+      scanf(" %11[^\n]", v->codprod);
+      getchar();
     }
-    printf("\n");
+
     printf("|| QUANTIDADE:                                      ||\n");
-    fgets(vendas->quant, sizeof(vendas->quant), stdin);
-    printf("\n");
+    scanf(" %11[^\n]", v->quant);
+
     printf("|| VALOR:                                           ||\n");
-    fgets(vendas->valor, sizeof(vendas->valor), stdin);
-    printf("\n");
+    scanf(" %11[^\n]", v->valor);
+    getchar();
     printf("||                                                  ||\n");
     printf("|| ------------------------------------------------ ||\n");
-    printf("\t\t\t>>> Tecle <ENTER> para voltar...\n");
-    getchar();
-
-    return *vendas;
+   return v;
 }
+
+void gravavendas(Vendas* v) {
+    FILE* fp;
+    fp = fopen("vendas.dat", "ab");
+    if (fp == NULL) {
+        printf("Erro na abertura do arquivo!\n");
+        printf("Não é possível continuar...\n");
+        exit(1);
+    }
+    fwrite(v, sizeof(Vendas), 1, fp);
+    fclose(fp);
+}
+
 
 void editarvendas (void){
     system("clear||cls"); 
@@ -136,8 +153,36 @@ void listarvendas (void){
     printf("|| ---------------- LISTAR VENDAS ----------------- ||\n");
     printf("|| ------------------------------------------------ ||\n");
     printf("||                                                  ||\n");
+    FILE* fp;
+    Vendas* v;
     printf("|| VENDAS CADASTRADAS:                              ||\n");
     printf("|| ------------------------------------------------ ||\n");
-    printf("\t\t\t>>> Tecle <ENTER> para voltar...\n");
-    getchar();
+    v = (Vendas*) malloc(sizeof(Vendas));
+    fp = fopen("vendas.dat", "rb");
+    if (fp == NULL) {
+        printf("Ops! Ocorreu um erro na abertura do arquivo!\n");
+        printf("Não é possível continuar este programa...\n");
+        exit(1);
+    }
+    while(fread(v, sizeof(Vendas), 1, fp)) {
+        if (v->status != 'x') {
+        exibevendas(v);
+        getchar();
+        }
+    }
+    fclose(fp);
+    free(v);
+}
+
+void exibevendas(Vendas* v) {
+    if ((v == NULL) || (v->status == 'x')) {
+        printf("VENDA INEXISTENTE");
+    }else {
+        printf("VENDAS CADASTRADOS: \n");
+        printf("Código: %s\n", v->cod);
+        printf("Código do vendedor: %s\n", v->codven);
+        printf("Código do produto: %s\n", v->codprod);
+        printf("Quantidade: %s\n", v->quant);
+        printf("Valor: %s\n", v->valor);
+    }
 }
