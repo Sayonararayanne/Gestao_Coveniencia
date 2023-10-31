@@ -1,22 +1,22 @@
 struct produtos 
 {
-    char cod[11];
-    char nome[100];
-    char marca[50];
-    char desc[100];
-    char quant[10];
-    char tip[50];
-    char valor[10];
-    int dia;
-    int mes;
-    int ano;
+    char cod[12];
+    char nome[101];
+    char marca[51];
+    char desc[101];
+    char quant[11];
+    char tip[51];
+    char valor[11];
+    char status;
     struct produtos *next;
 };
 typedef struct produtos Produtos;
 
-void moduloprodutos(void);
+int moduloprodutos(void);
 char menuprodutos(void);
-Produtos cadastrarprodutos (void);
+Produtos* cadastrarprodutos (void);
+void gravaprodutos (Produtos*);
+void exibeprodutos (Produtos*);
 void editarprodutos (void);
 void excluirprodutos (void);
 void pesquisarprodutos (void);
