@@ -160,17 +160,39 @@ void excluirprodutos (void){
     getchar();
 }
 
-void pesquisarprodutos (void){
+Produtos* pesquisarprodutos(void){
+  FILE* fp;
+  Produtos* p;
+  char cod[12];
     system("clear||cls"); 
     printf("|| ------------------------------------------------ ||\n");
     printf("|| -------- GESTAO PARA LOJA DE COVENIENCIA ------- ||\n");
-    printf("|| -------------- PESQUISAR PRODUTO --------------- ||\n");
+    printf("|| -------------- PESQUISAR VENDAS ---------------- ||\n");
     printf("|| ------------------------------------------------ ||\n");
     printf("||                                                  ||\n");
-    printf("|| INFORME O CODIGO DO PRODUTO:                     ||\n");
+    printf("|| INFORME O CODIGO DA VENDA:                       ||\n");
     printf("|| ------------------------------------------------ ||\n");
-    printf("\t\t\t>>> Tecle <ENTER> para voltar...\n");
+    fgets (cod, 12, stdin);
     getchar();
+    p = (Produtos*) malloc(sizeof(Produtos));
+    fp = fopen("produtos.dat", "rb");
+    if (fp == NULL) {
+        printf("Ops! Erro na abertura do arquivo!\n");
+        printf("Não é possível continuar...\n");
+        getchar();
+    } else {
+        while(!feof(fp)) {
+            fread(p, sizeof(Produtos), 1, fp);
+            if((strcmp(p->cod, cod) == 0) && (p->status != 'x')) {
+            exibeprodutos(p);
+            getchar();
+            fclose(fp);
+            return p;
+        }
+    }
+}
+fclose(fp);
+return NULL;
 }
 
 void listarprodutos (void){

@@ -18,5 +18,5 @@ void gravafuncionarios (Funcionarios*);
 void exibefuncionarios (Funcionarios*);
 void editarfuncionarios (void);
 void excluirfuncionarios (void);
-void pesquisarfuncionarios (void);
+Funcionarios* pesquisarfuncionarios (void);
 void listarfuncionarios (void);

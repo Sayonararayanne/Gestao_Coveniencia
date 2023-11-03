@@ -149,20 +149,43 @@ void excluirfuncionarios (void){
     printf("\t\t\t>>> Tecle <ENTER> para voltar...\n");
     getchar();
 }
-
-void pesquisarfuncionarios (void){
     
+Funcionarios* pesquisarfuncionarios(void){
+  FILE* fp;
+  Funcionarios* f;
+  char cpf[12];
+  
     system("clear||cls"); 
     printf("|| ------------------------------------------------ ||\n");
     printf("|| -------- GESTAO PARA LOJA DE COVENIENCIA ------- ||\n");
-    printf("|| ------------ PESQUISAR FUNCIONARIOS ------------ ||\n");
+    printf("|| -------------- PESQUISAR VENDAS ---------------- ||\n");
     printf("|| ------------------------------------------------ ||\n");
     printf("||                                                  ||\n");
-    printf("|| CPF DO FUNCIONARIO QUE DESEJA PESQUISAR:         ||\n");
+    printf("|| INFORME O CPF DO FUNCIONÁRIO:                        ||\n");
     printf("|| ------------------------------------------------ ||\n");
-    printf("\t\t\t>>> Tecle <ENTER> para voltar...\n");
+    fgets (cpf, 12, stdin);
     getchar();
+    f = (Funcionarios*) malloc(sizeof(Funcionarios));
+    fp = fopen("funcionarios.dat", "rb");
+    if (fp == NULL) {
+        printf("Ops! Erro na abertura do arquivo!\n");
+        printf("Não é possível continuar...\n");
+        getchar();
+    } else {
+        while(!feof(fp)) {
+            fread(f, sizeof(Funcionarios), 1, fp);
+            if((strcmp(f->cpf, cpf) == 0) && (f->status != 'x')) {
+            exibefuncionarios(f);
+            getchar();
+            fclose(fp);
+            return f;
+        }
+    }
 }
+fclose(fp);
+return NULL;
+}
+
 
 void listarfuncionarios (void){
     system("clear||cls"); 
