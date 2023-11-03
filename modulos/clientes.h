@@ -3,7 +3,7 @@ struct clientes
     char cpf[12];
     char nome[101];
     char tel[13];
-    char data[9];
+    char data[11];
     char status;
     struct clientes *next;
 };

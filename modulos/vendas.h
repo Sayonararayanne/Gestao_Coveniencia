@@ -17,5 +17,5 @@ void gravavendas (Vendas*);
 void exibevendas (Vendas*);
 void editarvendas (void);
 void excluirvendas (void);
-void pesquisarvendas (void);
+Vendas* pesquisarvendas (void);
 void listarvendas (void);

@@ -133,7 +133,10 @@ void excluirvendas (void){
     getchar();
 }
 
-void pesquisarvendas (void){
+Vendas* pesquisarvendas(void){
+  FILE* fp;
+  Vendas* v;
+  char cod[12];
     system("clear||cls"); 
     printf("|| ------------------------------------------------ ||\n");
     printf("|| -------- GESTAO PARA LOJA DE COVENIENCIA ------- ||\n");
@@ -142,8 +145,27 @@ void pesquisarvendas (void){
     printf("||                                                  ||\n");
     printf("|| INFORME O CODIGO DA VENDA:                       ||\n");
     printf("|| ------------------------------------------------ ||\n");
-    printf("\t\t\t>>> Tecle <ENTER> para voltar...\n");
-    getchar(); 
+    fgets (cod, 12, stdin);
+    getchar();
+    v = (Vendas*) malloc(sizeof(Vendas));
+    fp = fopen("Vendas.dat", "rb");
+    if (fp == NULL) {
+        printf("Ops! Erro na abertura do arquivo!\n");
+        printf("Não é possível continuar...\n");
+        getchar();
+    } else {
+        while(!feof(fp)) {
+            fread(v, sizeof(Vendas), 1, fp);
+            if((strcmp(v->cod, cod) == 0) && (v->status != 'x')) {
+            exibevendas(v);
+            getchar();
+            fclose(fp);
+            return v;
+        }
+    }
+}
+fclose(fp);
+return NULL;
 }
 
 void listarvendas (void){
