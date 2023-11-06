@@ -17,9 +17,7 @@ int moduloclientes(void) {
                         break;
             case '2': 	editarclientes();
                         break;
-            case '3': 	cli = pesquisarclientes();
-                        excluirclientes(cli);
-                        free(cli);
+            case '3': 	excluirclientes();
                         break;
             case '4': 	listarclientes();
                         break;
@@ -49,8 +47,8 @@ char menuclientes (void){
     printf("||                                                  ||\n");
     printf("|| ------------------------------------------------ ||\n");
     printf("|| Digite a opcao desejada:                         ||\n");
-    printf("|| ------------------------------------------------ ||\n");
     scanf("%c", &op);
+    printf("|| ------------------------------------------------ ||\n");
     getchar();
     return op;
 }
@@ -114,6 +112,11 @@ void gravaclientes(Clientes* c) {
 }
 
 void editarclientes (void){
+  FILE* fp;
+  Clientes* c = (Clientes*) malloc(sizeof(Clientes));
+  char cpf[12];
+  int achou = 0;
+
     system("clear||cls"); 
     printf("|| ------------------------------------------------ ||\n");
     printf("|| -------- GESTAO PARA LOJA DE COVENIENCIA ------- ||\n");
@@ -121,18 +124,67 @@ void editarclientes (void){
     printf("|| ------------------------------------------------ ||\n");
     printf("||                                                  ||\n");
     printf("|| INFORME O CPF DO CLIENTE:                        ||\n");
-    printf("|| ------------------------------------------------ ||\n");
-    printf("||                                                  ||\n");
-    printf("|| NOME:                                            ||\n");
-    printf("|| TELEFONE:                                        ||\n");
-    printf("|| DATA DE NASCIMENTO:                              ||\n");
-    printf("||                                                  ||\n");
-    printf("|| ------------------------------------------------ ||\n");
-    printf("\t\t\t>>> Tecle <ENTER> para voltar...\n");
+     fgets(cpf, 12, stdin);
     getchar();
+    fp = fopen("clientes.dat", "r+b");
+    if (fp == NULL) {
+      printf("Ops! Erro na abertura do arquivo!\n");
+      printf("Não é possível continuar...\n");
+      getchar();
+    } else {
+      while (fread(c, sizeof(Clientes), 1, fp) == 1) {
+        if(strcmp(c->cpf, cpf) == 0) {
+          printf("\n");
+          printf("|| Cliente Encontrado!                              ||\n");
+          printf("|| ------------------------------------------------ ||\n");
+          printf("||             CADASTRE OS NOVOS DADOS:             ||\n");
+          printf("|| ------------------------------------------------ ||\n");
+          printf("||                                                  ||\n");
+          printf("|| NOME:                                            ||\n");
+          scanf(" %100[^\n]", c->nome);
+          while(!validaNome(c->nome)) {
+          printf("Nome inválido!\n");
+          printf("Informe um novo Nome: ");
+          scanf(" %100[^\n]", c->nome);
+          getchar();
+        }
+
+          printf("|| TELEFONE (DD + xxxxxxxxx):                        ||\n");
+          scanf(" %12[^\n]", c->tel);
+          while(!validaTelefone(c->tel)) {
+          printf("Telefone inválido!\n");
+          printf("Informe um novo Telefone: ");
+          scanf(" %12[^\n]", c->tel);
+          getchar();
+        }
+
+          printf("|| DATA DE NASCIMENTO (xx/xx/xxxx):                 ||\n");
+          scanf(" %10[^\n]", c->data);
+          getchar();
+          fseek(fp, -sizeof(Clientes), SEEK_CUR);
+          fwrite(c, sizeof(Clientes), 1, fp);
+          achou = 1;
+          break;
+        }
+    }
+}
+    if (!achou) {
+        printf("\n");
+        printf("CPF não encontrado!\n");
+    } else {
+        printf("\n");
+        printf("Cliente atualizado com sucesso!\n");
+    }
+  getchar();
+  fclose(fp);
 }
 
-void excluirclientes (Clientes* cliLido){
+void excluirclientes (void){
+  FILE* fp;
+  Clientes* c = (Clientes*) malloc(sizeof(Clientes));
+  char cpf[12];
+  int achou = 0;
+
     system("clear||cls"); 
     printf("|| ------------------------------------------------ ||\n");
     printf("|| -------- GESTAO PARA LOJA DE COVENIENCIA ------- ||\n");
@@ -141,9 +193,35 @@ void excluirclientes (Clientes* cliLido){
     printf("||                                                  ||\n");
     printf("|| CPF DO CLIENTE QUE DESEJA EXCLUIR:               ||\n");
     printf("|| ------------------------------------------------ ||\n");
-    printf("\t\t\t>>> Tecle <ENTER> para voltar...\n");
+    fgets(cpf, 12, stdin);
     getchar();
+    fp = fopen("clientes.dat", "r+b");
+    if (fp == NULL) {
+      printf("Ops! Erro na abertura do arquivo!\n");
+      printf("Não é possível continuar...\n");
+      getchar();
+    } else {
+      while (fread(c, sizeof(Clientes), 1, fp) == 1) {
+        if(strcmp(c->cpf, cpf) == 0) {
+          c->status = 'd';
+          fseek(fp, -sizeof(Clientes), SEEK_CUR);
+          fwrite(c, sizeof(Clientes), 1, fp);
+          achou = 1;
+          break;
+        }
+      }
+    }
+    if (!achou) {
+        printf("\n");
+        printf("CPF não encontrado!\n");
+    } else {
+        printf("\n");
+        printf("Cliente excluído com sucesso!\n");
+    }
+  getchar();
+  fclose(fp);
 }
+
 
 Clientes* pesquisarclientes(void){
   FILE* fp;
@@ -182,21 +260,22 @@ return NULL;
 }
 
 void listarclientes (void){
+  FILE* fp;
+  Clientes* c;
+
     system("clear||cls"); 
     printf("|| ------------------------------------------------ ||\n");
     printf("|| -------- GESTAO PARA LOJA DE COVENIENCIA ------- ||\n");
     printf("|| --------------- LISTAR CLIENTES ---------------- ||\n");
     printf("|| ------------------------------------------------ ||\n");
     printf("||                                                  ||\n");
-    FILE* fp;
-    Clientes* c;
     printf("|| CLIENTES CADASTRADOS:                            ||\n");
     printf("|| ------------------------------------------------ ||\n");
     c = (Clientes*) malloc(sizeof(Clientes));
     fp = fopen("clientes.dat", "rb");
     if (fp == NULL) {
         printf("Ops! Ocorreu um erro na abertura do arquivo!\n");
-        printf("Não é possível continuar este programa...\n");
+        printf("Não é possível continuar...\n");
         exit(1);
     }
     while(fread(c, sizeof(Clientes), 1, fp)) {

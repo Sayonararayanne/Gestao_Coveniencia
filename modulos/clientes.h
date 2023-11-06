@@ -16,6 +16,6 @@ Clientes* cadastrarclientes (void);
 void gravaclientes (Clientes*);
 void exibeclientes(Clientes*);
 void editarclientes (void);
-void excluirclientes (Clientes*);
+void excluirclientes (void);
 Clientes* pesquisarclientes (void);
 void listarclientes (void);
