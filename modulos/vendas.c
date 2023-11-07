@@ -21,7 +21,9 @@ int modulovendas(void) {
                             break;
                 case '4': 	listarvendas();
                             break;
-                case '5': 	pesquisarvendas();
+                case '5': 	ven = pesquisarvendas();
+                            exibevendas(ven);
+                            free(ven);
                             break;
     } opcao = menuvendas(); 		
 } 
@@ -45,8 +47,8 @@ char menuvendas (void){
     printf("||                                                  ||\n");
     printf("|| ------------------------------------------------ ||\n");
     printf("|| Digite a opcao desejada:                         ||\n");
-    printf("|| ------------------------------------------------ ||\n");
     scanf("%c", &op);
+    printf("|| ------------------------------------------------ ||\n");
     getchar();
     return op;
 }
@@ -84,7 +86,7 @@ Vendas* cadastrarvendas (void){
     getchar();
     printf("||                                                  ||\n");
     printf("|| ------------------------------------------------ ||\n");
-   return v;
+    return v;
 }
 
 void gravavendas(Vendas* v) {
@@ -101,6 +103,11 @@ void gravavendas(Vendas* v) {
 
 
 void editarvendas (void){
+  FILE* fp;
+  Vendas* v = (Vendas*) malloc(sizeof(Vendas));
+  char cod[12];
+  int achou = 0;
+
     system("clear||cls"); 
     printf("|| ------------------------------------------------ ||\n");
     printf("|| -------- GESTAO PARA LOJA DE COVENIENCIA ------- ||\n");
@@ -108,19 +115,64 @@ void editarvendas (void){
     printf("|| ------------------------------------------------ ||\n");
     printf("||                                                  ||\n");
     printf("|| INFORME O CODIGO DA VENDA:                       ||\n");
-    printf("|| ------------------------------------------------ ||\n");
-    printf("||                                                  ||\n");
-    printf("|| CODIGO DO VENDEDOR:                              ||\n");
-    printf("|| CODIGO DO PRODUTO:                               ||\n");
-    printf("|| QUANTIDADE:                                      ||\n");
-    printf("|| VALOR:                                           ||\n");
-    printf("||                                                  ||\n");
-    printf("|| ------------------------------------------------ ||\n");
-    printf("\t\t\t>>> Tecle <ENTER> para voltar...\n");
+    scanf(" %11[^\n]", v->cod);
     getchar();
+    fp = fopen("vendas.dat", "r+b");
+    if (fp == NULL) {
+      printf("Ops! Erro na abertura do arquivo!\n");
+      printf("Não é possível continuar...\n");
+      getchar();
+    } else {
+      while (fread(v, sizeof(Vendas), 1, fp) == 1) {
+        if(strcmp(v->cod, cod) == 0) {
+          printf("\n");
+          printf("|| Venda Encontrada!                                ||\n");
+          printf("|| ------------------------------------------------ ||\n");
+          printf("||             CADASTRE OS NOVOS DADOS:             ||\n");
+          printf("|| ------------------------------------------------ ||\n");
+          printf("||                                                  ||\n");
+          printf("|| CODIGO DO VENDEDOR:                              ||\n");
+          scanf(" %11[^\n]", v->codven);
+
+          printf("|| CODIGO DO PRODUTO:                               ||\n");
+          scanf(" %13[^\n]", v->codprod);
+            while(!validaCodBarras(v->codprod)) {
+            printf("Código inválido!\n");
+            printf("Informe um novo Código: ");
+            scanf(" %11[^\n]", v->codprod);
+            getchar();
+        }
+
+          printf("|| QUANTIDADE:                                      ||\n");
+          scanf(" %11[^\n]", v->quant);
+
+          printf("|| VALOR:                                           ||\n");
+          scanf(" %11[^\n]", v->valor);
+          getchar();
+          fseek(fp, -sizeof(Vendas), SEEK_CUR);
+          fwrite(v, sizeof(Vendas), 1, fp);
+          achou = 1;
+          break;
+        }
+    }
+}
+    if (!achou) {
+        printf("\n");
+        printf("Código não encontrado!\n");
+    } else {
+        printf("\n");
+        printf("Venda atualizada com sucesso!\n");
+    }
+  getchar();
+  fclose(fp);
 }
 
 void excluirvendas (void){
+  FILE* fp;
+  Vendas* v = (Vendas*) malloc(sizeof(Vendas));
+  char cod[12];
+  int achou = 0;
+
     system("clear||cls"); 
     printf("|| ------------------------------------------------ ||\n");
     printf("|| -------- GESTAO PARA LOJA DE COVENIENCIA ------- ||\n");
@@ -129,8 +181,33 @@ void excluirvendas (void){
     printf("||                                                  ||\n");
     printf("|| INFORME O CODIGO DA VENDA:                       ||\n");
     printf("|| ------------------------------------------------ ||\n");
-    printf("\t\t\t>>> Tecle <ENTER> para voltar...\n");
+    scanf(" %11[^\n]", v->cod);
     getchar();
+    fp = fopen("vendas.dat", "r+b");
+    if (fp == NULL) {
+      printf("Ops! Erro na abertura do arquivo!\n");
+      printf("Não é possível continuar...\n");
+      getchar();
+    } else {
+      while (fread(v, sizeof(Vendas), 1, fp) == 1) {
+        if(strcmp(v->cod, cod) == 0) {
+          v->status = 'd';
+          fseek(fp, -sizeof(Vendas), SEEK_CUR);
+          fwrite(v, sizeof(Vendas), 1, fp);
+          achou = 1;
+          break;
+        }
+      }
+    }
+    if (!achou) {
+        printf("\n");
+        printf("Código não encontrado!\n");
+    } else {
+        printf("\n");
+        printf("Venda excluída com sucesso!\n");
+    }
+  getchar();
+  fclose(fp);
 }
 
 Vendas* pesquisarvendas(void){
@@ -145,7 +222,7 @@ Vendas* pesquisarvendas(void){
     printf("||                                                  ||\n");
     printf("|| INFORME O CODIGO DA VENDA:                       ||\n");
     printf("|| ------------------------------------------------ ||\n");
-    fgets (cod, 12, stdin);
+    scanf(" %11[^\n]", v->cod);
     getchar();
     v = (Vendas*) malloc(sizeof(Vendas));
     fp = fopen("Vendas.dat", "rb");
@@ -169,14 +246,15 @@ return NULL;
 }
 
 void listarvendas (void){
+  FILE* fp;
+  Vendas* v;
+
     system("clear||cls"); 
     printf("|| ------------------------------------------------ ||\n");
     printf("|| -------- GESTAO PARA LOJA DE COVENIENCIA ------- ||\n");
     printf("|| ---------------- LISTAR VENDAS ----------------- ||\n");
     printf("|| ------------------------------------------------ ||\n");
     printf("||                                                  ||\n");
-    FILE* fp;
-    Vendas* v;
     printf("|| VENDAS CADASTRADAS:                              ||\n");
     printf("|| ------------------------------------------------ ||\n");
     v = (Vendas*) malloc(sizeof(Vendas));

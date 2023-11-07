@@ -222,7 +222,6 @@ void excluirclientes (void){
   fclose(fp);
 }
 
-
 Clientes* pesquisarclientes(void){
   FILE* fp;
   Clientes* c;
