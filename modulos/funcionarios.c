@@ -21,7 +21,9 @@ int modulofuncionarios(void) {
                             break;
                 case '4': 	listarfuncionarios();
                             break;
-                case '5': 	pesquisarfuncionarios();
+                case '5': 	fun = pesquisarfuncionarios();
+                            exibefuncionarios(fun);
+                            free(fun);
                             break;		
     } opcao = menufuncionarios();
 }
@@ -116,6 +118,11 @@ void gravafuncionarios(Funcionarios* f) {
 }
 
 void editarfuncionarios (void){
+  FILE* fp;
+  Funcionarios* f = (Funcionarios*) malloc(sizeof(Funcionarios));
+  char cpf[12];
+  int achou = 0;
+
     system("clear||cls"); 
     printf("|| ------------------------------------------------ ||\n");
     printf("|| -------- GESTAO PARA LOJA DE COVENIENCIA ------- ||\n");
@@ -124,19 +131,72 @@ void editarfuncionarios (void){
     printf("||                                                  ||\n");
     printf("|| CPF DO FUNCIONARIO QUE IRA EDITAR:               ||\n");
     printf("|| ------------------------------------------------ ||\n");
-    printf("||                                                  ||\n");
-    printf("|| NOME:                                            ||\n");
-    printf("|| TELEFONE:                                        ||\n");
-    printf("|| CARGO:                                           ||\n");
-    printf("|| SALARIO:                                         ||\n");
-    printf("|| DATA DE NASCIMENTO:                              ||\n");
-    printf("||                                                  ||\n");
-    printf("|| ------------------------------------------------ ||\n");
-    printf("\t\t\t>>> Tecle <ENTER> para voltar...\n");
+    scanf(" %11[^\n]", f->cpf);
     getchar();
+    fp = fopen("funcionarios.dat", "r+b");
+    if (fp == NULL) {
+      printf("Ops! Erro na abertura do arquivo!\n");
+      printf("Não é possível continuar...\n");
+      getchar();
+    } else {
+      while (fread(f, sizeof(Funcionarios), 1, fp) == 1) {
+        if(strcmp(f->cpf, cpf) == 0) {
+          printf("\n");
+          printf("|| Funcionário Encontrado!                              ||\n");
+          printf("|| ------------------------------------------------ ||\n");
+          printf("||             CADASTRE OS NOVOS DADOS:             ||\n");
+          printf("|| ------------------------------------------------ ||\n");
+          printf("||                                                  ||\n");
+          printf("|| NOME:                                            ||\n");
+          scanf(" %100[^\n]", f->nome);
+          while(!validaNome(f->nome)) {
+            printf("Nome inválido!\n");
+            printf("Informe um novo Nome: ");
+            scanf(" %100[^\n]", f->nome);
+            getchar();
+            }
+
+          printf("|| TELEFONE (DD + xxxxxxxxx):                        ||\n");
+          scanf(" %12[^\n]", f->tel);
+          while(!validaTelefone(f->tel)) {
+            printf("Telefone inválido!\n");
+            printf("Informe um novo Telefone: ");
+            scanf(" %12[^\n]", f->tel);
+            getchar();
+        }
+
+          printf("|| CARGO:                                           ||\n");
+          scanf(" %50[^\n]", f->cargo);
+
+          printf("|| SALARIO:                                         ||\n");
+          scanf(" %7[^\n]", f->sala);
+
+          printf("|| DATA DE NASCIMENTO (xx/xx/xxxx):                 ||\n");
+          scanf(" %8[^\n]", f->data);
+          getchar();
+          fseek(fp, -sizeof(Funcionarios), SEEK_CUR);
+          fwrite(f, sizeof(Funcionarios), 1, fp);
+          achou = 1;
+          break;
+        }
+    }
+}
+    if (!achou) {
+        printf("\n");
+        printf("CPF não encontrado!\n");
+    } else {
+        printf("\n");
+        printf("Funcionário atualizado com sucesso!\n");
+    }
+  getchar();
+  fclose(fp);
 }
 
 void excluirfuncionarios (void){
+  FILE* fp;
+  Funcionarios* f = (Funcionarios*) malloc(sizeof(Funcionarios));
+  char cpf[12];
+  int achou = 0;
     
     system("clear||cls"); 
     printf("|| ------------------------------------------------ ||\n");
@@ -146,8 +206,33 @@ void excluirfuncionarios (void){
     printf("||                                                  ||\n");
     printf("|| CPF DO FUNCIONARIO QUE DESEJA EXCLUIR:           ||\n");
     printf("|| ------------------------------------------------ ||\n");
-    printf("\t\t\t>>> Tecle <ENTER> para voltar...\n");
+    scanf(" %11[^\n]", f->cpf);
     getchar();
+    fp = fopen("funcionarios.dat", "r+b");
+    if (fp == NULL) {
+      printf("Ops! Erro na abertura do arquivo!\n");
+      printf("Não é possível continuar...\n");
+      getchar();
+    } else {
+      while (fread(f, sizeof(Funcionarios), 1, fp) == 1) {
+        if(strcmp(f->cpf, cpf) == 0) {
+          f->status = 'd';
+          fseek(fp, -sizeof(Funcionarios), SEEK_CUR);
+          fwrite(f, sizeof(Funcionarios), 1, fp);
+          achou = 1;
+          break;
+        }
+      }
+    }
+    if (!achou) {
+        printf("\n");
+        printf("CPF não encontrado!\n");
+    } else {
+        printf("\n");
+        printf("Funcionário excluído com sucesso!\n");
+    }
+  getchar();
+  fclose(fp);
 }
     
 Funcionarios* pesquisarfuncionarios(void){
@@ -230,7 +315,7 @@ void exibefuncionarios(Funcionarios* f) {
         if (f->status == 'a') {
             strcpy(situacao, "Ativo");
         }else if (f->status == 'd') {
-            strcpy(situacao, "desativado");
+            strcpy(situacao, "Desativado");
         }else {
             strcpy(situacao, "Não informada");
         }
