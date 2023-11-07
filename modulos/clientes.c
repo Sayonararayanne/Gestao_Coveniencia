@@ -124,7 +124,7 @@ void editarclientes (void){
     printf("|| ------------------------------------------------ ||\n");
     printf("||                                                  ||\n");
     printf("|| INFORME O CPF DO CLIENTE:                        ||\n");
-     fgets(cpf, 12, stdin);
+    scanf(" %11[^\n]", c->cpf);
     getchar();
     fp = fopen("clientes.dat", "r+b");
     if (fp == NULL) {
@@ -142,20 +142,20 @@ void editarclientes (void){
           printf("||                                                  ||\n");
           printf("|| NOME:                                            ||\n");
           scanf(" %100[^\n]", c->nome);
-          while(!validaNome(c->nome)) {
-          printf("Nome inválido!\n");
-          printf("Informe um novo Nome: ");
-          scanf(" %100[^\n]", c->nome);
-          getchar();
+            while(!validaNome(c->nome)) {
+            printf("Nome inválido!\n");
+            printf("Informe um novo Nome: ");
+            scanf(" %100[^\n]", c->nome);
+            getchar();
         }
 
           printf("|| TELEFONE (DD + xxxxxxxxx):                        ||\n");
           scanf(" %12[^\n]", c->tel);
-          while(!validaTelefone(c->tel)) {
-          printf("Telefone inválido!\n");
-          printf("Informe um novo Telefone: ");
-          scanf(" %12[^\n]", c->tel);
-          getchar();
+            while(!validaTelefone(c->tel)) {
+            printf("Telefone inválido!\n");
+            printf("Informe um novo Telefone: ");
+            scanf(" %12[^\n]", c->tel);
+            getchar();
         }
 
           printf("|| DATA DE NASCIMENTO (xx/xx/xxxx):                 ||\n");
@@ -193,7 +193,7 @@ void excluirclientes (void){
     printf("||                                                  ||\n");
     printf("|| CPF DO CLIENTE QUE DESEJA EXCLUIR:               ||\n");
     printf("|| ------------------------------------------------ ||\n");
-    fgets(cpf, 12, stdin);
+    scanf(" %11[^\n]", c->cpf);
     getchar();
     fp = fopen("clientes.dat", "r+b");
     if (fp == NULL) {
@@ -236,7 +236,7 @@ Clientes* pesquisarclientes(void){
     printf("||                                                  ||\n");
     printf("|| INFORME O CPF DO CLIENTE:                        ||\n");
     printf("|| ------------------------------------------------ ||\n");
-    fgets (cpf, 12, stdin);
+    scanf(" %11[^\n]", c->cpf);
     getchar();
     c = (Clientes*) malloc(sizeof(Clientes));
     fp = fopen("clientes.dat", "rb");

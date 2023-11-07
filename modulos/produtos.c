@@ -21,7 +21,9 @@ int moduloprodutos(void) {
                             break;
                 case '4': 	listarprodutos();
                             break;
-                case '5': 	pesquisarprodutos();
+                case '5': 	pro = pesquisarprodutos();
+                            exibeprodutos(pro);
+                            free(pro);
                             break;
     } opcao = menuprodutos(); 		
 } 
@@ -45,8 +47,8 @@ char menuprodutos (void){
     printf("||                                                  ||\n");
     printf("|| ------------------------------------------------ ||\n");
     printf("|| Digite a opcao desejada:                         ||\n");
-    printf("|| ------------------------------------------------ ||\n");
     scanf("%c", &op);
+    printf("|| ------------------------------------------------ ||\n");
     getchar();
     return op;
 }
@@ -125,6 +127,10 @@ void gravaprodutos(Produtos* p) {
 }
 
 void editarprodutos (void){
+  FILE* fp;
+  Produtos* p = (Produtos*) malloc(sizeof(Produtos));
+  char cod[12];
+  int achou = 0;
     system("clear||cls"); 
     printf("|| ------------------------------------------------ ||\n");
     printf("|| -------- GESTAO PARA LOJA DE COVENIENCIA ------- ||\n");
@@ -132,22 +138,91 @@ void editarprodutos (void){
     printf("|| ------------------------------------------------ ||\n");
     printf("||                                                  ||\n");
     printf("|| INFORME O CODIGO DO PRODUTO:                     ||\n");
-    printf("|| ------------------------------------------------ ||\n");
-    printf("||                                                  ||\n");
-    printf("|| NOME:                                            ||\n");
-    printf("|| MARCA:                                           ||\n");
-    printf("|| DESCRICAO:                                       ||\n");
-    printf("|| QUANTIDADE:                                      ||\n");
-    printf("|| TIPO:                                            ||\n");
-    printf("|| VALOR:                                           ||\n");
-    printf("|| VALIDADE:                                        ||\n");
-    printf("||                                                  ||\n");
-    printf("|| ------------------------------------------------ ||\n");
-    printf("\t\t\t>>> Tecle <ENTER> para voltar...\n");
+    scanf(" %11[^\n]", p->cod);
     getchar();
+    fp = fopen("produtos.dat", "r+b");
+    if (fp == NULL) {
+      printf("Ops! Erro na abertura do arquivo!\n");
+      printf("Não é possível continuar...\n");
+      getchar();
+    } else {
+      while (fread(p, sizeof(Produtos), 1, fp) == 1) {
+        if(strcmp(p->cod, cod) == 0) {
+          printf("\n");
+          printf("|| Produto Encontrado!                              ||\n");
+          printf("|| ------------------------------------------------ ||\n");
+          printf("||             CADASTRE OS NOVOS DADOS:             ||\n");
+          printf("|| ------------------------------------------------ ||\n");
+          printf("|| CODIGO:                                          ||\n");
+          scanf(" %11[^\n]", p->cod);
+            while(!validaCodBarras(p->cod)) {
+            printf("Código inválido!\n");
+            printf("Informe um novo Código: ");
+            scanf(" %11[^\n]", p->cod);
+            getchar();
+            }
+
+          printf("|| NOME:                                            ||\n");
+          scanf(" %100[^\n]", p->nome);
+            while(!validaNome(p->nome)) {
+            printf("Nome inválido!\n");
+            printf("Informe um novo Nome: ");
+            scanf(" %100[^\n]", p->nome);
+            getchar();
+            }
+
+          printf("|| MARCA:                                           ||\n");
+          scanf(" %50[^\n]", p->marca);
+            while(!validaNome(p->marca)) {
+            printf("Marca inválido!\n");
+            printf("Informe uma nova marca: ");
+            scanf(" %50[^\n]", p->marca);
+            getchar();
+            }
+
+          printf("|| DESCRIÇÃO:                                       ||\n");
+          scanf(" %100[^\n]", p->desc);
+
+          printf("|| QUANTIDADE:                                      ||\n");
+          scanf(" %10[^\n]", p->quant);
+
+          printf("|| TIPO:                                            ||\n");
+          scanf(" %50[^\n]", p->tip);
+            while(!validaNome(p->tip)) {
+            printf("Marca inválido!\n");
+            printf("Informe uma nova marca: ");
+            scanf(" %50[^\n]", p->tip);
+            getchar();
+            }
+
+          printf("|| VALOR:                                           ||\n");
+          scanf(" %10[^\n]", p->valor);
+            getchar(); 
+            fseek(fp, -sizeof(Produtos), SEEK_CUR);
+            fwrite(p, sizeof(Produtos), 1, fp);
+            achou = 1;
+            break;
+        }
+    }
 }
+    if (!achou) {
+        printf("\n");
+        printf("Código não encontrado!\n");
+    } else {
+        printf("\n");
+        printf("Produto atualizado com sucesso!\n");
+    }
+  getchar();
+  fclose(fp);
+}   
+    
 
 void excluirprodutos (void){
+  FILE* fp;
+  Produtos* p = (Produtos*) malloc(sizeof(Produtos));
+  char cod[12];
+  int achou = 0;
+
     system("clear||cls"); 
     printf("|| ------------------------------------------------ ||\n");
     printf("|| -------- GESTAO PARA LOJA DE COVENIENCIA ------- ||\n");
@@ -156,14 +231,41 @@ void excluirprodutos (void){
     printf("||                                                  ||\n");
     printf("|| INFORME O CODIGO DO PRODUTO:                     ||\n");
     printf("|| ------------------------------------------------ ||\n");
-    printf("\t\t\t>>> Tecle <ENTER> para voltar...\n");
+    scanf(" %11[^\n]", p->cod);
     getchar();
+    fp = fopen("produtos.dat", "r+b");
+    if (fp == NULL) {
+      printf("Ops! Erro na abertura do arquivo!\n");
+      printf("Não é possível continuar...\n");
+      getchar();
+    } else {
+      while (fread(p, sizeof(Produtos), 1, fp) == 1) {
+        if(strcmp(p->cod, cod) == 0) {
+          p->status = 'd';
+          fseek(fp, -sizeof(Produtos), SEEK_CUR);
+          fwrite(p, sizeof(Produtos), 1, fp);
+          achou = 1;
+          break;
+        }
+      }
+    }
+    if (!achou) {
+        printf("\n");
+        printf("CPF não encontrado!\n");
+    } else {
+        printf("\n");
+        printf("Cliente excluído com sucesso!\n");
+    }
+  getchar();
+  fclose(fp);
 }
+
 
 Produtos* pesquisarprodutos(void){
   FILE* fp;
   Produtos* p;
   char cod[12];
+
     system("clear||cls"); 
     printf("|| ------------------------------------------------ ||\n");
     printf("|| -------- GESTAO PARA LOJA DE COVENIENCIA ------- ||\n");
@@ -172,7 +274,7 @@ Produtos* pesquisarprodutos(void){
     printf("||                                                  ||\n");
     printf("|| INFORME O CODIGO DA VENDA:                       ||\n");
     printf("|| ------------------------------------------------ ||\n");
-    fgets (cod, 12, stdin);
+    scanf(" %11[^\n]", p->cod);
     getchar();
     p = (Produtos*) malloc(sizeof(Produtos));
     fp = fopen("produtos.dat", "rb");
@@ -196,14 +298,15 @@ return NULL;
 }
 
 void listarprodutos (void){
+  FILE* fp;
+  Produtos* p;
+  
     system("clear||cls"); 
     printf("|| ------------------------------------------------ ||\n");
     printf("|| -------- GESTAO PARA LOJA DE COVENIENCIA ------- ||\n");
     printf("|| --------------- LISTAR PRODUTOS ---------------- ||\n");
     printf("|| ------------------------------------------------ ||\n");
     printf("||                                                  ||\n");
-    FILE* fp;
-    Produtos* p;
     printf("|| PRODUTOS CADASTRADOS:                            ||\n");
     printf("|| ------------------------------------------------ ||\n");
     p = (Produtos*) malloc(sizeof(Produtos));
