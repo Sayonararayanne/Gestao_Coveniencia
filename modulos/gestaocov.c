@@ -7,6 +7,7 @@
 #include "principal.h"
 
 //SEMANA 12
+//!! Referências que utilizei para o CRUD no arquivo vendas.c !!
 
 char menuop(void);
 void menusobre (void);

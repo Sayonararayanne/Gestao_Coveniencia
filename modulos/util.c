@@ -82,7 +82,7 @@ int validaData(char data){
     }
 }
 
-int validaCodBarras(char* cod) {
+int validaCodBarras(char* cod) { //Função baseada no ChatGPT
     int i, soma = 0;
     int multiplo = 1;
 

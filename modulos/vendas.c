@@ -53,7 +53,7 @@ char menuvendas (void){
     return op;
 }
 
-Vendas* cadastrarvendas (void){
+Vendas* cadastrarvendas (void){ //função baseada no slide da Semana 11
     Vendas* v;
     v = (Vendas*) malloc(sizeof(Vendas));
 
@@ -69,7 +69,7 @@ Vendas* cadastrarvendas (void){
     printf("|| CODIGO DO VENDEDOR:                              ||\n");
     scanf(" %11[^\n]", v->codven);
 
-    printf("|| CODIGO DO PRODUTO:                               ||\n");
+    printf("|| CODIGO DO PRODUTO:                               ||\n"); //função para verificar se o produto existe
     scanf(" %13[^\n]", v->codprod);
     while(!validaCodBarras(v->codprod)) {
       printf("Código inválido!\n");
@@ -167,7 +167,7 @@ void editarvendas (void){
   fclose(fp);
 }
 
-void excluirvendas (void){
+void excluirvendas (void){ 
   FILE* fp;
   Vendas* v = (Vendas*) malloc(sizeof(Vendas));
   char cod[12];
@@ -189,7 +189,7 @@ void excluirvendas (void){
       printf("Não é possível continuar...\n");
       getchar();
     } else {
-      while (fread(v, sizeof(Vendas), 1, fp) == 1) {
+      while (fread(v, sizeof(Vendas), 1, fp) == 1) { //função baseada na de @maricaico
         if(strcmp(v->cod, cod) == 0) {
           v->status = 'd';
           fseek(fp, -sizeof(Vendas), SEEK_CUR);
@@ -245,7 +245,7 @@ fclose(fp);
 return NULL;
 }
 
-void listarvendas (void){
+void listarvendas (void){ //função baseada no slide da Semana 11
   FILE* fp;
   Vendas* v;
 
@@ -274,7 +274,7 @@ void listarvendas (void){
     free(v);
 }
 
-void exibevendas(Vendas* v) {
+void exibevendas(Vendas* v) { //função baseada no slide da Semana 11
     if ((v == NULL) || (v->status == 'x')) {
         printf("VENDA INEXISTENTE");
     }else {
