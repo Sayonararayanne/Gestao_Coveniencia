@@ -235,7 +235,7 @@ Clientes* pesquisarclientes(void){
     printf("||                                                  ||\n");
     printf("|| INFORME O CPF DO CLIENTE:                        ||\n");
     printf("|| ------------------------------------------------ ||\n");
-    scanf(" %11[^\n]", c->cpf);
+    scanf(" %11[^\n]", cpf);
     getchar();
     c = (Clientes*) malloc(sizeof(Clientes));
     fp = fopen("clientes.dat", "rb");

@@ -206,7 +206,7 @@ void excluirfuncionarios (void){
     printf("||                                                  ||\n");
     printf("|| CPF DO FUNCIONARIO QUE DESEJA EXCLUIR:           ||\n");
     printf("|| ------------------------------------------------ ||\n");
-    scanf(" %11[^\n]", f->cpf);
+    scanf(" %11[^\n]", cpf);
     getchar();
     fp = fopen("funcionarios.dat", "r+b");
     if (fp == NULL) {
@@ -238,6 +238,7 @@ void excluirfuncionarios (void){
 Funcionarios* pesquisarfuncionarios(void){
   FILE* fp;
   Funcionarios* f;
+  f = (Funcionarios*) malloc(sizeof(Funcionarios));
   char cpf[12];
   
     system("clear||cls"); 
@@ -248,9 +249,8 @@ Funcionarios* pesquisarfuncionarios(void){
     printf("||                                                  ||\n");
     printf("|| INFORME O CPF DO FUNCIONÁRIO:                        ||\n");
     printf("|| ------------------------------------------------ ||\n");
-    fgets (cpf, 12, stdin);
+    scanf(" %11[^\n]", cpf);
     getchar();
-    f = (Funcionarios*) malloc(sizeof(Funcionarios));
     fp = fopen("funcionarios.dat", "rb");
     if (fp == NULL) {
         printf("Ops! Erro na abertura do arquivo!\n");
@@ -273,14 +273,14 @@ return NULL;
 
 
 void listarfuncionarios (void){
+  FILE* fp;
+  Funcionarios* f;
     system("clear||cls"); 
     printf("|| ------------------------------------------------ ||\n");
     printf("|| -------- GESTAO PARA LOJA DE COVENIENCIA ------- ||\n");
     printf("|| ------------- LISTAR FUNCIONARIOS -------------- ||\n");
     printf("|| ------------------------------------------------ ||\n");
     printf("||                                                  ||\n");
-    FILE* fp;
-    Funcionarios* f;
     printf("|| FUNCIONARIOS CADASTRADOS:                        ||\n");
     printf("|| ------------------------------------------------ ||\n");
     f = (Funcionarios*) malloc(sizeof(Funcionarios));

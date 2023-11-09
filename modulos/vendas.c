@@ -181,7 +181,7 @@ void excluirvendas (void){
     printf("||                                                  ||\n");
     printf("|| INFORME O CODIGO DA VENDA:                       ||\n");
     printf("|| ------------------------------------------------ ||\n");
-    scanf(" %11[^\n]", v->cod);
+    scanf(" %11[^\n]", cod);
     getchar();
     fp = fopen("vendas.dat", "r+b");
     if (fp == NULL) {
@@ -213,7 +213,9 @@ void excluirvendas (void){
 Vendas* pesquisarvendas(void){
   FILE* fp;
   Vendas* v;
+  v = (Vendas*) malloc(sizeof(Vendas));
   char cod[12];
+
     system("clear||cls"); 
     printf("|| ------------------------------------------------ ||\n");
     printf("|| -------- GESTAO PARA LOJA DE COVENIENCIA ------- ||\n");
@@ -222,9 +224,8 @@ Vendas* pesquisarvendas(void){
     printf("||                                                  ||\n");
     printf("|| INFORME O CODIGO DA VENDA:                       ||\n");
     printf("|| ------------------------------------------------ ||\n");
-    scanf(" %11[^\n]", v->cod);
+    scanf(" %11[^\n]", cod);
     getchar();
-    v = (Vendas*) malloc(sizeof(Vendas));
     fp = fopen("Vendas.dat", "rb");
     if (fp == NULL) {
         printf("Ops! Erro na abertura do arquivo!\n");
@@ -248,6 +249,7 @@ return NULL;
 void listarvendas (void){ //função baseada no slide da Semana 11
   FILE* fp;
   Vendas* v;
+  v = (Vendas*) malloc(sizeof(Vendas));
 
     system("clear||cls"); 
     printf("|| ------------------------------------------------ ||\n");
@@ -257,7 +259,6 @@ void listarvendas (void){ //função baseada no slide da Semana 11
     printf("||                                                  ||\n");
     printf("|| VENDAS CADASTRADAS:                              ||\n");
     printf("|| ------------------------------------------------ ||\n");
-    v = (Vendas*) malloc(sizeof(Vendas));
     fp = fopen("vendas.dat", "rb");
     if (fp == NULL) {
         printf("Ops! Ocorreu um erro na abertura do arquivo!\n");

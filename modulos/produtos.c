@@ -131,6 +131,7 @@ void editarprodutos (void){
   Produtos* p = (Produtos*) malloc(sizeof(Produtos));
   char cod[12];
   int achou = 0;
+  
     system("clear||cls"); 
     printf("|| ------------------------------------------------ ||\n");
     printf("|| -------- GESTAO PARA LOJA DE COVENIENCIA ------- ||\n");
@@ -231,7 +232,7 @@ void excluirprodutos (void){
     printf("||                                                  ||\n");
     printf("|| INFORME O CODIGO DO PRODUTO:                     ||\n");
     printf("|| ------------------------------------------------ ||\n");
-    scanf(" %11[^\n]", p->cod);
+    scanf(" %11[^\n]", cod);
     getchar();
     fp = fopen("produtos.dat", "r+b");
     if (fp == NULL) {
@@ -264,6 +265,7 @@ void excluirprodutos (void){
 Produtos* pesquisarprodutos(void){
   FILE* fp;
   Produtos* p;
+  p = (Produtos*) malloc(sizeof(Produtos));
   char cod[12];
 
     system("clear||cls"); 
@@ -274,9 +276,8 @@ Produtos* pesquisarprodutos(void){
     printf("||                                                  ||\n");
     printf("|| INFORME O CODIGO DA VENDA:                       ||\n");
     printf("|| ------------------------------------------------ ||\n");
-    scanf(" %11[^\n]", p->cod);
+    scanf(" %11[^\n]", cod);
     getchar();
-    p = (Produtos*) malloc(sizeof(Produtos));
     fp = fopen("produtos.dat", "rb");
     if (fp == NULL) {
         printf("Ops! Erro na abertura do arquivo!\n");
@@ -300,6 +301,7 @@ return NULL;
 void listarprodutos (void){
   FILE* fp;
   Produtos* p;
+   p = (Produtos*) malloc(sizeof(Produtos));
   
     system("clear||cls"); 
     printf("|| ------------------------------------------------ ||\n");
@@ -309,7 +311,6 @@ void listarprodutos (void){
     printf("||                                                  ||\n");
     printf("|| PRODUTOS CADASTRADOS:                            ||\n");
     printf("|| ------------------------------------------------ ||\n");
-    p = (Produtos*) malloc(sizeof(Produtos));
     fp = fopen("produtos.dat", "rb");
     if (fp == NULL) {
         printf("Ops! Ocorreu um erro na abertura do arquivo!\n");

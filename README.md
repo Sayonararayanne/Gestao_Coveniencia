@@ -9,5 +9,10 @@ O foco principal do sistema é fazer um modelo que consiga gerenciar uma loja de
 disso, os módulos e funcionalidades do projeto foram criados voltados para facilitar e otimizar os
 processos realizados em uma coveniência.
 
-O sistema está sendo desenvolvido pela aluna Sayonara Rayanne Soares de Araújo,
-graduanda do curso de Bacharelado em Sistemas de Informação da UFRN - CERES.
+O sistema está sendo desenvolvido pela aluna Sayonara Rayanne, graduanda 
+do curso de Bacharelado em Sistemas de Informação da UFRN - CERES.
+
+⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️
+Instruções: Quando for compilar o código entre na pasta "modulos" e execute o comando make
+Atenção: As referências que foram utilizadas para a implementação de todos os CRUD'S estão sinalizanadas 
+no arquivo vendas.c
