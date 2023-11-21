@@ -18,4 +18,3 @@ void exibevendas (Vendas*);
 void editarvendas (void);
 void excluirvendas (void);
 Vendas* pesquisarvendas (void);
-void listarvendas (void);

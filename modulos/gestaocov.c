@@ -5,8 +5,9 @@
 #include "funcionarios.h"
 #include "clientes.h"
 #include "principal.h"
+#include "relatoriofun.h"
 
-//SEMANA 12
+//SEMANA 14
 
 char menuop(void);
 void menusobre (void);

@@ -18,4 +18,3 @@ void exibeclientes(Clientes*);
 void editarclientes (void);
 void excluirclientes (void);
 Clientes* pesquisarclientes (void);
-void listarclientes (void);

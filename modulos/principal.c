@@ -15,6 +15,8 @@ void moduloprin(void) {
                         break;
             case '4': 	modulofuncionarios();
                         break;
+            case '5': 	modulorelatorios();
+                        break;
         } 		
     } while (opcao != '0');
 }
@@ -30,7 +32,8 @@ char menuprincipal(void){
     printf("|| (1) - MODULO DE PRODUTOS                         ||\n");
     printf("|| (2) - MODULO DE VENDAS                           ||\n");
     printf("|| (3) - MODULO DE CLIENTES                         ||\n");
-    printf("|| (4) - MODULO DE FUNCIONARIOS                     ||\n"); //ideia: funcionorio do mes ??
+    printf("|| (4) - MODULO DE FUNCIONARIOS                     ||\n");
+    printf("|| (5) - MODULO RELATÓRIOS                          ||\n"); //ideia: funcionorio do mes ??
     printf("|| (0) - SAIR                                       ||\n");
     printf("||                                                  ||\n");
     printf("|| ------------------------------------------------ ||\n");

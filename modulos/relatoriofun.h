@@ -1,0 +1,15 @@
+char menurelatorio(void);
+void listaclistatus(char);
+void listaclitotal(void);
+void modulorelatorio(void);
+void menurelatorioclientes(void);
+char relatorioclientes(void);
+void menurelatoriovendas(void);
+void menurelatoriofuncionarios(void);
+void menurelatorioprodutos(void);
+char relatoriovendas(void);
+void listaventotal(void);
+char relatoriofuncionarios(void);
+void listafuntotal(void);
+char relatorioprodutos(void);
+void listaprototal(void);

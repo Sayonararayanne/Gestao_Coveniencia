@@ -19,9 +19,7 @@ int modulofuncionarios(void) {
                             break;
                 case '3': 	excluirfuncionarios();
                             break;
-                case '4': 	listarfuncionarios();
-                            break;
-                case '5': 	fun = pesquisarfuncionarios();
+                case '4': 	fun = pesquisarfuncionarios();
                             exibefuncionarios(fun);
                             free(fun);
                             break;		
@@ -41,8 +39,7 @@ char menufuncionarios(void){
     printf("|| (1) - CADASTRAR FUNCIONARIO                      ||\n");
     printf("|| (2) - EDITAR FUNCIONARIO                         ||\n");
     printf("|| (3) - EXCLUIR FUNCIONARIO                        ||\n");
-    printf("|| (4) - LISTAR FUNCIONARIOS                        ||\n");
-    printf("|| (5) - PESQUISAR FUNCIONARIO                      ||\n");
+    printf("|| (4) - PESQUISAR FUNCIONARIO                      ||\n");
     printf("|| (0) - SAIR                                       ||\n");
     printf("||                                                  ||\n");
     printf("|| ------------------------------------------------ ||\n");
@@ -269,35 +266,6 @@ Funcionarios* pesquisarfuncionarios(void){
 }
 fclose(fp);
 return NULL;
-}
-
-
-void listarfuncionarios (void){
-  FILE* fp;
-  Funcionarios* f;
-    system("clear||cls"); 
-    printf("|| ------------------------------------------------ ||\n");
-    printf("|| -------- GESTAO PARA LOJA DE COVENIENCIA ------- ||\n");
-    printf("|| ------------- LISTAR FUNCIONARIOS -------------- ||\n");
-    printf("|| ------------------------------------------------ ||\n");
-    printf("||                                                  ||\n");
-    printf("|| FUNCIONARIOS CADASTRADOS:                        ||\n");
-    printf("|| ------------------------------------------------ ||\n");
-    f = (Funcionarios*) malloc(sizeof(Funcionarios));
-    fp = fopen("funcionarios.dat", "rb");
-    if (fp == NULL) {
-        printf("Ops! Ocorreu um erro na abertura do arquivo!\n");
-        printf("Não é possível continuar este programa...\n");
-        exit(1);
-    }
-    while(fread(f, sizeof(Funcionarios), 1, fp)) {
-        if (f->status != 'x') {
-        exibefuncionarios(f);
-        getchar();
-        }
-    }
-    fclose(fp);
-    free(f);
 }
 
 void exibefuncionarios(Funcionarios* f) {

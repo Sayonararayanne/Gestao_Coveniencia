@@ -4,3 +4,4 @@ int moduloclientes (void);
 int modulofuncionarios (void);
 int moduloprodutos (void);
 int modulovendas (void);
+int modulorelatorios (void);

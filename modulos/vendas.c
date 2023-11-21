@@ -19,9 +19,7 @@ int modulovendas(void) {
                             break;
                 case '3': 	excluirvendas();
                             break;
-                case '4': 	listarvendas();
-                            break;
-                case '5': 	ven = pesquisarvendas();
+                case '4': 	ven = pesquisarvendas();
                             exibevendas(ven);
                             free(ven);
                             break;
@@ -41,8 +39,7 @@ char menuvendas (void){
     printf("|| (1) - CADASTRAR VENDA                            ||\n");
     printf("|| (2) - EDITAR VENDA                               ||\n");
     printf("|| (3) - EXCLUIR VENDA                              ||\n");
-    printf("|| (4) - LISTAR VENDAS                              ||\n");
-    printf("|| (5) - PESQUISAR VENDA                            ||\n");
+    printf("|| (4) - PESQUISAR VENDA                            ||\n");
     printf("|| (0) - SAIR                                       ||\n");
     printf("||                                                  ||\n");
     printf("|| ------------------------------------------------ ||\n");
@@ -244,35 +241,6 @@ Vendas* pesquisarvendas(void){
 }
 fclose(fp);
 return NULL;
-}
-
-void listarvendas (void){ //função baseada no slide da Semana 11
-  FILE* fp;
-  Vendas* v;
-  v = (Vendas*) malloc(sizeof(Vendas));
-
-    system("clear||cls"); 
-    printf("|| ------------------------------------------------ ||\n");
-    printf("|| -------- GESTAO PARA LOJA DE COVENIENCIA ------- ||\n");
-    printf("|| ---------------- LISTAR VENDAS ----------------- ||\n");
-    printf("|| ------------------------------------------------ ||\n");
-    printf("||                                                  ||\n");
-    printf("|| VENDAS CADASTRADAS:                              ||\n");
-    printf("|| ------------------------------------------------ ||\n");
-    fp = fopen("vendas.dat", "rb");
-    if (fp == NULL) {
-        printf("Ops! Ocorreu um erro na abertura do arquivo!\n");
-        printf("Não é possível continuar este programa...\n");
-        exit(1);
-    }
-    while(fread(v, sizeof(Vendas), 1, fp)) {
-        if (v->status != 'x') {
-        exibevendas(v);
-        getchar();
-        }
-    }
-    fclose(fp);
-    free(v);
 }
 
 void exibevendas(Vendas* v) { //função baseada no slide da Semana 11

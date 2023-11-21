@@ -5,7 +5,7 @@
     char tel[13];
     char cargo[52];
     char sala[9];
-    char data[9];
+    char data[11];
     char status;
     struct funcionarios *next;
 };
@@ -19,4 +19,4 @@ void exibefuncionarios (Funcionarios*);
 void editarfuncionarios (void);
 void excluirfuncionarios (void);
 Funcionarios* pesquisarfuncionarios (void);
-void listarfuncionarios (void);
+void modulorelatorio (void);

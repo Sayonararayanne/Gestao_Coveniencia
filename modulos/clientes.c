@@ -19,9 +19,7 @@ int moduloclientes(void) {
                         break;
             case '3': 	excluirclientes();
                         break;
-            case '4': 	listarclientes();
-                        break;
-            case '5': 	cli = pesquisarclientes();
+            case '4': 	cli = pesquisarclientes();
                         exibeclientes(cli);
                         free(cli);
                         break;		
@@ -41,8 +39,7 @@ char menuclientes (void){
     printf("|| (1) - CADASTRAR CLIENTE                          ||\n");
     printf("|| (2) - EDITAR CLIENTE                             ||\n");
     printf("|| (3) - EXCLUIR CLIENTE                            ||\n");
-    printf("|| (4) - LISTAR CLIENTES                            ||\n");
-    printf("|| (5) - PESQUISAR CLIENTE                          ||\n");
+    printf("|| (4) - PESQUISAR CLIENTE                          ||\n");
     printf("|| (0) - SAIR                                       ||\n");
     printf("||                                                  ||\n");
     printf("|| ------------------------------------------------ ||\n");
@@ -256,35 +253,6 @@ Clientes* pesquisarclientes(void){
 }
 fclose(fp);
 return NULL;
-}
-
-void listarclientes (void){
-  FILE* fp;
-  Clientes* c;
-
-    system("clear||cls"); 
-    printf("|| ------------------------------------------------ ||\n");
-    printf("|| -------- GESTAO PARA LOJA DE COVENIENCIA ------- ||\n");
-    printf("|| --------------- LISTAR CLIENTES ---------------- ||\n");
-    printf("|| ------------------------------------------------ ||\n");
-    printf("||                                                  ||\n");
-    printf("|| CLIENTES CADASTRADOS:                            ||\n");
-    printf("|| ------------------------------------------------ ||\n");
-    c = (Clientes*) malloc(sizeof(Clientes));
-    fp = fopen("clientes.dat", "rb");
-    if (fp == NULL) {
-        printf("Ops! Ocorreu um erro na abertura do arquivo!\n");
-        printf("Não é possível continuar...\n");
-        exit(1);
-    }
-    while(fread(c, sizeof(Clientes), 1, fp)) {
-        if (c->status != 'x') {
-        exibeclientes(c);
-        getchar();
-        }
-    }
-    fclose(fp);
-    free(c);
 }
 
 void exibeclientes(Clientes* c) {

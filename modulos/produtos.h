@@ -20,4 +20,3 @@ void exibeprodutos (Produtos*);
 void editarprodutos (void);
 void excluirprodutos (void);
 Produtos* pesquisarprodutos (void);
-void listarprodutos (void);

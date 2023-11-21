@@ -19,9 +19,7 @@ int moduloprodutos(void) {
                             break;
                 case '3': 	excluirprodutos();
                             break;
-                case '4': 	listarprodutos();
-                            break;
-                case '5': 	pro = pesquisarprodutos();
+                case '4': 	pro = pesquisarprodutos();
                             exibeprodutos(pro);
                             free(pro);
                             break;
@@ -41,8 +39,7 @@ char menuprodutos (void){
     printf("|| (1) - CADASTRAR PRODUTO                          ||\n");
     printf("|| (2) - EDITAR PRODUTO                             ||\n");
     printf("|| (3) - EXCLUIR PRODUTO                            ||\n");
-    printf("|| (4) - LISTAR PRODUTOS                            ||\n");
-    printf("|| (5) - PESQUISAR PRODUTO                          ||\n");
+    printf("|| (4) - PESQUISAR PRODUTO                          ||\n");
     printf("|| (0) - SAIR                                       ||\n");
     printf("||                                                  ||\n");
     printf("|| ------------------------------------------------ ||\n");
@@ -296,35 +293,6 @@ Produtos* pesquisarprodutos(void){
 }
 fclose(fp);
 return NULL;
-}
-
-void listarprodutos (void){
-  FILE* fp;
-  Produtos* p;
-   p = (Produtos*) malloc(sizeof(Produtos));
-  
-    system("clear||cls"); 
-    printf("|| ------------------------------------------------ ||\n");
-    printf("|| -------- GESTAO PARA LOJA DE COVENIENCIA ------- ||\n");
-    printf("|| --------------- LISTAR PRODUTOS ---------------- ||\n");
-    printf("|| ------------------------------------------------ ||\n");
-    printf("||                                                  ||\n");
-    printf("|| PRODUTOS CADASTRADOS:                            ||\n");
-    printf("|| ------------------------------------------------ ||\n");
-    fp = fopen("produtos.dat", "rb");
-    if (fp == NULL) {
-        printf("Ops! Ocorreu um erro na abertura do arquivo!\n");
-        printf("Não é possível continuar este programa...\n");
-        exit(1);
-    }
-    while(fread(p, sizeof(Produtos), 1, fp)) {
-        if (p->status != 'x') {
-        exibeprodutos(p);
-        getchar();
-        }
-    }
-    fclose(fp);
-    free(p);
 }
 
 void exibeprodutos(Produtos* p) {
