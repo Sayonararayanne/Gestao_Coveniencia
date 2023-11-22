@@ -149,20 +149,17 @@ void listaclitotal(void){
     }
 	printf("%-13s","CPF:");
 	printf("|");
-    printf("%-102s", "Nome do cliente:");
+    printf("%-50s", "Nome do cliente:");
 	printf("|");
     printf("%-14s","Telefone:");
 	printf("|");
     printf("%-12s", "Data de nascimento:");
 	printf("\n");
-	printf("%14s", "|");
-    printf("%102s", "|");
-	printf("\n");
-    while (fread(c, sizeof(c), 1, fp)) { 
+    while (fread(c, sizeof(Clientes), 1, fp)) { 
         if (c->status != 'x') {
 			printf("%-13s",c->cpf);
 			printf("|");
-			printf("%-102s",c->nome);
+			printf("%-50s",c->nome);
 			printf("|");
 			printf("%-14s",c->tel);
 			printf("|");
@@ -240,10 +237,7 @@ void listafuntotal(void){
 	printf("\n");
 	printf("%-10s", "Salário:");
 	printf("\n");
-	printf("%14s", "|");
-    printf("%102s", "|");
-	printf("\n");
-    while (fread(f, sizeof(f), 1, fp)) { 
+    while (fread(f, sizeof(Funcionarios), 1, fp)) { 
         if (f->status != 'x') {
 			printf("%-13s",f->cpf);
 			printf("|");
@@ -329,10 +323,7 @@ void listaventotal(void){
 	printf("\n");
 	printf("%-12s", "Valor:");
 	printf("\n");
-	printf("%13s", "|");
-    printf("%13s", "|");
-	printf("\n");
-    while (fread(v, sizeof(v), 1, fp)) { 
+    while (fread(v, sizeof(Vendas), 1, fp)) { 
         if (v->status != 'x') {
 			printf("%-13s",v->cod);
 			printf("|");
@@ -418,10 +409,7 @@ void listaprototal(void){
 	printf("\n");
 	printf("%-12s", "Valor individual:");
 	printf("\n");
-	printf("%13s", "|");
-    printf("%13s", "|");
-	printf("\n");
-    while (fread(p, sizeof(p), 1, fp)) { 
+    while (fread(p, sizeof(Produtos), 1, fp)) { 
         if (p->status != 'x') {
 			printf("%-13s", p->cod);
 			printf("|");
