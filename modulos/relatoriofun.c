@@ -104,14 +104,11 @@ void listaclistatus(char st){
     }
     printf("%-15s","CPF:");
 	printf("|");
-    printf("%-51s", "Nome do cliente:");
+    printf("%-51s","Nome do cliente:");
 	printf("|");
-    printf("%-12s", "Status:");
+    printf("%-12s","Status:");
 	printf("\n");
-	printf("%13s", "|");
-    printf("%51s", "|");
-	printf("\n");
-    while (fread(c, sizeof(c), 1, fp)) { 
+    while (fread(c, sizeof(Clientes), 1, fp)) { 
         if (c->status == st) {
 			printf("%-15s",c->cpf);
 			printf("|");
@@ -178,9 +175,11 @@ void menurelatoriofuncionarios(void){
     do {
         opcao = relatoriofuncionarios();
         switch(opcao) {
-            case '1':   listafuntotal();
-                        break;	
-		    }
+            case '1':   listafunstatus('a');
+                        break;
+			case '2':   listafuntotal();
+                        break;
+          } 		
     } while (opcao != '0');
 }
 
@@ -194,7 +193,8 @@ char relatoriofuncionarios(void){
     printf("||                                                  ||\n");
 	printf("||            RELATÓRIO DOS FUNCIONÁRIOS            ||\n");
 	printf("||                                                  ||\n");
-    printf("|| (1) - RELATÓRIO TOTAL                            ||\n");
+    printf("|| (1) - RELATÓRIO POR STATUS                       ||\n");
+    printf("|| (2) - RELATÓRIO TOTAL                            ||\n");
     printf("|| (0) - SAIR                                       ||\n");
     printf("||                                                  ||\n");
     printf("|| ------------------------------------------------ ||\n");
@@ -203,6 +203,59 @@ char relatoriofuncionarios(void){
     printf("|| ------------------------------------------------ ||\n");
     getchar();
     return op;
+}
+
+void listafunstatus(char st){
+	Funcionarios* f;
+    FILE* fp;
+	system("clear||cls"); 
+    printf("|| ------------------------------------------------ ||\n");
+    printf("|| -------- GESTAO PARA LOJA DE COVENIENCIA ------- ||\n");
+    printf("|| --------------- LISTAR CLIENTES ---------------- ||\n");
+    printf("|| ------------------------------------------------ ||\n");
+    printf("||                                                  ||\n");
+    printf("|| FUNCIONÁRIOS POR STATUS:                         ||\n");
+    printf("|| ------------------------------------------------ ||\n");
+	f = (Funcionarios*) malloc(sizeof(Funcionarios)); //função baseada na de @maricaico
+    fp = fopen("funcionarios.dat", "rb");
+    if (fp == NULL) {
+        printf("\t\t\t>>> Processando as informações...\n");
+        sleep(1);
+        printf("\t\t\t>>> Houve um erro ao abrir o arquivo!\n");
+        printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
+        getchar();
+    }
+    printf("%-13s","CPF:");
+	printf("|");
+    printf("%-102s", "Nome do funcionário");
+	printf("|");
+    printf("%-14s", "Telefone:");
+	printf("|");
+    printf("%-12s", "Data de nascimento:");
+	printf("\n");
+	printf("%-53s", "Cargo:");
+	printf("\n");
+	printf("%-10s", "Salário:");
+	printf("\n");
+    while (fread(f, sizeof(Funcionarios), 1, fp)) { 
+        if (f->status == st) {
+			printf("%-13s",f->cpf);
+			printf("|");
+			printf("%-102s",f->nome);
+			printf("|");
+			printf("%-14s",f->tel);
+			printf("|");
+			printf("%-12s",f->data);
+			printf("|");
+			printf("%-53s",f->cargo);
+			printf("|");
+			printf("%-10s",f->sala);
+			printf("\n");
+        }
+    }
+    fclose(fp);
+    free(f);
+    getchar();
 }
 
 void listafuntotal(void){
@@ -261,12 +314,14 @@ void listafuntotal(void){
 void menurelatoriovendas(void){
     char opcao;
 
-    do {
+   do {
         opcao = relatoriovendas();
         switch(opcao) {
-            case '1':   listaventotal();
-                        break;	
-		    }
+            case '1':   listavenstatus('a');
+                        break;
+			case '2':   listaventotal();
+                        break;
+          } 		
     } while (opcao != '0');
 }
 
@@ -280,7 +335,8 @@ char relatoriovendas(void){
     printf("||                                                  ||\n");
 	printf("||               RELATÓRIO DOS VENDAS               ||\n");
 	printf("||                                                  ||\n");
-    printf("|| (1) - RELATÓRIO TOTAL                            ||\n");
+    printf("|| (1) - RELATÓRIO POR STATUS                       ||\n");
+    printf("|| (2) - RELATÓRIO TOTAL                            ||\n");
     printf("|| (0) - SAIR                                       ||\n");
     printf("||                                                  ||\n");
     printf("|| ------------------------------------------------ ||\n");
@@ -289,6 +345,57 @@ char relatoriovendas(void){
     printf("|| ------------------------------------------------ ||\n");
     getchar();
     return op;
+}
+
+void listavenstatus(char st){
+	Vendas* v;
+    FILE* fp;
+	system("clear||cls"); 
+    printf("|| ------------------------------------------------ ||\n");
+    printf("|| -------- GESTAO PARA LOJA DE COVENIENCIA ------- ||\n");
+    printf("|| --------------- LISTAR CLIENTES ---------------- ||\n");
+    printf("|| ------------------------------------------------ ||\n");
+    printf("||                                                  ||\n");
+    printf("|| VENDAS POR STATUS:                               ||\n");
+    printf("|| ------------------------------------------------ ||\n");
+	v = (Vendas*) malloc(sizeof(Vendas)); //função baseada na de @maricaico
+    fp = fopen("vendas.dat", "rb");
+    if (fp == NULL) {
+        printf("\t\t\t>>> Processando as informações...\n");
+        sleep(1);
+        printf("\t\t\t>>> Houve um erro ao abrir o arquivo!\n");
+        printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
+        getchar();
+    }
+    printf("%-13s","Código:");
+	printf("|");
+    printf("%-13s","Código do vendedor:");
+	printf("|");
+    printf("%-15s", "Código do produto:");
+	printf("|");
+    printf("%-12s", "Data de nascimento:");
+	printf("\n");
+	printf("%-12s", "Quantidade:");
+	printf("\n");
+	printf("%-12s", "Valor:");
+	printf("\n");
+    while (fread(v, sizeof(Vendas), 1, fp)) { 
+        if (v->status == st) {
+			printf("%-13s",v->cod);
+			printf("|");
+			printf("%-13s",v->codven);
+			printf("|");
+			printf("%-15s",v->codprod);
+			printf("|");
+			printf("%-12s",v->quant);
+			printf("|");
+			printf("%-12s",v->valor);
+			printf("\n");
+        }
+    }
+    fclose(fp);
+    free(v);
+    getchar();
 }
 
 void listaventotal(void){
@@ -345,12 +452,14 @@ void listaventotal(void){
 void menurelatorioprodutos(void){
     char opcao;
 
-    do {
+   do {
         opcao = relatorioprodutos();
         switch(opcao) {
-            case '1':   listaprototal();
-                        break;	
-		    }
+            case '1':   listaprostatus('a');
+                        break;
+			case '2':   listaprototal();
+                        break;
+          } 		
     } while (opcao != '0');
 }
 
@@ -364,7 +473,8 @@ char relatorioprodutos(void){
     printf("||                                                  ||\n");
 	printf("||                RELATÓRIO DOS PRODUTOS            ||\n");
 	printf("||                                                  ||\n");
-    printf("|| (1) - RELATÓRIO TOTAL                            ||\n");
+    printf("|| (1) - RELATÓRIO POR STATUS                       ||\n");
+    printf("|| (2) - RELATÓRIO TOTAL                            ||\n");
     printf("|| (0) - SAIR                                       ||\n");
     printf("||                                                  ||\n");
     printf("|| ------------------------------------------------ ||\n");
@@ -373,6 +483,63 @@ char relatorioprodutos(void){
     printf("|| ------------------------------------------------ ||\n");
     getchar();
     return op;
+}
+
+void listaprostatus(char st){
+	Produtos* p;
+    FILE* fp;
+	system("clear||cls"); 
+    printf("|| ------------------------------------------------ ||\n");
+    printf("|| -------- GESTAO PARA LOJA DE COVENIENCIA ------- ||\n");
+    printf("|| --------------- LISTAR CLIENTES ---------------- ||\n");
+    printf("|| ------------------------------------------------ ||\n");
+    printf("||                                                  ||\n");
+    printf("|| PRODUTOS POR STATUS:                             ||\n");
+    printf("|| ------------------------------------------------ ||\n");
+	p = (Produtos*) malloc(sizeof(Produtos)); //função baseada na de @maricaico
+    fp = fopen("produtos.dat", "rb");
+    if (fp == NULL) {
+        printf("\t\t\t>>> Processando as informações...\n");
+        sleep(1);
+        printf("\t\t\t>>> Houve um erro ao abrir o arquivo!\n");
+        printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
+        getchar();
+    }
+   printf("%-13s","Código:");
+	printf("|");
+    printf("%-102s","Nome do produto:");
+	printf("|");
+    printf("%-52s","Marca");
+	printf("|");
+    printf("%-102s","Descrição do produto:");
+	printf("\n");
+	printf("%-12s", "Quantidade:");
+	printf("\n");
+	printf("%-52s", "Tipo:");
+	printf("\n");
+	printf("%-12s", "Valor individual:");
+	printf("\n");
+    while (fread(p, sizeof(Produtos), 1, fp)) { 
+        if (p->status == st) {
+			printf("%-13s", p->cod);
+			printf("|");
+			printf("%-102s",p->nome);
+			printf("|");
+			printf("%-52s",p->marca);
+			printf("|");
+			printf("%-102s",p->desc);
+			printf("|");
+			printf("%-12s",p->quant);
+			printf("|");
+			printf("%-52s",p->tip);
+			printf("|");
+			printf("%-12s",p->valor);
+			printf("\n");
+        }
+    }
+    fclose(fp);
+    free(p);
+    getchar();
 }
 
 void listaprototal(void){
