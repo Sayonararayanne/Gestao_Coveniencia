@@ -3,6 +3,7 @@
 #include <string.h>
 #include "vendas.h"
 #include "util.h"
+#include "clientes.h"
 
 //MODULO VENDAS
 int modulovendas(void) {
@@ -52,6 +53,7 @@ char menuvendas (void){
 
 Vendas* cadastrarvendas (void){ //função baseada no slide da Semana 11
     Vendas* v;
+    char* nome_cli;
     v = (Vendas*) malloc(sizeof(Vendas));
 
     system("clear||cls"); 
@@ -62,6 +64,13 @@ Vendas* cadastrarvendas (void){ //função baseada no slide da Semana 11
     printf("||                                                  ||\n"); //na hora da compra poder comprar mais de um produto
     printf("|| CODIGO:                                          ||\n"); //diferente por vez. Ex: pedir código e quantidade até se encerrarem os vendas.
     scanf(" %11[^\n]", v->cod);
+
+    printf("|| CPF DO CLIENTE:                              ||\n");
+    scanf(" %12[^\n]", v->codcli);
+    nome_cli = get_cliente(v->codcli);
+    getchar();
+    
+    printf("|| DESCRIÇÃO DO CLIENTE:\n",nome_cli);
 
     printf("|| CODIGO DO VENDEDOR:                              ||\n");
     scanf(" %11[^\n]", v->codven);
@@ -78,7 +87,7 @@ Vendas* cadastrarvendas (void){ //função baseada no slide da Semana 11
     printf("|| QUANTIDADE:                                      ||\n");
     scanf(" %11[^\n]", v->quant);
 
-    printf("|| VALOR:                                           ||\n");
+    printf("|| VALOR DA UNIDADE:                                           ||\n");
     scanf(" %11[^\n]", v->valor);
     getchar();
     printf("||                                                  ||\n");
@@ -254,4 +263,50 @@ void exibevendas(Vendas* v) { //função baseada no slide da Semana 11
         printf("Quantidade: %s\n", v->quant);
         printf("Valor: %s\n", v->valor);
     }
+}
+
+
+//Clientes* get_cliente(char cpf[12]){
+//FILE *fp;
+//Clientes *c;
+//fp = fopen("clientes.dat", "rb");
+   //if (fp == NULL) {
+        //printf("Ops! Erro na abertura do arquivo!\n");
+        //printf("Não é possível continuar...\n");
+        //getchar();
+   //}else{
+      //while(fread(c, sizeof(Clientes), 1, fp)) {
+            //if((strcmp(c->cpf, cpf) == 0)){
+            //fclose(fp);
+            //return c;
+    //}
+  //}
+//}
+//fclose(fp);
+//return NULL;
+//}
+
+char* get_cliente(const char* cpf){
+    Clientes c;
+    FILE* fp = fopen("clientes.dat", "rb");
+   if (fp == NULL) {
+        printf("Ops! Erro na abertura do arquivo!\n");
+        printf("Não é possível continuar...\n");
+        getchar();
+    }
+    while (fread(&c, sizeof(c), 1, fp) == 1){
+        if(strcmp(c.cpf, cpf) == 0){
+            char* x = (char*) malloc(strlen(c.nome) + 1);
+            if (x == NULL){
+                printf("Ocorreu um erro!\n");
+                fclose(fp);
+                return x;
+            }
+            strcpy(x, c.nome);
+            fclose(fp);
+            return x;
+    }
+  }
+  fclose(fp);
+  return NULL;
 }
