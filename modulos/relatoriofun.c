@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include <unistd.h>
 #include "relatoriofun.h"
 #include "funcionarios.h"
@@ -56,6 +57,8 @@ void menurelatorioclientes(void){
                         break;
 			case '2':   listaclitotal();
                         break;
+            case '3':   listacliordemabc();
+                        break;
           } 		
     } while (opcao != '0');
 }
@@ -72,6 +75,7 @@ char relatorioclientes(void){
 	printf("||                                                  ||\n");
     printf("|| (1) - RELATÓRIO POR STATUS                       ||\n");
     printf("|| (2) - RELATÓRIO TOTAL                            ||\n");
+    printf("|| (3) - RELATÓRIO ORDEM ALFABÉTICA                 ||\n");
     printf("|| (0) - SAIR                                       ||\n");
     printf("||                                                  ||\n");
     printf("|| ------------------------------------------------ ||\n");
@@ -169,6 +173,85 @@ void listaclitotal(void){
     getchar();
 }
 
+void listacliordemabc(void){
+    FILE* fp = fopen("clientes.dat", "rb");
+    Clientes* c;
+    Clientes* lista;
+    system("clear||cls");
+    if (fp == NULL) {
+        printf("\t\t\t>>> Processando as informações...\n");
+        sleep(1);
+        printf("\t\t\t>>> Houve um erro ao abrir o arquivo!\n");
+        printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
+        getchar();
+    }
+    printf("\n");
+    printf("|| ------------------------------------------------ ||\n");
+    printf("|| -------- GESTAO PARA LOJA DE COVENIENCIA ------- ||\n");
+    printf("|| --------------- LISTAR CLIENTES ---------------- ||\n");
+    printf("|| ------------------------------------------------ ||\n");
+    printf("||                                                  ||\n");
+    printf("|| CLIENTES CADASTRADOS:                            ||\n");
+    printf("|| ------------------------------------------------ ||\n");
+    printf("%-13s", "CPF");
+    printf("|");
+    printf("%-50s", "Nome do cliente");
+    printf("\n");
+    lista = NULL;
+    c = (Clientes*)malloc(sizeof(Clientes));
+    if (c == NULL) {
+        printf("\t\t\t>>> Processando as informações...\n");
+        sleep(1);
+        printf("\t\t\t>>> Houve um erro ao alocar a memória!\n");
+        printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
+        getchar();
+    }
+    while(fread(c, sizeof(Clientes), 1, fp) == 1) {
+        c->next = NULL;
+        if ((lista == NULL) || (strcmp(c->nome, lista->nome) < 0)) {
+            c->next = lista;
+            lista = c;
+        } else {
+            Clientes* ant = lista;
+            Clientes* atual = lista->next;
+            while ((atual != NULL) && strcmp(atual->nome, c->nome) < 0) {
+                ant = atual;
+                atual = atual->next;
+            }
+            ant->next = c;
+            c->next = atual;
+
+        }
+        c = (Clientes*)malloc(sizeof(Clientes));
+        if (c == NULL) {
+            printf("\t\t\t>>> Processando as informações...\n");
+            sleep(1);
+            printf("\t\t\t>>> Houve um erro ao alocar a memória!\n");
+            printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
+            getchar();
+        }
+    }
+    fclose(fp);
+    c = lista;
+    while(c != NULL) {
+        printf("%-12s", c->cpf);
+        printf("|");
+        printf("%-30s", c->nome);
+        printf("\n");
+        c = c->next;
+    }
+    c = lista;
+    while (lista != NULL) {
+        lista = lista->next;
+        free(c);
+        c = lista;
+    }
+    printf("\n");
+    printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
+    getchar();
+
+}
+
 void menurelatoriofuncionarios(void){
     char opcao;
 
@@ -178,6 +261,8 @@ void menurelatoriofuncionarios(void){
             case '1':   listafunstatus('a');
                         break;
 			case '2':   listafuntotal();
+                        break;
+            case '3':   listafunordemabc();
                         break;
           } 		
     } while (opcao != '0');
@@ -195,6 +280,7 @@ char relatoriofuncionarios(void){
 	printf("||                                                  ||\n");
     printf("|| (1) - RELATÓRIO POR STATUS                       ||\n");
     printf("|| (2) - RELATÓRIO TOTAL                            ||\n");
+    printf("|| (3) - RELATÓRIO ORDEM ALFABÉTICA                 ||\n");
     printf("|| (0) - SAIR                                       ||\n");
     printf("||                                                  ||\n");
     printf("|| ------------------------------------------------ ||\n");
@@ -311,6 +397,85 @@ void listafuntotal(void){
     getchar();
 }
 
+void listafunordemabc(void){
+    FILE* fp = fopen("funcionarios.dat", "rb");
+    Funcionarios* f;
+    Funcionarios* lista;
+    system("clear||cls");
+    if (fp == NULL) {
+        printf("\t\t\t>>> Processando as informações...\n");
+        sleep(1);
+        printf("\t\t\t>>> Houve um erro ao abrir o arquivo!\n");
+        printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
+        getchar();
+    }
+    printf("\n");
+    printf("|| ------------------------------------------------ ||\n");
+    printf("|| -------- GESTAO PARA LOJA DE COVENIENCIA ------- ||\n");
+    printf("|| ------------- LISTAR FUNCIONÁRIOS -------------- ||\n");
+    printf("|| ------------------------------------------------ ||\n");
+    printf("||                                                  ||\n");
+    printf("|| FUNCIONÁRIOS CADASTRADOS:                        ||\n");
+    printf("|| ------------------------------------------------ ||\n");
+    printf("%-13s", "CPF: ");
+    printf("|");
+    printf("%-50s", "NOME DO FUNCIONÁRIO: ");
+    printf("\n");
+    lista = NULL;
+    f = (Funcionarios*)malloc(sizeof(Funcionarios));
+    if (f == NULL) {
+        printf("\t\t\t>>> Processando as informações...\n");
+        sleep(1);
+        printf("\t\t\t>>> Houve um erro ao alocar a memória!\n");
+        printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
+        getchar();
+    }
+    while(fread(f, sizeof(Funcionarios), 1, fp) == 1) {
+        f->next = NULL;
+        if ((lista == NULL) || (strcmp(f->nome, lista->nome) < 0)) {
+            f->next = lista;
+            lista = f;
+        } else {
+            Funcionarios* ant = lista;
+            Funcionarios* atual = lista->next;
+            while ((atual != NULL) && strcmp(atual->nome, f->nome) < 0) {
+                ant = atual;
+                atual = atual->next;
+            }
+            ant->next = f;
+            f->next = atual;
+
+        }
+        f = (Funcionarios*)malloc(sizeof(Funcionarios));
+        if (f == NULL) {
+            printf("\t\t\t>>> Processando as informações...\n");
+            sleep(1);
+            printf("\t\t\t>>> Houve um erro ao alocar a memória!\n");
+            printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
+            getchar();
+        }
+    }
+    fclose(fp);
+    f = lista;
+    while(f != NULL) {
+        printf("%-12s", f->cpf);
+        printf("|");
+        printf("%-30s", f->nome);
+        printf("\n");
+        f = f->next;
+    }
+    f = lista;
+    while (lista != NULL) {
+        lista = lista->next;
+        free(f);
+        f = lista;
+    }
+    printf("\n");
+    printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
+    getchar();
+
+}
+
 void menurelatoriovendas(void){
     char opcao;
 
@@ -353,7 +518,7 @@ void listavenstatus(char st){
 	system("clear||cls"); 
     printf("|| ------------------------------------------------ ||\n");
     printf("|| -------- GESTAO PARA LOJA DE COVENIENCIA ------- ||\n");
-    printf("|| --------------- LISTAR CLIENTES ---------------- ||\n");
+    printf("|| ---------------- LISTAR VENDAS ----------------- ||\n");
     printf("|| ------------------------------------------------ ||\n");
     printf("||                                                  ||\n");
     printf("|| VENDAS POR STATUS:                               ||\n");
@@ -404,7 +569,7 @@ void listaventotal(void){
 	system("clear||cls"); 
     printf("|| ------------------------------------------------ ||\n");
     printf("|| -------- GESTAO PARA LOJA DE COVENIENCIA ------- ||\n");
-    printf("|| --------------- LISTAR CLIENTES ---------------- ||\n");
+    printf("|| ---------------- LISTAR VENDAS ----------------- ||\n");
     printf("|| ------------------------------------------------ ||\n");
     printf("||                                                  ||\n");
     printf("|| VENDAS CADASTRADOS:                              ||\n");
@@ -459,6 +624,8 @@ void menurelatorioprodutos(void){
                         break;
 			case '2':   listaprototal();
                         break;
+            case '3':   listaproordemabc();
+                        break;
           } 		
     } while (opcao != '0');
 }
@@ -475,6 +642,7 @@ char relatorioprodutos(void){
 	printf("||                                                  ||\n");
     printf("|| (1) - RELATÓRIO POR STATUS                       ||\n");
     printf("|| (2) - RELATÓRIO TOTAL                            ||\n");
+    printf("|| (3) - RELATÓRIO POR ORDEM ALFABÉTICA             ||\n");
     printf("|| (0) - SAIR                                       ||\n");
     printf("||                                                  ||\n");
     printf("|| ------------------------------------------------ ||\n");
@@ -597,4 +765,83 @@ void listaprototal(void){
     fclose(fp);
     free(p);
     getchar();
+}
+
+void listaproordemabc(void){
+    FILE* fp = fopen("produtos.dat", "rb");
+    Produtos* p;
+    Produtos* lista;
+    system("clear||cls");
+    if (fp == NULL) {
+        printf("\t\t\t>>> Processando as informações...\n");
+        sleep(1);
+        printf("\t\t\t>>> Houve um erro ao abrir o arquivo!\n");
+        printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
+        getchar();
+    }
+    printf("\n");
+    printf("|| ------------------------------------------------ ||\n");
+    printf("|| -------- GESTAO PARA LOJA DE COVENIENCIA ------- ||\n");
+    printf("|| ------------- LISTAR FUNCIONÁRIOS -------------- ||\n");
+    printf("|| ------------------------------------------------ ||\n");
+    printf("||                                                  ||\n");
+    printf("|| FUNCIONÁRIOS CADASTRADOS:                        ||\n");
+    printf("|| ------------------------------------------------ ||\n");
+    printf("%-13s", "CÓDIGO DO PRODUTO: ");
+    printf("|");
+    printf("%-50s", "NOME DO PRODUTO: ");
+    printf("\n");
+    lista = NULL;
+    p = (Produtos*)malloc(sizeof(Produtos));
+    if (p == NULL) {
+        printf("\t\t\t>>> Processando as informações...\n");
+        sleep(1);
+        printf("\t\t\t>>> Houve um erro ao alocar a memória!\n");
+        printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
+        getchar();
+    }
+    while(fread(p, sizeof(Produtos), 1, fp) == 1) {
+        p->next = NULL;
+        if ((lista == NULL) || (strcmp(p->nome, lista->nome) < 0)) {
+            p->next = lista;
+            lista = p;
+        } else {
+            Produtos* ant = lista;
+            Produtos* atual = lista->next;
+            while ((atual != NULL) && strcmp(atual->nome, p->nome) < 0) {
+                ant = atual;
+                atual = atual->next;
+            }
+            ant->next = p;
+            p->next = atual;
+
+        }
+        p = (Produtos*)malloc(sizeof(Produtos));
+        if (p == NULL) {
+            printf("\t\t\t>>> Processando as informações...\n");
+            sleep(1);
+            printf("\t\t\t>>> Houve um erro ao alocar a memória!\n");
+            printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
+            getchar();
+        }
+    }
+    fclose(fp);
+    p = lista;
+    while(p != NULL) {
+        printf("%-12s", p->cod);
+        printf("|");
+        printf("%-30s", p->nome);
+        printf("\n");
+        p = p->next;
+    }
+    p = lista;
+    while (lista != NULL) {
+        lista = lista->next;
+        free(p);
+        p = lista;
+    }
+    printf("\n");
+    printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
+    getchar();
+
 }

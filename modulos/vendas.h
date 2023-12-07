@@ -2,7 +2,7 @@ struct vendas
 {
     char cod[12];
     char codven[12]; //cpf
-    char codcli[12]; 
+    char cpf[12]; 
     char codprod[14];
     char quant[11];
     char valor[11];
