@@ -6,6 +6,7 @@ struct vendas
     char codprod[14];
     char quant[11];
     char valor[11];
+    char dataHora[40];
     char status;
     struct vendas *next;
 };
@@ -19,4 +20,4 @@ void exibevendas(Vendas*);
 void editarvendas(void);
 void excluirvendas(void);
 Vendas* pesquisarvendas(void);
-int cadastrar_ven(char *cpf);
+void geraDatahora(char*);

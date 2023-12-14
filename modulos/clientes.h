@@ -17,5 +17,3 @@ void exibeclientes(Clientes*);
 void editarclientes (void);
 void excluirclientes (void);
 Clientes* pesquisarclientes (void);
-char* get_cliente(const char* cpf);
-int cadastrar_cli(char *cpf);

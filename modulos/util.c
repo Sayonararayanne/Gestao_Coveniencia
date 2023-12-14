@@ -85,74 +85,15 @@ int validaData(char data){
     }
 }
 
-int validaCodBarras(char* cod) { //Função baseada no ChatGPT
-    int i, soma = 0;
-    int multiplo = 1;
-
+int validaCodBarras(char* cod) { 
     for (int i = 0; cod[i] != '\0'; i++) {
         if (!isdigit(cod[i])) {
             return 0;
         }
     }
-    int tam = strlen(cod);
-    if (tam != 13) {
+    int tamb = strlen(cod);
+    if (tamb != 13) {
         return 0;
     }
-    for (i = 11; i >= 0; i--) { //Referências: Função baseada na do chatGpt
-        int digito = cod[i] - '0';
-        soma += digito * multiplo;
-        multiplo = (multiplo == 1) ? 3 : 1;
-    }
-    int digitoVerificador = (10 - (soma % 10)) % 10;
-    if (digitoVerificador == cod[12] - '0') {
-        return 1;
-    } else {
-        return 0;
-    }
-  return 1;
-}
-
-int cadastrar_cli (char* cpf) {
-    FILE* fp;
-    Clientes* c;
-    c = (Clientes*)malloc(sizeof(Clientes));
-    fp = fopen("clientes.dat", "rb");
-    while (fread(c, sizeof(Clientes), 1, fp)) {
-        if ((!strcmp(c->cpf, cpf)) && (c->status == 'a')) {
-            fclose(fp);
-            return 1;
-        }
-    }
-    fclose(fp);
-    return 0;
-}
-
-int cadastrar_fun (char* cpf) {
-    FILE* fp;
-    Funcionarios* f;
-    f = (Funcionarios*)malloc(sizeof(Funcionarios));
-    fp = fopen("Funcionarios.dat", "rb");
-    while (fread(f, sizeof(Funcionarios), 1, fp)) {
-        if ((!strcmp(f->cpf, cpf)) && (f->status == 'a')) {
-            fclose(fp);
-            return 1;
-        }
-    }
-    fclose(fp);
-    return 0;
-}
-
-int cadastrar_ven (char* cod) {
-    FILE* fp;
-    Vendas* v;
-    v = (Vendas*)malloc(sizeof(Vendas));
-    fp = fopen("Vendas.dat", "rb");
-    while (fread(v, sizeof(Vendas), 1, fp)) {
-        if ((!strcmp(v->cod, cod))) {
-            fclose(fp);
-            return 1;
-        }
-    }
-    fclose(fp);
-    return 0;
+    return 1;
 }

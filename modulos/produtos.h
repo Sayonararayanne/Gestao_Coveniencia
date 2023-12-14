@@ -1,6 +1,6 @@
 struct produtos 
 {
-    char cod[12];
+    char cod[14];
     char nome[101];
     char marca[51];
     char desc[101];

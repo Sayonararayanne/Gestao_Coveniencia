@@ -61,7 +61,7 @@ Produtos* cadastrarprodutos (void){
     printf("|| -------------------------------------------------||\n");
     printf("||                                                  ||\n");
     printf("|| CODIGO:                                          ||\n");
-    scanf(" %11[^\n]", p->cod);
+    scanf(" %13[^\n]", p->cod);
     while(!validaCodBarras(p->cod)) {
       printf("Código inválido!\n");
       printf("Informe um novo Código: ");
@@ -136,7 +136,7 @@ void editarprodutos (void){
     printf("|| ------------------------------------------------ ||\n");
     printf("||                                                  ||\n");
     printf("|| INFORME O CODIGO DO PRODUTO:                     ||\n");
-    scanf(" %11[^\n]", p->cod);
+    scanf(" %11[^\n]", cod);
     getchar();
     fp = fopen("produtos.dat", "r+b");
     if (fp == NULL) {

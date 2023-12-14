@@ -63,33 +63,12 @@ Funcionarios* cadastrarfuncionarios (void){
     printf("||                                                  ||\n");
     printf("|| CPF (11 digitos sem espaço nem pontuação):       ||\n");
     scanf(" %11[^\n]", f->cpf);
-     //função baseada na de José Alves
-    while(!(validaCPF(cpf_f)) ){
-        printf("CPF inválido\n");
-        printf("Digite o CPF do Funcionário novamente: \n");
-        scanf("%12[^\n]", cpf_f);
-
-        while(cadastrar_cli(cpf_f)){
-        printf("CPF já existe no banco de dados<<<\n");
-        printf("Digite o CPF do Funcionário novamente: \n");
-        scanf("%12[^\n]", cpf_f);
-        getchar();
-        }
-        getchar();
+    while(!validaCPF(f->cpf)) {
+      printf("CPF inválido!\n");
+      printf("Informe um novo CPF: ");
+      scanf(" %100[^\n]", f->cpf);
+      getchar();
     }
-     while(cadastrar_cli(cpf_f)){
-        printf("CPF já existe no banco de dados<<<\n");
-        printf("Digite o CPF novamente: \n");
-        scanf("%12[^\n]",cpf_f);
-        getchar();
-        while(!(validaCPF(cpf_f))){
-            printf("CPF foi digitado incorretamente<<<\n");
-            printf("Digite o CPF novamente: \n");
-            scanf("%12[^\n]",cpf_f);
-            getchar();
-        }
-    }
-    strcpy(f->cpf, cpf_f);
 
     printf("|| NOME:                                            ||\n");
     scanf(" %100[^\n]", f->nome);
@@ -150,7 +129,7 @@ void editarfuncionarios (void){
     printf("||                                                  ||\n");
     printf("|| CPF DO FUNCIONARIO QUE IRA EDITAR:               ||\n");
     printf("|| ------------------------------------------------ ||\n");
-    scanf(" %11[^\n]", f->cpf);
+    scanf(" %11[^\n]", cpf);
     getchar();
     fp = fopen("funcionarios.dat", "r+b");
     if (fp == NULL) {

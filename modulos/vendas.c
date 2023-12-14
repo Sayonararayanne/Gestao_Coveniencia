@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <time.h>
 #include <string.h>
 #include "vendas.h"
 #include "util.h"
@@ -51,8 +52,17 @@ char menuvendas (void){
     return op;
 }
 
+void geraDatahora(char* dataHora) {
+    time_t tempoAtual;
+    struct tm *infoTempo;
+
+    time(&tempoAtual);
+    infoTempo = localtime(&tempoAtual);
+
+    strftime(dataHora, 20, "%d/%m/%Y %H:%M:%S", infoTempo);
+}
+
 Vendas* cadastrarvendas (void){ //função baseada no slide da Semana 11
-    char cod_v[13];
     Vendas* v;
     v = (Vendas*) malloc(sizeof(Vendas));
 
@@ -64,14 +74,7 @@ Vendas* cadastrarvendas (void){ //função baseada no slide da Semana 11
     printf("||                                                  ||\n"); 
     printf("|| CODIGO:                                          ||\n"); 
     scanf("%5[^\n]", v->cod);
-      while(cadastrar_cli(cod_v)){ //veriificando se o código já existe 
-      printf("O Código já existe no banco de dados\n");
-      printf("Digite o código da venda novamente: \n");
-      scanf("%12[^\n]", cod_v);
-      getchar();
-    }
-    strcpy(v->cod, cod_v);
-
+    
     printf("|| CODIGO DO VENDEDOR:                              ||\n");
     scanf(" %11[^\n]", v->cpf_ven);
 
@@ -89,6 +92,10 @@ Vendas* cadastrarvendas (void){ //função baseada no slide da Semana 11
 
     printf("|| VALOR DA UNIDADE:                                ||\n");
     scanf(" %11[^\n]", v->valor);
+
+    geraDatahora(v->dataHora);
+    printf("|| DATA E HORA DA VENDA: %s\n", v->dataHora);
+
     getchar();
     printf("||                                                  ||\n");
     printf("|| ------------------------------------------------ ||\n");
@@ -102,16 +109,16 @@ void gravavendas(Vendas* v) {
         printf("Erro na abertura do arquivo!\n");
         printf("Não é possível continuar...\n");
         exit(1);
+
     }
     fwrite(v, sizeof(Vendas), 1, fp);
     fclose(fp);
 }
 
-
 void editarvendas (void){
   FILE* fp;
   Vendas* v = (Vendas*) malloc(sizeof(Vendas));
-  char cod[12];
+  char cod[6];
   int achou = 0;
 
     system("clear||cls"); 
@@ -121,7 +128,7 @@ void editarvendas (void){
     printf("|| ------------------------------------------------ ||\n");
     printf("||                                                  ||\n");
     printf("|| INFORME O CODIGO DA VENDA:                       ||\n");
-    scanf(" %11[^\n]", v->cod);
+    scanf(" %11[^\n]", cod);
     getchar();
     fp = fopen("vendas.dat", "r+b");
     if (fp == NULL) {
@@ -139,6 +146,12 @@ void editarvendas (void){
           printf("||                                                  ||\n");
           printf("|| CODIGO DO VENDEDOR:                              ||\n");
           scanf(" %11[^\n]", v->cpf_ven);
+            while(!validaCPF(v->cpf_ven)) {
+              printf("CPF inválido!\n");
+              printf("Informe um novo CPF: ");
+              scanf(" %12[^\n]", v->cpf_ven);
+              getchar();
+          }
 
           printf("|| CODIGO DO PRODUTO:                               ||\n");
           scanf(" %13[^\n]", v->codprod);
@@ -176,7 +189,7 @@ void editarvendas (void){
 void excluirvendas (void){ 
   FILE* fp;
   Vendas* v = (Vendas*) malloc(sizeof(Vendas));
-  char cod[12];
+  char cod[6];
   int achou = 0;
 
     system("clear||cls"); 
@@ -220,7 +233,7 @@ Vendas* pesquisarvendas(void){
   FILE* fp;
   Vendas* v;
   v = (Vendas*) malloc(sizeof(Vendas));
-  char cod[12];
+  char cod[6];
 
     system("clear||cls"); 
     printf("|| ------------------------------------------------ ||\n");
@@ -230,9 +243,9 @@ Vendas* pesquisarvendas(void){
     printf("||                                                  ||\n");
     printf("|| INFORME O CODIGO DA VENDA:                       ||\n");
     printf("|| ------------------------------------------------ ||\n");
-    scanf(" %11[^\n]", cod);
+    scanf("%s", cod);
     getchar();
-    fp = fopen("Vendas.dat", "rb");
+    fp = fopen("vendas.dat", "rb");
     if (fp == NULL) {
         printf("Ops! Erro na abertura do arquivo!\n");
         printf("Não é possível continuar...\n");
@@ -256,7 +269,7 @@ void exibevendas(Vendas* v) { //função baseada no slide da Semana 11
     if ((v == NULL) || (v->status == 'x')) {
         printf("VENDA INEXISTENTE");
     }else {
-        printf("VENDAS CADASTRADOS: \n");
+        printf("VENDAS CADASTRADAS: \n");
         printf("Código: %s\n", v->cod);
         printf("Código do vendedor: %s\n", v->cpf_ven);
         printf("Código do produto: %s\n", v->codprod);

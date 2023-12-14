@@ -51,7 +51,6 @@ char menuclientes (void){
 }
 
 Clientes* cadastrarclientes (void){
-    char cpf_c[13];
     Clientes* c;
     c = (Clientes*) malloc(sizeof(Clientes));
 
@@ -63,34 +62,40 @@ Clientes* cadastrarclientes (void){
     printf("||                                                  ||\n");
     printf("|| CPF (11 digitos sem espaço nem pontuação):       ||\n");
     printf("|| CPF DO CLIENTE:                                  ||\n");
-    scanf(" %12[^\n]", cpf_c);
+    scanf(" %12[^\n]", c->cpf);
+    while(!validaCPF(c->cpf)) {
+      printf("CPF inválido!\n");
+      printf("Informe um novo CPF: ");
+      scanf(" %12[^\n]", c->cpf);
+      getchar();
+    }
     //função baseada na de José Alves
-    while(!(validaCPF(cpf_c)) ){
-        printf("CPF inválido\n");
-        printf("Digite o CPF do Cliente novamente: \n");
-        scanf("%12[^\n]", cpf_c);
+    //while(!(validaCPF(cpf_c)) ){
+        //printf("CPF inválido\n");
+        //printf("Digite o CPF do Cliente novamente: \n");
+        //scanf("%12[^\n]", cpf_c);
 
-        while(cadastrar_cli(cpf_c)){
-        printf("CPF já existe no banco de dados\n");
-        printf("Digite o CPF do Cliente novamente: \n");
-        scanf("%12[^\n]", cpf_c);
-        getchar();
-        }
-        getchar();
-    }
-     while(cadastrar_cli(cpf_c)){
-        printf("CPF já existe no banco de dados\n");
-        printf("Digite o CPF novamente: \n");
-        scanf("%12[^\n]",cpf_c);
-        getchar();
-        while(!(validaCPF(cpf_c))){
-            printf("CPF foi digitado incorretamente\n");
-            printf("Digite o CPF novamente: \n");
-            scanf("%12[^\n]",cpf_c);
-            getchar();
-        }
-    }
-    strcpy(c->cpf, cpf_c);
+       // while(cadastrar_cli(cpf_c)){
+       // printf("CPF já existe no banco de dados\n");
+       // printf("Digite o CPF do Cliente novamente: \n");
+        //scanf("%12[^\n]", cpf_c);
+       // getchar();
+       // }
+       // getchar();
+   // }
+     //while(cadastrar_cli(cpf_c)){
+        //printf("CPF já existe no banco de dados\n");
+       // printf("Digite o CPF novamente: \n");
+       // scanf("%12[^\n]",cpf_c);
+       // getchar();
+       // while(!(validaCPF(cpf_c))){
+            //printf("CPF foi digitado incorretamente\n");
+            //printf("Digite o CPF novamente: \n");
+            //scanf("%12[^\n]",cpf_c);
+           // getchar();
+       // }
+   // }
+    //strcpy(c->cpf, cpf_c);
 
     printf("|| NOME:                                            ||\n");
     scanf(" %100[^\n]", c->nome);
@@ -144,7 +149,7 @@ void editarclientes (void){
     printf("|| ------------------------------------------------ ||\n");
     printf("||                                                  ||\n");
     printf("|| INFORME O CPF DO CLIENTE:                        ||\n");
-    scanf(" %11[^\n]", c->cpf);
+    scanf(" %12[^\n]", cpf);
     getchar();
     fp = fopen("clientes.dat", "r+b");
     if (fp == NULL) {
@@ -213,7 +218,7 @@ void excluirclientes (void){
     printf("||                                                  ||\n");
     printf("|| CPF DO CLIENTE QUE DESEJA EXCLUIR:               ||\n");
     printf("|| ------------------------------------------------ ||\n");
-    scanf(" %11[^\n]", c->cpf);
+    scanf(" %12[^\n]", c->cpf);
     getchar();
     fp = fopen("clientes.dat", "r+b");
     if (fp == NULL) {
@@ -255,7 +260,7 @@ Clientes* pesquisarclientes(void){
     printf("||                                                  ||\n");
     printf("|| INFORME O CPF DO CLIENTE:                        ||\n");
     printf("|| ------------------------------------------------ ||\n");
-    scanf(" %11[^\n]", cpf);
+    scanf(" %12[^\n]", cpf);
     getchar();
     c = (Clientes*) malloc(sizeof(Clientes));
     fp = fopen("clientes.dat", "rb");

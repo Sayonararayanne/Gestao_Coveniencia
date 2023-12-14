@@ -154,6 +154,8 @@ void listaclitotal(void){
     printf("%-14s","Telefone:");
 	printf("|");
     printf("%-12s", "Data de nascimento:");
+    printf("|");
+    printf("%-12s","Status:");
 	printf("\n");
     while (fread(c, sizeof(Clientes), 1, fp)) { 
         if (c->status != 'x') {
@@ -164,6 +166,8 @@ void listaclitotal(void){
 			printf("%-14s",c->tel);
 			printf("|");
 			printf("%-12s",c->data);
+            printf("|");
+            printf("%c",c->status);
 			printf("\n");
         }
     }
@@ -317,10 +321,12 @@ void listafunstatus(char st){
     printf("%-14s", "Telefone:");
 	printf("|");
     printf("%-12s", "Data de nascimento:");
-	printf("\n");
+	printf("|");
 	printf("%-53s", "Cargo:");
-	printf("\n");
+	printf("|");
 	printf("%-10s", "Salário:");
+    printf("|");
+    printf("%-12s","Status:");
 	printf("\n");
     while (fread(f, sizeof(Funcionarios), 1, fp)) { 
         if (f->status == st) {
@@ -335,6 +341,8 @@ void listafunstatus(char st){
 			printf("%-53s",f->cargo);
 			printf("|");
 			printf("%-10s",f->sala);
+            printf("|");
+            printf("%c",f->status);
 			printf("\n");
         }
     }
@@ -370,10 +378,12 @@ void listafuntotal(void){
     printf("%-14s", "Telefone:");
 	printf("|");
     printf("%-12s", "Data de nascimento:");
-	printf("\n");
+	printf("|");
 	printf("%-53s", "Cargo:");
-	printf("\n");
+	printf("|");
 	printf("%-10s", "Salário:");
+    printf("|");
+    printf("%-12s","Status:");
 	printf("\n");
     while (fread(f, sizeof(Funcionarios), 1, fp)) { 
         if (f->status != 'x') {
@@ -388,6 +398,8 @@ void listafuntotal(void){
 			printf("%-53s",f->cargo);
 			printf("|");
 			printf("%-10s",f->sala);
+            printf("|");
+            printf("%c",f->status);
 			printf("\n");
         }
     }
@@ -531,25 +543,23 @@ void listavenstatus(char st){
         printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
         getchar();
     }
-    printf("%-13s","Código:");
+    printf("%-6s","Código:");
 	printf("|");
     printf("%-13s","Código do vendedor:");
 	printf("|");
-    printf("%-15s", "Código do produto:");
+    printf("%-14s", "Código do produto:");
 	printf("|");
-    printf("%-12s", "Data de nascimento:");
-	printf("\n");
 	printf("%-12s", "Quantidade:");
-	printf("\n");
+	printf("|");
 	printf("%-12s", "Valor:");
 	printf("\n");
     while (fread(v, sizeof(Vendas), 1, fp)) { 
         if (v->status == st) {
-			printf("%-13s",v->cod);
+			printf("%-6s",v->cod);
 			printf("|");
 			printf("%-13s",v->cpf_ven);
 			printf("|");
-			printf("%-15s",v->codprod);
+			printf("%-14s",v->codprod);
 			printf("|");
 			printf("%-12s",v->quant);
 			printf("|");
@@ -571,7 +581,7 @@ void listaventotal(void){
     printf("|| ---------------- LISTAR VENDAS ----------------- ||\n");
     printf("|| ------------------------------------------------ ||\n");
     printf("||                                                  ||\n");
-    printf("|| VENDAS CADASTRADOS:                              ||\n");
+    printf("|| VENDAS CADASTRADAS:                              ||\n");
     printf("|| ------------------------------------------------ ||\n");
 	v = (Vendas*) malloc(sizeof(Vendas));
     fp = fopen("vendas.dat", "rb");
@@ -582,25 +592,23 @@ void listaventotal(void){
         printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
         getchar();
     }
-	printf("%-13s","Código:");
+	printf("%-14s","Código:");
 	printf("|");
     printf("%-13s","Código do vendedor:");
 	printf("|");
-    printf("%-15s", "Código do produto:");
+    printf("%-14s","Código do produto:");
 	printf("|");
-    printf("%-12s", "Data de nascimento:");
-	printf("\n");
-	printf("%-12s", "Quantidade:");
-	printf("\n");
-	printf("%-12s", "Valor:");
+	printf("%-12s","Quantidade:");
+	printf("|");
+	printf("%-12s","Valor:");
 	printf("\n");
     while (fread(v, sizeof(Vendas), 1, fp)) { 
         if (v->status != 'x') {
-			printf("%-13s",v->cod);
+			printf("%-6s",v->cod);
 			printf("|");
 			printf("%-13s",v->cpf_ven);
 			printf("|");
-			printf("%-15s",v->codprod);
+			printf("%-14s",v->codprod);
 			printf("|");
 			printf("%-12s",v->quant);
 			printf("|");
@@ -679,11 +687,11 @@ void listaprostatus(char st){
     printf("%-52s","Marca");
 	printf("|");
     printf("%-102s","Descrição do produto:");
-	printf("\n");
+	printf("|");
 	printf("%-12s", "Quantidade:");
-	printf("\n");
+	printf("|");
 	printf("%-52s", "Tipo:");
-	printf("\n");
+	printf("|");
 	printf("%-12s", "Valor individual:");
 	printf("\n");
     while (fread(p, sizeof(Produtos), 1, fp)) { 
@@ -736,11 +744,11 @@ void listaprototal(void){
     printf("%-52s","Marca");
 	printf("|");
     printf("%-102s","Descrição do produto:");
-	printf("\n");
+	printf("|");
 	printf("%-12s", "Quantidade:");
-	printf("\n");
+	printf("|");
 	printf("%-52s", "Tipo:");
-	printf("\n");
+	printf("|");
 	printf("%-12s", "Valor individual:");
 	printf("\n");
     while (fread(p, sizeof(Produtos), 1, fp)) { 
