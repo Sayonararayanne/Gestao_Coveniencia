@@ -11,7 +11,7 @@ int modulovendas(void) {
     Vendas* ven;
     char opcao;
     opcao = menuvendas();
-        do {
+        while (opcao != '0') {
             switch(opcao) {
                 case '1': 	ven = cadastrarvendas();
                             gravavendas(ven);
@@ -25,8 +25,8 @@ int modulovendas(void) {
                             exibevendas(ven);
                             free(ven);
                             break;
-    } 		
-} while (opcao != '0');
+    } opcao = menuvendas();		
+} 
 return 0;
 }
 

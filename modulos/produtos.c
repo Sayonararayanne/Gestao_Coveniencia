@@ -9,7 +9,7 @@ int moduloprodutos(void) {
     Produtos* pro;
     char opcao;
     opcao = menuprodutos();
-        do {
+        while (opcao != '0') {
             switch(opcao) {
                 case '1':   pro = cadastrarprodutos();
                             gravaprodutos(pro);
@@ -23,8 +23,8 @@ int moduloprodutos(void) {
                             exibeprodutos(pro);
                             free(pro);
                             break;
-    } 		
-} while (opcao != '0');
+    } opcao = menuprodutos();
+} 
 return 0;
 }
 

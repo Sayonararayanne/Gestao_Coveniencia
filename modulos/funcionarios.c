@@ -9,7 +9,7 @@ int modulofuncionarios(void) {
     Funcionarios* fun;
     char opcao;
     opcao = menufuncionarios();
-        do { 
+        while (opcao != '0') { 
             switch(opcao) {
                 case '1': 	fun = cadastrarfuncionarios();
                             gravafuncionarios(fun);
@@ -23,8 +23,8 @@ int modulofuncionarios(void) {
                             exibefuncionarios(fun);
                             free(fun);
                             break;		
-    } 
-} while (opcao != '0');
+    } opcao = menufuncionarios();
+} 
 return 0;
 }
 

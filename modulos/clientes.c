@@ -9,7 +9,7 @@ int moduloclientes(void) {
     Clientes* cli;
     char opcao;
     opcao = menuclientes();
-        do {
+        while (opcao != '0') {
             switch(opcao) {
             case '1': 	cli = cadastrarclientes();
                         gravaclientes(cli);
@@ -23,8 +23,8 @@ int moduloclientes(void) {
                         exibeclientes(cli);
                         free(cli);
                         break;		
-    }
-} while (opcao != '0');
+    } opcao = menuclientes();
+}
 return 0;
 }
 
