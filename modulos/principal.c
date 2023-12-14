@@ -33,7 +33,7 @@ char menuprincipal(void){
     printf("|| (2) - MODULO DE VENDAS                           ||\n");
     printf("|| (3) - MODULO DE CLIENTES                         ||\n");
     printf("|| (4) - MODULO DE FUNCIONARIOS                     ||\n");
-    printf("|| (5) - MODULO RELATÓRIOS                          ||\n"); //ideia: funcionorio do mes ??
+    printf("|| (5) - MODULO RELATÓRIOS                          ||\n"); 
     printf("|| (0) - SAIR                                       ||\n");
     printf("||                                                  ||\n");
     printf("|| ------------------------------------------------ ||\n");

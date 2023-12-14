@@ -45,6 +45,7 @@ char menuclientes (void){
     printf("|| ------------------------------------------------ ||\n");
     printf("|| Digite a opcao desejada:                         ||\n");
     scanf("%c", &op);
+    op = op -'0';
     printf("|| ------------------------------------------------ ||\n");
     getchar();
     return op;

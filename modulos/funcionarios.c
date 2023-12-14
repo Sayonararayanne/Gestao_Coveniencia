@@ -44,8 +44,9 @@ char menufuncionarios(void){
     printf("||                                                  ||\n");
     printf("|| ------------------------------------------------ ||\n");
     printf("|| Digite a opcao desejada:                         ||\n");
-    printf("|| ------------------------------------------------ ||\n");
     scanf("%c", &op);
+    op = op -'0';
+    printf("|| ------------------------------------------------ ||\n");
     getchar();
     return op;
 }
