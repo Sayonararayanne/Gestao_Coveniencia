@@ -51,6 +51,8 @@ char menuclientes (void){
 }
 
 Clientes* cadastrarclientes (void){
+    int valido = 0;  
+    int cpfDuplicado = 0;  
     Clientes* c;
     c = (Clientes*) malloc(sizeof(Clientes));
 
@@ -59,43 +61,24 @@ Clientes* cadastrarclientes (void){
     printf("|| -------- GESTAO PARA LOJA DE COVENIENCIA ------- ||\n");
     printf("|| -------------- CADASTRAR CLIENTES -------------- ||\n");
     printf("|| ------------------------------------------------ ||\n");
-    printf("||                                                  ||\n");
-    printf("|| CPF (11 digitos sem espaço nem pontuação):       ||\n");
-    printf("|| CPF DO CLIENTE:                                  ||\n");
-    scanf(" %12[^\n]", c->cpf);
-    while(!validaCPF(c->cpf)) {
-      printf("CPF inválido!\n");
-      printf("Informe um novo CPF: ");
-      scanf(" %12[^\n]", c->cpf);
+    printf("||                                                  ||\n");  
+    //Função baseada na do Aluno Guilherme Medeiros                          
+    do {
+      printf("|| CPF (11 digitos sem espaço nem pontuação):       ||\n");
+      scanf("%s", c->cpf); 
       getchar();
-    }
-    //função baseada na de José Alves
-    //while(!(validaCPF(cpf_c)) ){
-        //printf("CPF inválido\n");
-        //printf("Digite o CPF do Cliente novamente: \n");
-        //scanf("%12[^\n]", cpf_c);
-
-       // while(cadastrar_cli(cpf_c)){
-       // printf("CPF já existe no banco de dados\n");
-       // printf("Digite o CPF do Cliente novamente: \n");
-        //scanf("%12[^\n]", cpf_c);
-       // getchar();
-       // }
-       // getchar();
-   // }
-     //while(cadastrar_cli(cpf_c)){
-        //printf("CPF já existe no banco de dados\n");
-       // printf("Digite o CPF novamente: \n");
-       // scanf("%12[^\n]",cpf_c);
-       // getchar();
-       // while(!(validaCPF(cpf_c))){
-            //printf("CPF foi digitado incorretamente\n");
-            //printf("Digite o CPF novamente: \n");
-            //scanf("%12[^\n]",cpf_c);
-           // getchar();
-       // }
-   // }
-    //strcpy(c->cpf, cpf_c);
+      cpfDuplicado = verificaCPFDuplicado(c->cpf);  //Verifica se o cpf é duplicado
+      if (cpfDuplicado) { 
+          printf("CPF já cadastrado!\n");
+          printf("\n");
+      } else if (validaCPF(c->cpf)) { 
+          printf("CPF valido!\n");
+          printf("\n");
+          valido = 1;
+      } else {
+          printf("CPF invalido!\n");
+      }
+    } while (!valido || cpfDuplicado);  //Enquanto nao for valido e n duplicado continua no loop 
 
     printf("|| NOME:                                            ||\n");
     scanf(" %100[^\n]", c->nome);
@@ -218,7 +201,7 @@ void excluirclientes (void){
     printf("||                                                  ||\n");
     printf("|| CPF DO CLIENTE QUE DESEJA EXCLUIR:               ||\n");
     printf("|| ------------------------------------------------ ||\n");
-    scanf(" %12[^\n]", c->cpf);
+    scanf(" %12[^\n]", cpf);
     getchar();
     fp = fopen("clientes.dat", "r+b");
     if (fp == NULL) {
@@ -286,7 +269,9 @@ return NULL;
 void exibeclientes(Clientes* c) {
     char situacao[20];
     if ((c == NULL) || (c->status == 'x')) {
+        printf("\n");
         printf("CLIENTE INEXISTENTE");
+        printf("\n");
     }else {
         printf("CLIENTES CADASTRADOS: \n");
         printf("CPF: %s\n", c->cpf);
@@ -302,4 +287,24 @@ void exibeclientes(Clientes* c) {
         }
         printf("Situação do cliente: %s\n", situacao);
     }
+}
+
+int verificaCPFDuplicado(const char* cpf) {
+FILE* fp = fopen("clientes.dat", "rb");
+
+if (fp == NULL) {
+  printf("Erro ao abrir o arquivo para leitura.\n");
+  return 0; 
+}
+
+Clientes c;
+
+while (fread(&c, sizeof(Clientes), 1, fp) == 1) {
+  if (strcmp(c.cpf, cpf) == 0) {            
+    fclose(fp);
+    return 1;
+  }
+}
+fclose(fp);
+return 0;
 }

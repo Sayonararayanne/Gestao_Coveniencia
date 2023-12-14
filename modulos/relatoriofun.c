@@ -86,7 +86,7 @@ char relatorioclientes(void){
     return op;
 }
 
-void listaclistatus(char st){
+void listaclistatus(char st){ 
 	Clientes* c;
     FILE* fp;
 	system("clear||cls"); 
@@ -176,7 +176,7 @@ void listaclitotal(void){
     getchar();
 }
 
-void listacliordemabc(void){
+void listacliordemabc(void){ //Função baseada na do aluno Aron Silva
     FILE* fp = fopen("clientes.dat", "rb");
     Clientes* c;
     Clientes* lista;

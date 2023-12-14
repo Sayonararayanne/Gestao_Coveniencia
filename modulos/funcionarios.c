@@ -51,7 +51,8 @@ char menufuncionarios(void){
 }
 
 Funcionarios* cadastrarfuncionarios (void){
-    char cpf_f[13];
+    int valido = 0;  
+    int cpfDuplicado = 0; 
     Funcionarios* f;
     f = (Funcionarios*) malloc(sizeof(Funcionarios));
 
@@ -61,14 +62,23 @@ Funcionarios* cadastrarfuncionarios (void){
     printf("|| ------------ CADASTRAR FUNCIONARIOS ------------ ||\n");
     printf("|| ------------------------------------------------ ||\n");
     printf("||                                                  ||\n");
-    printf("|| CPF (11 digitos sem espaço nem pontuação):       ||\n");
-    scanf(" %11[^\n]", f->cpf);
-    while(!validaCPF(f->cpf)) {
-      printf("CPF inválido!\n");
-      printf("Informe um novo CPF: ");
-      scanf(" %100[^\n]", f->cpf);
+    //Função baseada na do Aluno Gabriel Canuto                             
+    do {
+      printf("|| CPF (11 digitos sem espaço nem pontuação):       ||\n");
+      scanf("%s", f->cpf); 
       getchar();
-    }
+      cpfDuplicado = verificaCPFDuplicadofun(f->cpf);  //Verifica se o cpf é duplicado
+      if (cpfDuplicado) { 
+          printf("CPF já cadastrado!\n");
+          printf("\n");
+      } else if (validaCPF(f->cpf)) { 
+          printf("CPF valido!\n");
+          printf("\n");
+          valido = 1;
+      } else {
+          printf("CPF invalido!\n");
+      }
+    } while (!valido || cpfDuplicado);  //Enquanto nao for valido e n duplicado continua no loop 
 
     printf("|| NOME:                                            ||\n");
     scanf(" %100[^\n]", f->nome);
@@ -269,10 +279,12 @@ fclose(fp);
 return NULL;
 }
 
-void exibefuncionarios(Funcionarios* f) {
+void exibefuncionarios(Funcionarios* f) { //Função baseada na do Professor Flavius
     char situacao[20];
     if ((f == NULL) || (f->status == 'x')) {
+        printf("\n");
         printf("FUNCIONÁRIO INEXISTENTE");
+        printf("\n");
     }else {
         printf("FUNCIONÁRIOS CADASTRADOS: \n");
         printf("CPF: %s\n", f->cpf);
@@ -290,4 +302,24 @@ void exibefuncionarios(Funcionarios* f) {
         }
         printf("Situação do funcionário: %s\n", situacao);
     }
+}
+
+int verificaCPFDuplicadofun(const char* cpf) {
+FILE* fp = fopen("funcionarios.dat", "rb");
+
+if (fp == NULL) {
+  printf("Erro ao abrir o arquivo para leitura.\n");
+  return 0; 
+}
+
+Funcionarios f;
+
+while (fread(&f, sizeof(Funcionarios), 1, fp) == 1) {
+  if (strcmp(f.cpf, cpf) == 0) {            
+    fclose(fp);
+    return 1;
+  }
+}
+fclose(fp);
+return 0;
 }

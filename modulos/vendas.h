@@ -21,3 +21,4 @@ void editarvendas(void);
 void excluirvendas(void);
 Vendas* pesquisarvendas(void);
 void geraDatahora(char*);
+int verificaCODDuplicado(const char* cod);

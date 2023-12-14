@@ -52,17 +52,9 @@ char menuvendas (void){
     return op;
 }
 
-void geraDatahora(char* dataHora) {
-    time_t tempoAtual;
-    struct tm *infoTempo;
-
-    time(&tempoAtual);
-    infoTempo = localtime(&tempoAtual);
-
-    strftime(dataHora, 20, "%d/%m/%Y %H:%M:%S", infoTempo);
-}
-
 Vendas* cadastrarvendas (void){ //função baseada no slide da Semana 11
+    int valido = 0;  
+    int codDuplicado = 0;  
     Vendas* v;
     v = (Vendas*) malloc(sizeof(Vendas));
 
@@ -72,11 +64,30 @@ Vendas* cadastrarvendas (void){ //função baseada no slide da Semana 11
     printf("|| -------------- CADASTRAR VENDAS ---------------- ||\n");
     printf("|| ------------------------------------------------ ||\n");  
     printf("||                                                  ||\n"); 
-    printf("|| CODIGO:                                          ||\n"); 
-    scanf("%5[^\n]", v->cod);
+    //Função baseada na do Aluno Gabriel Ygor                         
+    do {
+      printf("|| Código (5 digitos):                             ||\n");
+      scanf("%s", v->cod); 
+      getchar();
+      codDuplicado = verificaCODDuplicado(v->cod);  
+      if (codDuplicado) { 
+          printf("Código já cadastrado!\n");
+          printf("\n");
+      } else if (validaCOD(v->cod)) { 
+          printf("Código válido!\n");
+          printf("\n");
+          valido = 1;
+      } else {
+          printf("Código inválido!\n");
+      }
+    } while (!valido || codDuplicado);  //Enquanto nao for valido e n duplicado continua no loop 
     
     printf("|| CODIGO DO VENDEDOR:                              ||\n");
     scanf(" %11[^\n]", v->cpf_ven);
+
+    geraDatahora(v->dataHora);
+    printf("|| DATA E HORA DA VENDA: %s\n", v->dataHora);
+
 
     printf("|| CODIGO DO PRODUTO:                               ||\n"); //função para verificar se o produto existe
     scanf(" %13[^\n]", v->codprod);
@@ -92,9 +103,6 @@ Vendas* cadastrarvendas (void){ //função baseada no slide da Semana 11
 
     printf("|| VALOR DA UNIDADE:                                ||\n");
     scanf(" %11[^\n]", v->valor);
-
-    geraDatahora(v->dataHora);
-    printf("|| DATA E HORA DA VENDA: %s\n", v->dataHora);
 
     getchar();
     printf("||                                                  ||\n");
@@ -115,7 +123,7 @@ void gravavendas(Vendas* v) {
     fclose(fp);
 }
 
-void editarvendas (void){
+void editarvendas (void){ //Função baseada na da aluna Mariana
   FILE* fp;
   Vendas* v = (Vendas*) malloc(sizeof(Vendas));
   char cod[6];
@@ -229,7 +237,7 @@ void excluirvendas (void){
   fclose(fp);
 }
 
-Vendas* pesquisarvendas(void){
+Vendas* pesquisarvendas(void){ //função baseada no slide da Semana 11
   FILE* fp;
   Vendas* v;
   v = (Vendas*) malloc(sizeof(Vendas));
@@ -267,7 +275,9 @@ return NULL;
 
 void exibevendas(Vendas* v) { //função baseada no slide da Semana 11
     if ((v == NULL) || (v->status == 'x')) {
+        printf("\n");
         printf("VENDA INEXISTENTE");
+        printf("\n");
     }else {
         printf("VENDAS CADASTRADAS: \n");
         printf("Código: %s\n", v->cod);
@@ -303,3 +313,32 @@ char* get_cliente(const char* cpf){
   return NULL;
 }
 
+int verificaCODDuplicado(const char* cod) { //Função baseada na do aluno Guilherme Medeiros
+FILE* fp = fopen("vendas.dat", "rb");
+
+if (fp == NULL) {
+  printf("Erro ao abrir o arquivo para leitura.\n");
+  return 0; 
+}
+
+Vendas v;
+
+while (fread(&v, sizeof(Vendas), 1, fp) == 1) {
+  if (strcmp(v.cod, cod) == 0) {            
+    fclose(fp);
+    return 1;
+  }
+}
+fclose(fp);
+return 0;
+}
+
+void geraDatahora(char* dataHora) { //Função baseada na da aluna Mariana
+    time_t tempoAtual;
+    struct tm *infoTempo;
+
+    time(&tempoAtual);
+    infoTempo = localtime(&tempoAtual);
+
+    strftime(dataHora, 20, "%d/%m/%Y %H:%M:%S", infoTempo);
+}

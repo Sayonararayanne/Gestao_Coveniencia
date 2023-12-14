@@ -17,3 +17,4 @@ void exibeclientes(Clientes*);
 void editarclientes (void);
 void excluirclientes (void);
 Clientes* pesquisarclientes (void);
+int verificaCPFDuplicado(const char* cpf);

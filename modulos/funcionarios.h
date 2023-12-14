@@ -20,4 +20,4 @@ void editarfuncionarios (void);
 void excluirfuncionarios (void);
 Funcionarios* pesquisarfuncionarios (void);
 void modulorelatorio (void);
-int cadastrar_fun(char *cpf);
+int verificaCPFDuplicadofun(const char* cpf);

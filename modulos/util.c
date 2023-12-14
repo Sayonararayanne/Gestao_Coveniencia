@@ -38,7 +38,7 @@ int eh_numero(char c){
     }
 }
 
-//Referências: função para validar cpf do colega @gabrielaraujo
+//Referências: Função para validar cpf do colega @gabrielaraujo
 int validaCPF(char* cpf) {
     int i, j;
     int digito_v1 = 0, digito_v2 = 0;
@@ -93,6 +93,19 @@ int validaCodBarras(char* cod) {
     }
     int tamb = strlen(cod);
     if (tamb != 13) {
+        return 0;
+    }
+    return 1;
+}
+
+int validaCOD(char* cod) { 
+    for (int i = 0; cod[i] != '\0'; i++) {
+        if (!isdigit(cod[i])) {
+            return 0;
+        }
+    }
+    int tamb = strlen(cod);
+    if (tamb != 5) {
         return 0;
     }
     return 1;
