@@ -4,7 +4,7 @@
     char nome[101];
     char tel[13];
     char cargo[52];
-    char sala[9];
+    char sala[9]; //salário
     char data[11];
     char status;
     struct funcionarios *next;
@@ -20,3 +20,4 @@ void editarfuncionarios (void);
 void excluirfuncionarios (void);
 Funcionarios* pesquisarfuncionarios (void);
 void modulorelatorio (void);
+int cadastrar_fun(char *cpf);

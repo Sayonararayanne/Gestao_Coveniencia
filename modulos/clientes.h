@@ -9,7 +9,6 @@ struct clientes
 };
 typedef struct clientes Clientes;
 
-
 int moduloclientes (void);
 char menuclientes (void);
 Clientes* cadastrarclientes (void);
@@ -19,3 +18,4 @@ void editarclientes (void);
 void excluirclientes (void);
 Clientes* pesquisarclientes (void);
 char* get_cliente(const char* cpf);
+int cadastrar_cli(char *cpf);

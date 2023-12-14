@@ -52,6 +52,7 @@ char menuvendas (void){
 }
 
 Vendas* cadastrarvendas (void){ //função baseada no slide da Semana 11
+    char cod_v[13];
     Vendas* v;
     v = (Vendas*) malloc(sizeof(Vendas));
 
@@ -59,17 +60,20 @@ Vendas* cadastrarvendas (void){ //função baseada no slide da Semana 11
     printf("|| ------------------------------------------------ ||\n");
     printf("|| -------- GESTAO PARA LOJA DE COVENIENCIA ------- ||\n");
     printf("|| -------------- CADASTRAR VENDAS ---------------- ||\n");
-    printf("|| ------------------------------------------------ ||\n"); //Na venda fazer um laço de repetição para 
-    printf("||                                                  ||\n"); //na hora da compra poder comprar mais de um produto
-    printf("|| CODIGO:                                          ||\n"); //diferente por vez. Ex: pedir código e quantidade até se encerrarem os vendas.
-    scanf("%d", &v->cod);
-
-    printf("|| CPF DO CLIENTE:                                  ||\n");
-    scanf(" %12[^\n]", v->cpf);
-    
+    printf("|| ------------------------------------------------ ||\n");  
+    printf("||                                                  ||\n"); 
+    printf("|| CODIGO:                                          ||\n"); 
+    scanf("%5[^\n]", v->cod);
+      while(cadastrar_cli(cod_v)){ //veriificando se o código já existe 
+      printf("O Código já existe no banco de dados\n");
+      printf("Digite o código da venda novamente: \n");
+      scanf("%12[^\n]", cod_v);
+      getchar();
+    }
+    strcpy(v->cod, cod_v);
 
     printf("|| CODIGO DO VENDEDOR:                              ||\n");
-    scanf(" %11[^\n]", v->codven);
+    scanf(" %11[^\n]", v->cpf_ven);
 
     printf("|| CODIGO DO PRODUTO:                               ||\n"); //função para verificar se o produto existe
     scanf(" %13[^\n]", v->codprod);
@@ -83,7 +87,7 @@ Vendas* cadastrarvendas (void){ //função baseada no slide da Semana 11
     printf("|| QUANTIDADE:                                      ||\n");
     scanf(" %11[^\n]", v->quant);
 
-    printf("|| VALOR DA UNIDADE:                                           ||\n");
+    printf("|| VALOR DA UNIDADE:                                ||\n");
     scanf(" %11[^\n]", v->valor);
     getchar();
     printf("||                                                  ||\n");
@@ -134,7 +138,7 @@ void editarvendas (void){
           printf("|| ------------------------------------------------ ||\n");
           printf("||                                                  ||\n");
           printf("|| CODIGO DO VENDEDOR:                              ||\n");
-          scanf(" %11[^\n]", v->codven);
+          scanf(" %11[^\n]", v->cpf_ven);
 
           printf("|| CODIGO DO PRODUTO:                               ||\n");
           scanf(" %13[^\n]", v->codprod);
@@ -254,7 +258,7 @@ void exibevendas(Vendas* v) { //função baseada no slide da Semana 11
     }else {
         printf("VENDAS CADASTRADOS: \n");
         printf("Código: %s\n", v->cod);
-        printf("Código do vendedor: %s\n", v->codven);
+        printf("Código do vendedor: %s\n", v->cpf_ven);
         printf("Código do produto: %s\n", v->codprod);
         printf("Quantidade: %s\n", v->quant);
         printf("Valor: %s\n", v->valor);

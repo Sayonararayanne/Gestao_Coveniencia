@@ -127,7 +127,6 @@ void listaclistatus(char st){
     getchar();
 }
 
-
 void listaclitotal(void){
 	FILE* fp;
     Clientes* c;
@@ -548,7 +547,7 @@ void listavenstatus(char st){
         if (v->status == st) {
 			printf("%-13s",v->cod);
 			printf("|");
-			printf("%-13s",v->codven);
+			printf("%-13s",v->cpf_ven);
 			printf("|");
 			printf("%-15s",v->codprod);
 			printf("|");
@@ -599,7 +598,7 @@ void listaventotal(void){
         if (v->status != 'x') {
 			printf("%-13s",v->cod);
 			printf("|");
-			printf("%-13s",v->codven);
+			printf("%-13s",v->cpf_ven);
 			printf("|");
 			printf("%-15s",v->codprod);
 			printf("|");

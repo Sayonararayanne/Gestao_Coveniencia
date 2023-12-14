@@ -2,6 +2,9 @@
 #include <stdlib.h>
 #include <string.h>
 #include <ctype.h>
+#include "clientes.h"
+#include "funcionarios.h"
+#include "vendas.h"
 
 //função irá verificar se o nome é composto somente por letras e espaços em branco 
 int validaNome(char* nome) { //Referências: Função baseada na do Professor Flavius (@flgorgonio) e Chatgpt
@@ -107,4 +110,49 @@ int validaCodBarras(char* cod) { //Função baseada no ChatGPT
         return 0;
     }
   return 1;
+}
+
+int cadastrar_cli (char* cpf) {
+    FILE* fp;
+    Clientes* c;
+    c = (Clientes*)malloc(sizeof(Clientes));
+    fp = fopen("clientes.dat", "rb");
+    while (fread(c, sizeof(Clientes), 1, fp)) {
+        if ((!strcmp(c->cpf, cpf)) && (c->status == 'a')) {
+            fclose(fp);
+            return 1;
+        }
+    }
+    fclose(fp);
+    return 0;
+}
+
+int cadastrar_fun (char* cpf) {
+    FILE* fp;
+    Funcionarios* f;
+    f = (Funcionarios*)malloc(sizeof(Funcionarios));
+    fp = fopen("Funcionarios.dat", "rb");
+    while (fread(f, sizeof(Funcionarios), 1, fp)) {
+        if ((!strcmp(f->cpf, cpf)) && (f->status == 'a')) {
+            fclose(fp);
+            return 1;
+        }
+    }
+    fclose(fp);
+    return 0;
+}
+
+int cadastrar_ven (char* cod) {
+    FILE* fp;
+    Vendas* v;
+    v = (Vendas*)malloc(sizeof(Vendas));
+    fp = fopen("Vendas.dat", "rb");
+    while (fread(v, sizeof(Vendas), 1, fp)) {
+        if ((!strcmp(v->cod, cod))) {
+            fclose(fp);
+            return 1;
+        }
+    }
+    fclose(fp);
+    return 0;
 }
