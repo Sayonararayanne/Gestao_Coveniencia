@@ -7,9 +7,9 @@
 //MODULO PRODUTOS
 int moduloprodutos(void) {
     Produtos* pro;
-    int opcao;
+    char opcao;
     opcao = menuprodutos();
-        while (opcao !=0) {
+        do {
             switch(opcao) {
                 case '1':   pro = cadastrarprodutos();
                             gravaprodutos(pro);
@@ -23,8 +23,8 @@ int moduloprodutos(void) {
                             exibeprodutos(pro);
                             free(pro);
                             break;
-    } opcao = menuprodutos(); 		
-} 
+    } 		
+} while (opcao != '0');
 return 0;
 }
 
@@ -45,7 +45,6 @@ char menuprodutos (void){
     printf("|| ------------------------------------------------ ||\n");
     printf("|| Digite a opcao desejada:                         ||\n");
     scanf("%c", &op);
-    op = op -'0';
     printf("|| ------------------------------------------------ ||\n");
     getchar();
     return op;

@@ -7,9 +7,9 @@
 //MODULO CLIENTES
 int moduloclientes(void) {
     Clientes* cli;
-    int opcao;
+    char opcao;
     opcao = menuclientes();
-        while (opcao !=0) {
+        do {
             switch(opcao) {
             case '1': 	cli = cadastrarclientes();
                         gravaclientes(cli);
@@ -23,8 +23,8 @@ int moduloclientes(void) {
                         exibeclientes(cli);
                         free(cli);
                         break;		
-    } opcao = menuclientes();
-}
+    }
+} while (opcao != '0');
 return 0;
 }
 
@@ -45,7 +45,6 @@ char menuclientes (void){
     printf("|| ------------------------------------------------ ||\n");
     printf("|| Digite a opcao desejada:                         ||\n");
     scanf("%c", &op);
-    op = op -'0';
     printf("|| ------------------------------------------------ ||\n");
     getchar();
     return op;

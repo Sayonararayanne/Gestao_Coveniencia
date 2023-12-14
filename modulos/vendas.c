@@ -9,9 +9,9 @@
 //MODULO VENDAS
 int modulovendas(void) {
     Vendas* ven;
-    int opcao;
+    char opcao;
     opcao = menuvendas();
-        while (opcao !=0) {
+        do {
             switch(opcao) {
                 case '1': 	ven = cadastrarvendas();
                             gravavendas(ven);
@@ -25,8 +25,8 @@ int modulovendas(void) {
                             exibevendas(ven);
                             free(ven);
                             break;
-    } opcao = menuvendas(); 		
-} 
+    } 		
+} while (opcao != '0');
 return 0;
 }
 
@@ -47,7 +47,6 @@ char menuvendas (void){
     printf("|| ------------------------------------------------ ||\n");
     printf("|| Digite a opcao desejada:                         ||\n");
     scanf("%c", &op);
-    op = op -'0';
     printf("|| ------------------------------------------------ ||\n");
     getchar();
     return op;
