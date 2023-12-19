@@ -19,3 +19,5 @@ char relatorioprodutos(void);
 void listaprototal(void);
 void listaprostatus(char);
 void listaproordemabc(void);
+char* get_funcionario(const char* cpf);
+char* get_venda(const char* cod);

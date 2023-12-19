@@ -8,6 +8,8 @@
 #include "clientes.h"
 #include "produtos.h"
 
+void listafunvendas(Vendas*);
+
 void modulorelatorios(void) {
 	char opcao;
 	do {
@@ -73,9 +75,9 @@ char relatorioclientes(void){
     printf("||                                                  ||\n");
 	printf("||               RELATÓRIO DOS CLIENTES             ||\n");
 	printf("||                                                  ||\n");
-    printf("|| (1) - RELATÓRIO POR STATUS                       ||\n");
+    printf("|| (1) - RELATÓRIO POR STATUS ATIVO                 ||\n");
     printf("|| (2) - RELATÓRIO TOTAL                            ||\n");
-    printf("|| (3) - RELATÓRIO ORDEM ALFABÉTICA                 ||\n");
+    printf("|| (3) - RELATÓRIO POR ORDEM ALFABÉTICA             ||\n");
     printf("|| (0) - SAIR                                       ||\n");
     printf("||                                                  ||\n");
     printf("|| ------------------------------------------------ ||\n");
@@ -257,7 +259,7 @@ void listacliordemabc(void){ //Função baseada na do aluno Aron Silva
 
 void menurelatoriofuncionarios(void){
     char opcao;
-
+    Vendas *v = malloc(sizeof(*v));
     do {
         opcao = relatoriofuncionarios();
         switch(opcao) {
@@ -266,6 +268,8 @@ void menurelatoriofuncionarios(void){
 			case '2':   listafuntotal();
                         break;
             case '3':   listafunordemabc();
+                        break;
+            case '4':   listafunvendas(v);
                         break;
           } 		
     } while (opcao != '0');
@@ -281,9 +285,10 @@ char relatoriofuncionarios(void){
     printf("||                                                  ||\n");
 	printf("||            RELATÓRIO DOS FUNCIONÁRIOS            ||\n");
 	printf("||                                                  ||\n");
-    printf("|| (1) - RELATÓRIO POR STATUS                       ||\n");
+    printf("|| (1) - RELATÓRIO POR STATUS ATIVO                 ||\n");
     printf("|| (2) - RELATÓRIO TOTAL                            ||\n");
     printf("|| (3) - RELATÓRIO ORDEM ALFABÉTICA                 ||\n");
+    printf("|| (4) - RELATÓRIO POR VENDAS REALIZADA             ||\n");
     printf("|| (0) - SAIR                                       ||\n");
     printf("||                                                  ||\n");
     printf("|| ------------------------------------------------ ||\n");
@@ -487,6 +492,50 @@ void listafunordemabc(void){
 
 }
 
+void listafunvendas(Vendas* v){
+    FILE* fp;
+    char* codfun;
+    char* codven;
+    char cpf[12];
+    system("clear||cls"); 
+    printf("|| ------------------------------------------------ ||\n");
+    printf("|| -------- GESTAO PARA LOJA DE COVENIENCIA ------- ||\n");
+    printf("|| ------------- LISTAR FUNCIONÁRIOS -------------- ||\n");
+    printf("|| ------------------------------------------------ ||\n");
+    printf("||                                                  ||\n");
+    printf("|| INSIRA O CPF DO FUN QUE DESEJA CONSULTAR:        ||\n");
+    printf("|| ------------------------------------------------ ||\n");
+    fgets(cpf, 12, stdin);
+    printf("\n");
+    getchar();
+    v = (Vendas*) malloc(sizeof(Vendas));
+    fp = fopen("vendas.dat", "rb");
+    if (fp == NULL) {
+        printf("\t\t\t*** Processando as informações...\n");
+        sleep(1);
+        printf("\t\t\t*** Ops! Erro na abertura do arquivo!\n");
+        printf("\t\t\t*** Não é possível continuar...\n");
+        printf("\t\t\t*** Tecle <ENTER> para voltar...\n");
+        getchar();
+    }
+    printf("%-13s", "Código da venda: ");
+    printf("|");
+    printf("%-13s", "CPF do funcionário");
+    printf("\n");
+    while (fread(v, sizeof(Vendas), 1, fp) == 1){
+        if (strcmp(v->cpf_ven, cpf) == 0){
+            codfun = get_funcionario(cpf);
+            codven = get_venda(v->cod);
+            printf("%-13s", codven);
+            printf("|");
+            printf("%-13s", codfun);
+            printf("\n");
+        }
+    }
+    fclose(fp);
+    free(v);
+}
+
 void menurelatoriovendas(void){
     char opcao;
 
@@ -511,7 +560,7 @@ char relatoriovendas(void){
     printf("||                                                  ||\n");
 	printf("||               RELATÓRIO DOS VENDAS               ||\n");
 	printf("||                                                  ||\n");
-    printf("|| (1) - RELATÓRIO POR STATUS                       ||\n");
+    printf("|| (1) - RELATÓRIO POR STATUS ATIVO                 ||\n");
     printf("|| (2) - RELATÓRIO TOTAL                            ||\n");
     printf("|| (0) - SAIR                                       ||\n");
     printf("||                                                  ||\n");
@@ -647,7 +696,7 @@ char relatorioprodutos(void){
     printf("||                                                  ||\n");
 	printf("||                RELATÓRIO DOS PRODUTOS            ||\n");
 	printf("||                                                  ||\n");
-    printf("|| (1) - RELATÓRIO POR STATUS                       ||\n");
+    printf("|| (1) - RELATÓRIO POR STATUS ATIVO                 ||\n");
     printf("|| (2) - RELATÓRIO TOTAL                            ||\n");
     printf("|| (3) - RELATÓRIO POR ORDEM ALFABÉTICA             ||\n");
     printf("|| (0) - SAIR                                       ||\n");
@@ -851,4 +900,60 @@ void listaproordemabc(void){
     printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
     getchar();
 
+}
+
+char* get_funcionario(const char* cpf){
+   Funcionarios f;
+   FILE* fp = fopen("funcionarios.dat", "rb");
+   if (fp == NULL) {
+        printf("\t\t\t*** Processando as informações...\n");
+        sleep(1);
+        printf("\t\t\t*** Ops! Erro na abertura do arquivo!\n");
+        printf("\t\t\t*** Não é possível continuar...\n");
+        printf("\t\t\t*** Tecle <ENTER> para voltar...\n");
+        getchar();
+    }
+    while (fread(&f, sizeof(f), 1, fp) == 1){
+        if(strcmp(f.cpf, cpf) == 0){
+            char* x = (char*) malloc(strlen(f.cpf) + 1);
+            if (x == NULL){
+                printf("Ocorreu um erro!\n");
+                fclose(fp);
+                return x;
+            }
+            strcpy(x, f.cpf);
+            fclose(fp);
+            return x;
+    }
+  }
+  fclose(fp);
+  return NULL;
+}
+
+char* get_venda(const char* cod){
+    Vendas v;
+    FILE* fp = fopen("Vendas.dat", "rb");
+   if (fp == NULL) {
+        printf("\t\t\t*** Processando as informações...\n");
+        sleep(1);
+        printf("\t\t\t*** Ops! Erro na abertura do arquivo!\n");
+        printf("\t\t\t*** Não é possível continuar...\n");
+        printf("\t\t\t*** Tecle <ENTER> para voltar...\n");
+        getchar();
+    }
+    while (fread(&v, sizeof(v), 1, fp) == 1){
+        if(strcmp(v.cod, cod) == 0){
+            char* x = (char*) malloc(strlen(v.cod) + 1);
+            if (x == NULL){
+                printf("Ocorreu um erro!\n");
+                fclose(fp);
+                return x;
+            }
+            strcpy(x, v.cod);
+            fclose(fp);
+            return x;
+    }
+  }
+  fclose(fp);
+  return NULL;
 }

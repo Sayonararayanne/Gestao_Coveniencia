@@ -255,7 +255,7 @@ Funcionarios* pesquisarfuncionarios(void){
     printf("|| -------------- PESQUISAR VENDAS ---------------- ||\n");
     printf("|| ------------------------------------------------ ||\n");
     printf("||                                                  ||\n");
-    printf("|| INFORME O CPF DO FUNCIONÁRIO:                        ||\n");
+    printf("|| INFORME O CPF DO FUNCIONÁRIO:                    ||\n");
     printf("|| ------------------------------------------------ ||\n");
     scanf(" %11[^\n]", cpf);
     getchar();

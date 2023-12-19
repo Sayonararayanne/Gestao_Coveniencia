@@ -61,8 +61,7 @@ Clientes* cadastrarclientes (void){
     printf("|| -------- GESTAO PARA LOJA DE COVENIENCIA ------- ||\n");
     printf("|| -------------- CADASTRAR CLIENTES -------------- ||\n");
     printf("|| ------------------------------------------------ ||\n");
-    printf("||                                                  ||\n");  
-    //Função baseada na do Aluno Guilherme Medeiros                          
+    printf("||                                                  ||\n");                           
     do {
       printf("|| CPF (11 digitos sem espaço nem pontuação):       ||\n");
       scanf("%s", c->cpf); 
